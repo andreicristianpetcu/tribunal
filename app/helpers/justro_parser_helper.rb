@@ -9,6 +9,10 @@ module JustroParserHelper
   end
 
   def self.save_meetings_to_mongo
-    
+    meetings = get_justro_meetings
+    meetings.each do |meeting|
+      puts meeting[:departament]
+      JustRoRequest.create(meeting: meeting)
+    end
   end
 end
