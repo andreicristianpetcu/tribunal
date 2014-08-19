@@ -41,3 +41,4 @@ gem 'bson_ext'
 
 gem 'pry', :group => :development
 gem 'pry-rails', :group => :development
+gem 'savon'
