@@ -7,4 +7,8 @@ module JustroParserHelper
     meetings = response.body[:cautare_sedinte_response][:cautare_sedinte_result][:sedinta]
     return meetings
   end
+
+  def self.save_meetings_to_mongo
+    
+  end
 end
