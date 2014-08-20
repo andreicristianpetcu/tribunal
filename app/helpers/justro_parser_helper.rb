@@ -12,7 +12,10 @@ module JustroParserHelper
     meetings = get_justro_meetings
     meetings.each do |meeting|
       puts meeting[:departament]
-      JustRoRequest.create(meeting: meeting)
+      requestDate = DateTime.now()
+      JustRoRequest.create(
+        meeting: meeting, 
+        requestDate: requestDate)
     end
   end
 end
