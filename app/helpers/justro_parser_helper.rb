@@ -9,13 +9,15 @@ module JustroParserHelper
     # endDate = Date.today
     startDate = Date.new(2014, 3, 5)
 
-    startDate = Date.new(2014, 6, 1)
-    endDate = startDate
+    # startDate = Date.new(2014, 6, 1)
+    endDate = startDate + 3
     (startDate..endDate).each do |date|
-      request_param = {}
-      request_param[:court_name] = court_name
-      request_param[:requestDate] = date.strftime("%Y-%m-%d")
-      request_params_list << request_param
+      if(!date.saturday? && !date.sunday?)
+        request_param = {}
+        request_param[:court_name] = court_name
+        request_param[:requestDate] = date.strftime("%Y-%m-%d")
+        request_params_list << request_param
+      end
     end
     request_params_list
   end
@@ -24,7 +26,6 @@ module JustroParserHelper
     meetings = []
     client = Savon.client(wsdl: 'http://portalquery.just.ro/query.asmx?WSDL')
     get_parser_request_params.each do |request_params|
-      binding.pry
       puts "request #{request_params}"
       meeting = {}
       meeting[:request_param] = request_params
@@ -34,9 +35,7 @@ module JustroParserHelper
         result = cautare_sedinte_response[:cautare_sedinte_result]
         meeting = result[:sedinta]
       rescue Exception => e
-        # binding.pry
         meeting[:error] = e.backtrace.to_s
-        # binding.pry
       end
 
       meetings << meeting
@@ -51,7 +50,6 @@ module JustroParserHelper
       requestDate = DateTime.now()
       # requestParams = {}
       # requestParZWams
-      # binding.pry
       JustRoRequest.create(
         meeting: meeting, 
         requestDate: requestDate)
