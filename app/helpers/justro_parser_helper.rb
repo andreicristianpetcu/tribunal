@@ -5,12 +5,12 @@ module JustroParserHelper
   def self.get_parser_request_params
     request_params_list = []
     court_name = 'CurteadeApelBUCURESTI'
-    # startDate = Date.new(2000, 1, 1)
-    # endDate = Date.today
-    startDate = Date.new(2014, 3, 5)
+    startDate = Date.new(2012, 1, 1)
+    endDate = Date.today
+    # startDate = Date.new(2014, 3, 5)
 
     # startDate = Date.new(2014, 6, 1)
-    endDate = startDate + 3
+    # endDate = startDate + 3
     # endDate = startDate
     (startDate..endDate).each do |date|
       if(!date.saturday? && !date.sunday?)
@@ -24,7 +24,7 @@ module JustroParserHelper
   end
 
   def self.get_justro_meetings
-    meetings = []
+    # meetings = []
     client = Savon.client(wsdl: 'http://portalquery.just.ro/query.asmx?WSDL')
     get_parser_request_params.each do |request_params|
       break if is_parsing_time_over
@@ -35,7 +35,12 @@ module JustroParserHelper
         response = client.call(:cautare_sedinte, message: {institutie: request_params[:court_name], dataSedinta: request_params[:requestDate]})
         cautare_sedinte_response = response.body[:cautare_sedinte_response]
         result = cautare_sedinte_response[:cautare_sedinte_result]
-        meeting = result[:sedinta]
+        # binding.pry
+        if result then
+          meeting[:sedinta] = result[:sedinta]
+        elsif
+          meeting[:empty_body] = true
+        end
       rescue => e
         meeting[:error] = e.backtrace.to_s
         if e.is_a? Wasabi::Resolver::HTTPError then
@@ -43,7 +48,8 @@ module JustroParserHelper
         end
       end
 
-      meetings << meeting
+      save_meeting_to_mongo(meeting)
+      # meetings << meeting
     end
     return meetings
   end
@@ -54,16 +60,14 @@ module JustroParserHelper
     return !parsing_hours.include?(Time.now.hour)
   end
 
-  def self.save_meetings_to_mongo
-    meetings = get_justro_meetings
-    meetings.each do |meeting|
-      # puts meeting[:departament]
-      requestDate = DateTime.now()
-      # requestParams = {}
-      # requestParZWams
-      JustRoRequest.create(
-        meeting: meeting, 
-        requestDate: requestDate)
-    end
+  def self.save_meeting_to_mongo(meeting)
+    # binding.pry
+    # puts meeting[:departament]
+    requestDate = DateTime.now()
+    # requestParams = {}
+    # requestParZWams
+    JustRoRequest.create(
+      meeting: meeting, 
+      requestDate: requestDate)
   end
 end
