@@ -9,9 +9,9 @@ module JustroParserHelper
     # startDate = Date.new(2014, 3, 5)
     # startDate = Date.new(2014, 6, 1)
     # endDate = startDate + 3
-    # endDate = startDate
+    endDate = startDate
 
-    get_court_names.each do |court_name|
+    CourtDataProviderHelper.get_courts_names.each do |court_name|
       # court_name = 'CurteadeApelBUCURESTI'
       (startDate..endDate).each do |date|
         if(!date.saturday? && !date.sunday?)
@@ -23,10 +23,6 @@ module JustroParserHelper
       end
     end
     request_params_list
-  end
-
-  def self.get_court_names
-    ['CurteadeApelBUCURESTI']
   end
 
   def self.get_justro_meetings
