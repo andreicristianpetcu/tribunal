@@ -4,8 +4,8 @@ module JustroParserHelper
 
   def self.get_parser_request_params
     request_params_list = []
-    startDate = Date.new(2012, 1, 1)
-    endDate = Date.today
+    startDate = Date.new(2010, 1, 1)
+    endDate = Date.today - 1
     # startDate = Date.new(2014, 3, 5)
     # startDate = Date.new(2014, 6, 1)
     # endDate = startDate + 3
