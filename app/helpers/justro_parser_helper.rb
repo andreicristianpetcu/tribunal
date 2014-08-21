@@ -11,6 +11,7 @@ module JustroParserHelper
 
     # startDate = Date.new(2014, 6, 1)
     endDate = startDate + 3
+    # endDate = startDate
     (startDate..endDate).each do |date|
       if(!date.saturday? && !date.sunday?)
         request_param = {}
@@ -26,6 +27,7 @@ module JustroParserHelper
     meetings = []
     client = Savon.client(wsdl: 'http://portalquery.just.ro/query.asmx?WSDL')
     get_parser_request_params.each do |request_params|
+      break if is_parsing_time_over
       puts "request #{request_params}"
       meeting = {}
       meeting[:request_param] = request_params
@@ -34,13 +36,22 @@ module JustroParserHelper
         cautare_sedinte_response = response.body[:cautare_sedinte_response]
         result = cautare_sedinte_response[:cautare_sedinte_result]
         meeting = result[:sedinta]
-      rescue Exception => e
+      rescue => e
         meeting[:error] = e.backtrace.to_s
+        if e.is_a? Wasabi::Resolver::HTTPError then
+          meeting[:error_code] = e.response.code
+        end
       end
 
       meetings << meeting
     end
     return meetings
+  end
+
+  def self.is_parsing_time_over
+    parsing_hours = (0..5).to_a
+    parsing_hours << 23
+    return !parsing_hours.include?(Time.now.hour)
   end
 
   def self.save_meetings_to_mongo
