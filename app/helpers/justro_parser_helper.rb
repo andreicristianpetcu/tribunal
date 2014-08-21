@@ -4,23 +4,29 @@ module JustroParserHelper
 
   def self.get_parser_request_params
     request_params_list = []
-    court_name = 'CurteadeApelBUCURESTI'
     startDate = Date.new(2012, 1, 1)
     endDate = Date.today
     # startDate = Date.new(2014, 3, 5)
-
     # startDate = Date.new(2014, 6, 1)
     # endDate = startDate + 3
     # endDate = startDate
-    (startDate..endDate).each do |date|
-      if(!date.saturday? && !date.sunday?)
-        request_param = {}
-        request_param[:court_name] = court_name
-        request_param[:requestDate] = date.strftime("%Y-%m-%d")
-        request_params_list << request_param
+
+    get_court_names.each do |court_name|
+      # court_name = 'CurteadeApelBUCURESTI'
+      (startDate..endDate).each do |date|
+        if(!date.saturday? && !date.sunday?)
+          request_param = {}
+          request_param[:court_name] = court_name
+          request_param[:requestDate] = date.strftime("%Y-%m-%d")
+          request_params_list << request_param
+        end
       end
     end
     request_params_list
+  end
+
+  def self.get_court_names
+    ['CurteadeApelBUCURESTI']
   end
 
   def self.get_justro_meetings
@@ -51,7 +57,7 @@ module JustroParserHelper
       save_meeting_to_mongo(meeting)
       # meetings << meeting
     end
-    return meetings
+    # return meetings
   end
 
   def self.is_parsing_time_over
