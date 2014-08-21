@@ -4,12 +4,12 @@ module JustroParserHelper
 
   def self.get_parser_request_params
     request_params_list = []
-    startDate = Date.new(2010, 1, 1)
+    startDate = Date.new(2000, 1, 1)
     endDate = Date.today - 1
     # startDate = Date.new(2014, 3, 5)
     # startDate = Date.new(2014, 6, 1)
     # endDate = startDate + 3
-    endDate = startDate
+    # endDate = startDate
 
     CourtDataProviderHelper.get_courts_names.each do |court_name|
       # court_name = 'CurteadeApelBUCURESTI'
