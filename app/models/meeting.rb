@@ -6,4 +6,6 @@ class Meeting
   field :hour, type: String
 
   has_many :file_meetings
+  belongs_to :court
+
 end
