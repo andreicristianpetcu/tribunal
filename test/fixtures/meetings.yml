@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  departament: MyString
+  complet: MyString
+  data: 2014-08-24
+  hour: MyString
+
+two:
+  departament: MyString
+  complet: MyString
+  data: 2014-08-24
+  hour: MyString
