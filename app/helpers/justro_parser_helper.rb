@@ -37,7 +37,6 @@ module JustroParserHelper
         response = client.call(:cautare_sedinte, message: {institutie: request_params[:court_name], dataSedinta: request_params[:requestDate]})
         cautare_sedinte_response = response.body[:cautare_sedinte_response]
         result = cautare_sedinte_response[:cautare_sedinte_result]
-        # binding.pry
         if result then
           meeting[:sedinta] = result[:sedinta]
         elsif

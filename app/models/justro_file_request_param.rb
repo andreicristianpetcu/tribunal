@@ -3,6 +3,11 @@ class JustroFileRequestParam
   field :court_name, type: String
   field :start_date, type: Date
   field :end_date, type: Date
+  #notstarted, started, finished, error, empty
+  field :status, type: String
+  field :backtrace, type: String
+  field :response_code, type: String
+
 
   def get_meeting_date_formated
     return meeting_date.strftime("%Y-%m-%d")
@@ -22,6 +27,10 @@ class JustroFileRequestParam
       puts "Saving file request #{request.inspect}"
       request.save
     end
+  end
+
+  def self.get_notstarted
+    where(status:"notstarted")
   end
 
 end
