@@ -1,3 +1,4 @@
+#edleteme?
 class JustRoRequest
 
   include Mongoid::Document

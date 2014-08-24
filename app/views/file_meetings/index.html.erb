@@ -1,0 +1,35 @@
+<h1>Listing file_meetings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Old number</th>
+      <th>Date</th>
+      <th>Hour</th>
+      <th>Case type</th>
+      <th>Trial status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @file_meetings.each do |file_meeting| %>
+      <tr>
+        <td><%= file_meeting.number %></td>
+        <td><%= file_meeting.old_number %></td>
+        <td><%= file_meeting.date %></td>
+        <td><%= file_meeting.hour %></td>
+        <td><%= file_meeting.case_type %></td>
+        <td><%= file_meeting.trial_status %></td>
+        <td><%= link_to 'Show', file_meeting %></td>
+        <td><%= link_to 'Edit', edit_file_meeting_path(file_meeting) %></td>
+        <td><%= link_to 'Destroy', file_meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New File meeting', new_file_meeting_path %>

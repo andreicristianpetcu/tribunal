@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :file_meetings
+
+  resources :meetings
+
   get 'meetings/index'
 
   # The priority is based upon order of creation: first created -> highest priority.

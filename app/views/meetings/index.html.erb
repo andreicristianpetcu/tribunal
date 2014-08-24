@@ -1,2 +1,31 @@
-<h1>Ședințe</h1>
-<p>test</p>
+<h1>Listing meetings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Departament</th>
+      <th>Complet</th>
+      <th>Data</th>
+      <th>Hour</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @meetings.each do |meeting| %>
+      <tr>
+        <td><%= meeting.departament %></td>
+        <td><%= meeting.complet %></td>
+        <td><%= meeting.data %></td>
+        <td><%= meeting.hour %></td>
+        <td><%= link_to 'Show', meeting %></td>
+        <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
+        <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Meeting', new_meeting_path %>
