@@ -42,4 +42,10 @@ module CourtDataProviderHelper
     'JudecatoriaFAGET', 'JudecatoriaSALONTA', 'JudecatoriaLIESTI', 'JudecatoriaHARSOVA', 'JudecatoriaSOMCUTAMARE', 'JudecatoriaPASCANI', 
     'TribunalulComercialARGES', 'TribunalulComercialCLUJ', 'TribunalulComercialMURES', 'TribunalulpentruminoriSifamilieBRASOV', 'JudecatoriaCORNETU', 'JudecatoriaJIBOU' ]
   end
+
+  # def self.populate_all
+  #   get_courts_names.each do |court_name|
+  #     Court.create(name: court_name, computer_name: court_name)
+  #   end
+  # end
 end
