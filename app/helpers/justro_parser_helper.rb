@@ -29,7 +29,6 @@ module JustroParserHelper
           meeting_results.each do |meeting_result|
             create_meeting(meeting_result, court)
             court.trial_meetings << meeting
-            bindig.pry
             court.save
           end
 
@@ -64,7 +63,6 @@ module JustroParserHelper
     if meeting_result[:dosare] && meeting_result[:dosare][:sedinta_dosar] && meeting_result[:dosare][:sedinta_dosar].size > 0 then
       files_params = meeting_result[:dosare][:sedinta_dosar]
       files_params.each do |file_params|
-        binding.pry
         file = TrialFile.new
         file.number = file_params[:numar]
         file.old_number = file_params[:numar_vechi]
@@ -81,10 +79,10 @@ module JustroParserHelper
   end
 
   def self.is_parsing_time_over
-    # parsing_hours = (0..5).to_a
-    # parsing_hours << 23
-    # return !parsing_hours.include?(Time.now.hour)
-    return false
+    parsing_hours = (0..5).to_a
+    parsing_hours << 23
+    return !parsing_hours.include?(Time.now.hour)
+    # return false
   end
 
 end
