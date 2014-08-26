@@ -43,21 +43,30 @@ module JustroParserHelper
       # meeting = {}
       # meeting[:request_param] = request_params
       begin
-        response = find_meeting(request_params.court_name, request_params.meeting_date)
+        court_name = request_params.court_name, 
+        meeting_date = request_params.meeting_date
+        response = find_meeting(meeting_date)
         cautare_sedinte_response = response.body[:cautare_sedinte_response]
         result = cautare_sedinte_response[:cautare_sedinte_result]
         if result then
-          # meeting[:sedinta] = result[:sedinta]
-          # convert meeting and save
-          court = Court.find_by_name()
-          Meeting.create()
+          court = Court.find_by_name(court_name)
+          meeting = Meeting.new
+          meeting.court = court
+          meeting.departament = result[:departament] 
+          meeting.complet = result[:complet] 
+          meeting.date = result[:data] 
+          meeting.hour = result[:ora] 
+          meeting.save
+
+          court.meetings << meeting
+          court.save
         elsif
           request_params.status = "empty"
           request_params.save
         end
       rescue => e
         request_params.status = "error"
-        request.backtrace = e.backtrace.to_s
+        request_params.backtrace = e.backtrace.to_s
         if e.is_a? Wasabi::Resolver::HTTPError then
           request_params.response_code = e.response.code
         end

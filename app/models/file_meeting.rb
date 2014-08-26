@@ -1,5 +1,7 @@
 class FileMeeting
+
   include Mongoid::Document
+
   field :number, type: String
   field :old_number, type: String
   field :date, type: Date
