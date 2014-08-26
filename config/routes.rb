@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :file_meetings
+  resources :trial_files
 
-  resources :meetings
+  resources :trial_meetings
 
   get 'meetings/index'
 

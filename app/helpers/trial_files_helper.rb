@@ -1,0 +1,2 @@
+module TrialFilesHelper
+end

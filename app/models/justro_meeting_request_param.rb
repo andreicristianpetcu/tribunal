@@ -36,7 +36,7 @@ class JustroMeetingRequestParam
 
   def self.reset_status_for_all
     get_partially_processed
-      .find_and_modify({ "$set" => { status: "notstarted", backtrace: nil, error_message: nil, response_code: nil}})
+      .find_and_modify({ "$set" => { status: "notstarted", backtrace: nil, error_message: nil, response_code: nil}}, :multi => true)
   end
 
   def self.get_partially_processed
