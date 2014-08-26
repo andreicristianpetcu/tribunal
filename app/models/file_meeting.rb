@@ -1,4 +1,4 @@
-class FileMeeting
+class TrialFile
 
   include Mongoid::Document
 
@@ -9,5 +9,6 @@ class FileMeeting
   field :case_type, type: String
   field :trial_status, type: String
 
-  belogs_to :meeting
+  belongs_to :trial_meeting
+
 end

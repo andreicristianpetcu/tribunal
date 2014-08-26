@@ -1,4 +1,4 @@
-class Meeting
+class TrialMeeting
 
   include Mongoid::Document
 
@@ -7,7 +7,7 @@ class Meeting
   field :date, type: Date
   field :hour, type: String
 
-  has_many :file_meetings
+  has_many :trial_files
   belongs_to :court
 
 end
