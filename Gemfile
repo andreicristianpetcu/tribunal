@@ -40,8 +40,9 @@ gem 'mongoid', '~> 4', github: 'mongoid/mongoid'
 gem 'bson_ext'
 gem 'savon'
 
-gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'bootswatch-rails'
 
 gem 'pry', :group => :development
 gem 'pry-rails', :group => :development
