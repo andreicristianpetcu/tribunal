@@ -50,12 +50,7 @@ module JustroParserHelper
         result = cautare_sedinte_response[:cautare_sedinte_result]
         if result then
           court = Court.find_by_name(court_name)
-          meeting = Meeting.new
-          meeting.court = court
-          meeting.departament = result[:departament] 
-          meeting.complet = result[:complet] 
-          meeting.date = result[:data] 
-          meeting.hour = result[:ora] 
+          meeting = create_meeting(result, court)
           meeting.save
 
           court.meetings << meeting
@@ -76,6 +71,16 @@ module JustroParserHelper
       request_params.setatus = "finished"
       request_params.save
     end
+  end
+
+  def create_meeting(result, court)
+    meeting = Meeting.new
+    meeting.court = court
+    meeting.departament = result[:departament] 
+    meeting.complet = result[:complet] 
+    meeting.date = result[:data] 
+    meeting.hour = result[:ora] 
+    return meeting
   end
 
   def self.is_parsing_time_over
