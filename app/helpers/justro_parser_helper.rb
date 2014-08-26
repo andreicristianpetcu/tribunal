@@ -12,7 +12,6 @@ module JustroParserHelper
 
   def self.get_justro_meetings
     JustroMeetingRequestParam.get_notstarted.each do |request_params|
-      binding.pry
       request_params.status = "started"
       request_params.save
       break if is_parsing_time_over
@@ -51,14 +50,13 @@ module JustroParserHelper
       end
 
       if request_params.status != "error" then
-        request_params.setatus = "finished"
+        request_params.status = "finished"
         request_params.save
       end
     end
   end
 
   def self.create_meeting(meeting_result, court)
-    binding.pry
     meeting = TrialMeeting.new
     meeting.court = court
     meeting.departament = meeting_result[:departament] 
