@@ -12,7 +12,6 @@ module JustroParserHelper
 
   def self.get_justro_meetings
     JustroMeetingRequestParam.get_notstarted.each do |request_params|
-      binding.pry
       request_params.status = "started"
       request_params.save
       break if is_parsing_time_over
@@ -23,13 +22,18 @@ module JustroParserHelper
         response = find_meeting(court_name, meeting_date)
         cautare_sedinte_response = response.body[:cautare_sedinte_response]
         result = cautare_sedinte_response[:cautare_sedinte_result]
-        if result then
-          court = Court.find_by(computer_name: court_name)
-          meeting = create_meeting(result, court)
-          meeting.save
+        if result && result[:sedinta] then
+          meeting_results = result[:sedinta]
+          court = Court.where(computer_name: court_name)
 
-          court.meetings << meeting
-          court.save
+          meeting_results.each do |meeting_result|
+            meeting = create_meeting(meeting_result, court)
+            meeting.save
+
+            court.meetings << meeting
+            court.save
+          end
+
         elsif
           request_params.status = "empty"
           request_params.save
@@ -51,14 +55,14 @@ module JustroParserHelper
     end
   end
 
-  def self.create_meeting(result, court)
-    binding.pry
+  def self.create_meeting(meeting_result, court)
     meeting = Meeting.new
     meeting.court = court
-    meeting.departament = result[:departament] 
-    meeting.complet = result[:complet] 
-    meeting.date = result[:data] 
-    meeting.hour = result[:ora] 
+    meeting.departament = meeting_result[:departament] 
+    meeting.complet = meeting_result[:complet] 
+    meeting.date = meeting_result[:data] 
+    meeting.hour = meeting_result[:ora] 
+    binding.pry
     return meeting
   end
 
@@ -66,6 +70,7 @@ module JustroParserHelper
     parsing_hours = (0..5).to_a
     parsing_hours << 23
     return !parsing_hours.include?(Time.now.hour)
+    # return false
   end
 
 end
