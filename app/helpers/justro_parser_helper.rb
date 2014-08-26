@@ -26,10 +26,11 @@ module JustroParserHelper
           meeting_results = result[:sedinta]
           court = Court.where(computer_name: court_name).first
 
+          # binding.pry
           meeting_results.each do |meeting_result|
             create_meeting(meeting_result, court)
-            court.trial_meetings << meeting
-            court.save
+            # court.trial_meetings << meeting
+            # court.save
           end
 
         elsif
@@ -62,20 +63,36 @@ module JustroParserHelper
     meeting.hour = meeting_result[:ora] 
     if meeting_result[:dosare] && meeting_result[:dosare][:sedinta_dosar] && meeting_result[:dosare][:sedinta_dosar].size > 0 then
       files_params = meeting_result[:dosare][:sedinta_dosar]
-      files_params.each do |file_params|
-        file = TrialFile.new
-        file.number = file_params[:numar]
-        file.old_number = file_params[:numar_vechi]
-        file.date = file_params[:data]
-        file.hour = file_params[:ora]
-        file.case_type = file_params[:categorie_caz]
-        file.trial_status = file_params[:stadiu_procesual]
-        file.trial_meeting = meeting
-        file.save
-        meeting.trial_files << file   
+      if(files_params.is_a?(Array)) then
+        files_params.each do |file_params|
+          create_trial_file(file_params, meeting)
+        end
+      elsif (files_params.is_a?(Hash)) then
+        file_params = files_params
+        create_trial_file(file_params, meeting)
       end
     end
     meeting.save
+    court.trial_meetings << meeting
+    court.save
+  end
+
+  def self.create_trial_file(file_params, meeting)
+    file = TrialFile.new
+    begin
+      file.number = file_params[:numar]
+      file.old_number = file_params[:numar_vechi]
+      file.date = file_params[:data]
+      file.hour = file_params[:ora]
+      file.case_type = file_params[:categorie_caz]
+      file.trial_status = file_params[:stadiu_procesual]
+      file.trial_meeting = meeting
+      file.save
+      meeting.trial_files << file   
+    rescue => e
+      puts e
+    end
+    return file
   end
 
   def self.is_parsing_time_over
