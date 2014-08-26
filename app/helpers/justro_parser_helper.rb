@@ -31,7 +31,7 @@ module JustroParserHelper
             meeting = create_meeting(meeting_result, court)
             # meeting.save
 
-            court.meetings << meeting
+            court.trial_meetings << meeting
             meeting.court = court
             court.save
           end
