@@ -5,6 +5,7 @@ class JustroMeetingRequestParam
   #notstarted, started, finished, error, empty
   field :status, type: String
   field :backtrace, type: String
+  field :error_message, type: String
   field :response_code, type: String
 
   def get_meeting_date_formated
