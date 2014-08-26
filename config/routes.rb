@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :trial_meetings
 
-  get 'meetings/index'
+  # get 'meetings/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
