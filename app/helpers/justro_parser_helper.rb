@@ -102,4 +102,7 @@ module JustroParserHelper
     # return false
   end
 
+  def self.show_stats
+    # finished = JustroMeetingRequestParams.find(status: "finished")
+  end
 end
