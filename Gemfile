@@ -44,6 +44,7 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'bootswatch-rails'
 gem 'kaminari'
+gem 'rails_admin'
 
 gem 'pry', :group => :development
 gem 'pry-rails', :group => :development
