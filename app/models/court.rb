@@ -2,8 +2,8 @@ class Court
 
   include Mongoid::Document
 
-  field :computer_name, type: String
   field :name, type: String
+  field :computer_name, type: String
   field :population, type: Integer
   field :number_of_judges, type: Integer
   field :budget, type: Integer
@@ -19,8 +19,13 @@ class Court
   field :atacability_indicator, type: Integer
   field :casation_indicator, type: Integer
   field :safety_indicator, type: Integer
+  field :safety_indicator_median, type: Integer
   field :duration_in_days, type: Integer
   field :duration_in_months, type: Integer
+  field :share_by_duration, type: Integer
+  field :duration_median, type: Integer
+  field :performance_indicator, type: Integer
+  field :performance_median, type: Integer
 
   has_many :trial_meetings
 
