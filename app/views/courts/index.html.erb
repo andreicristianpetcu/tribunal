@@ -8,13 +8,8 @@
   </thead>
 
   <tbody>
-    <% @courts.each do |court| %>
-      <tr>
-        <td><%= link_to 'Show', court %></td>
-        <td><%= link_to 'Edit', edit_court_path(court) %></td>
-        <td><%= link_to 'Destroy', court, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <%= render :collection => @courts, :partial => "court"%>
+    <%= paginate @courts.all %>
   </tbody>
 </table>
 

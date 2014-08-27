@@ -43,6 +43,7 @@ gem 'savon'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'bootswatch-rails'
+gem 'kaminari'
 
 gem 'pry', :group => :development
 gem 'pry-rails', :group => :development

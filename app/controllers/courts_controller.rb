@@ -4,7 +4,7 @@ class CourtsController < ApplicationController
   # GET /courts
   # GET /courts.json
   def index
-    @courts = Court.all
+    @courts = Court.page(params[:page])
   end
 
   # GET /courts/1
