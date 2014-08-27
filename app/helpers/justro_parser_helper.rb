@@ -103,6 +103,13 @@ module JustroParserHelper
   end
 
   def self.show_stats
-    # finished = JustroMeetingRequestParams.find(status: "finished")
+    notstarted = JustroMeetingRequestParam.where(status: "notstarted").count
+    started = JustroMeetingRequestParam.where(status: "started").count
+    finished = JustroMeetingRequestParam.where(status: "finished").count
+    error = JustroMeetingRequestParam.where(status: "error").count
+    empty = JustroMeetingRequestParam.where(status: "empty").count
+    total = JustroMeetingRequestParam.count
+    processed = (finished.to_f/total)*100
+    puts "processed=#{processed}, finished=#{finished}, error=#{error}, started=#{started}, notstarted=#{notstarted}, empty=#{empty}" 
   end
 end
