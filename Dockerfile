@@ -9,9 +9,11 @@ RUN apt-get update
 
 RUN apt-get install mongodb git -y
 
-#RUN git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-#RUN git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-#RUN rbenv install 2.1.0
+RUN git config --global http.sslVerify false
+
+RUN git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+RUN git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+RUN rbenv install 2.1.0
 
 EXPOSE 8080
 EXPOSE 3000
