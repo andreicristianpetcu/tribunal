@@ -12,8 +12,18 @@ RUN apt-get install mongodb nginx -y
 
 RUN git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 RUN git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-RUN ~/.rbenv/bin/rbenv install 2.1.2
-RUN ~/.rbenv/bin/rbenv global 2.1.2
+ENV PATH /root/.rbenv/bin:/root/.rbenv/shims:$PATH
+RUN echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh # or /etc/profile
+RUN echo 'eval "$(rbenv init -)"' >> .bashrc
+
+RUN rbenv install 2.1.2
+RUN rbenv global 2.1.2
+RUN gem install bundler
+RUN rbenv rehash
+
+RUN git clone https://github.com/andreicristianpetcu/tribunal.git
+WORKDIR tribunal
+RUN bundle install
 
 EXPOSE 8080
 EXPOSE 3000
