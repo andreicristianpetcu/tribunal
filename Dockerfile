@@ -7,13 +7,11 @@ MAINTAINER Andrei Petcu <andrei@ceaga.org>
 
 RUN apt-get update
 
-RUN apt-get install mongodb git -y
-
-RUN git config --global http.sslVerify false
+RUN apt-get install mongodb git make openssl ca-certificates -y
 
 RUN git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 RUN git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-RUN rbenv install 2.1.0
+RUN ~/.rbenv/bin/rbenv install 2.1.0
 
 EXPOSE 8080
 EXPOSE 3000
