@@ -28,10 +28,11 @@ RUN gem install rails
 RUN rbenv rehash
 
 RUN echo 'export PATH=/root/.rbenv/bin:/root/.rbenv/shims:$PATH' >> /etc/profile
-RUN echo 'cd /tribunal && rails s' >> /etc/my_init.d/start_rails.sh
-RUN chmod +x /etc/my_init.d/start_rails.sh
+RUN echo 'echo "$PATH" && cd /tribunal && rails s' >> /etc/my_init.d/30_start_rails.sh
+RUN chmod +x /etc/my_init.d/30_start_rails.sh
 
 EXPOSE 8080
 EXPOSE 3000
+EXPOSE 27017
 ENTRYPOINT ["/sbin/my_init"]
 CMD ["--enable-insecure-key"]
