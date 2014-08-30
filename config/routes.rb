@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  root 'courts#index'
+
   resources :trial_files
 
   resources :trial_meetings
