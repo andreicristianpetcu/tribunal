@@ -14,7 +14,6 @@ RUN rm -f /etc/service/nginx/down
 RUN apt-get install elinks -y
 #RUN apt-get install ncdu nmon nmap lsof htop -y
 
-ADD docker_files/onoratainstanta.conf /etc/nginx/sites-enabled/onoratainstanta.conf
 WORKDIR /home/app/
 RUN git clone https://github.com/andreicristianpetcu/tribunal.git
 WORKDIR /home/app/tribunal
@@ -27,6 +26,8 @@ ADD docker_files/mongo /build/runit/mongo
 RUN mkdir -p /etc/service/mongo
 RUN ln -s /build/runit/mongo /etc/service/mongo/run
 RUN chown app -R .
+
+ADD docker_files/onoratainstanta.conf /etc/nginx/sites-enabled/onoratainstanta.conf
 
 EXPOSE 80
 EXPOSE 27017
