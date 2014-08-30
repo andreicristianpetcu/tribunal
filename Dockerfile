@@ -11,23 +11,22 @@ RUN apt-get install mongodb -y
 
 RUN rm -f /etc/service/nginx/down
 
-RUN apt-get install elinks nmap lsof -y
-#RUN apt-get install ncdu nmon htop -y
+RUN apt-get install elinks -y
+#RUN apt-get install ncdu nmon nmap lsof htop -y
 
 ADD docker_files/onoratainstanta.conf /etc/nginx/sites-enabled/onoratainstanta.conf
 WORKDIR /home/app/
 RUN git clone https://github.com/andreicristianpetcu/tribunal.git
 WORKDIR /home/app/tribunal
-# RUN gem install rails
 RUN bundle install
-
-RUN echo "127.0.0.1       onoratainstanta.ro"| tee -a /etc/hosts
-RUN echo "127.0.0.1       www.onoratainstanta.ro"| tee -a /etc/hosts
 
 RUN touch log/production.log
 RUN chmod 0666 log/production.log
 
 ADD docker_files/mongo /build/runit/mongo
+RUN mkdir -p /etc/service/mongo
+RUN ln -s /build/runit/mongo /etc/service/mongo/run
+RUN chown app -R .
 
 EXPOSE 80
 EXPOSE 27017
