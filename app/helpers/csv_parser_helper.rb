@@ -2,9 +2,85 @@ module CsvParserHelper
 
   def self.parse_indicators_csv
     csv_file_path = File.join(File.dirname(__FILE__), "../../data/Capete_de_tabel_indicatori_2012.csv")
+    headers_checked = false
     CSV.foreach(csv_file_path) do |row|
-      #check table headers
-      binding.pry
+      if !headers_checked then
+        check_headers(row)
+        headers_checked = true
+      else
+        court_computer_name = row[1]
+        binding.pry
+        court = Court.where(computer_name: court_computer_name).first
+        fill_court_from_row(court, row)
+        binding.pry
+      end
     end
+  end
+
+  def self.fill_court_from_row(court, row)
+    binding.pry
+    court.name = row[0]
+    court.computer_name = row[1]
+    court.population = row[2]
+    court.number_of_judges = row[3]
+    court.budget = row[4]
+    court.total_activity_volume = row[5]
+    court.resolved_trial_fields = row[6]
+    court.operativity = row[7]
+    court.operativity_median = row[8]
+    court.load_per_scheme = row[9]
+    court.load_per_judge = row[10]
+    court.load_indicator = row[11]
+    court.share_per_population = row[12]
+    court.median_load_indicator = row[13]
+    court.atacability_indicator = row[14]
+    court.casation_indicator = row[15]
+    court.safety_indicator = row[16]
+    court.safety_indicator_median = row[17]
+    court.duration_in_days = row[18]
+    court.duration_in_months = row[19]
+    court.share_by_duration = row[20]
+    court.duration_median = row[21]
+    court.performance_indicator = row[22]
+    court.performance_median = row[23]
+  end
+
+  def self.check_headers(possible_headers)
+    get_headers.each_with_index do |item, index|
+      current_column_header = possible_headers[index]
+      if(current_column_header != item) then
+        error_message =  "Headers have changed for index #{index} \n expecting \"#{item}\" \n but found \"#{current_column_header}\""
+        raise error_message
+      end
+    end
+  end 
+
+  def self.get_headers
+    initial_headers = ["Denumirea instantei in clar (cu diactritice)",
+                       "Codul informatic al instantei (din portal)",
+                       "Populația",
+                       "numar de judecatori ocupati",
+                       "Buget (mii lei)",
+                       "Stoc (total volum de activitate al instantei)",
+                       "Dosare solutionate",
+                       "Operativitate (procent solutionate din stoc)",
+                       "Mediana sirului de valori privind operativitatea (valorile operativitatii mai mari decat mediana + 5% se vor colora verde, valorile mai mici decat mediana -5% se vor colora rosu, iar valorile dintre mediana +/-5% se vor colora galben)",
+                       "Incarcatura pe schema",
+                       "Incarcatura pe judecator",
+                       "Indice de incarcatura (procent schema/judecator)",
+                       "ponderare de populatie (procentaj de numar de judecatori ocupati la populatia deservita de acea instanta vs. numar de judecatori nationali la populatia nationala, la fiecare instanta in clasa ei)",
+                       "Mediana sirului de valori privind indicele de incarcatura(valorile incarcaturii mai mari decat mediana + 5% se vor colora verde, valorile mai mici decat mediana -5% se vor colora rosu, iar valorile dintre mediana +/-5% se vor colora galben)",
+                       "Indice de atacabilitate (procent atacate din solutionate)",
+                       "Indice de casare/desfiintare",
+                       "Indicator de \"siguranta\" (100%-Desfiintare*Atacare) [ne mai gandim la denumire - certitudine/ stabilitate/ predictibilitate]",
+                       "Mediana sirului de valori privind indicele de \"siguranta\" (valorile sigurantei mai mari decat mediana + 5% se vor colora verde, valorile mai mici decat mediana -5% se vor colora rosu, iar valorile dintre mediana +/-5% se vor colora galben)",
+                       "Durata in zile (extras din portal, ca diferenta dintre data inregistrarii dosarului si data solutionarii)",
+                       "durata in luni",
+                       "Ponderare dupa durata (procentul de durata de la aceasta instanta fata de durata mediana din clasa ei la nivel national--adica judecatorie, tribunal, curte de apel, curte suprema=4 clase)",
+                       "Mediana duratei (valorile duratei mai mari decat mediana nationala + 5% se vor colora rosu, valorile mai mici decat mediana -5% se vor colora verde, iar valorile dintre mediana +/-5% se vor colora galben)",
+                       "Indicele de performanta al instantei este [(Operativitate ponderata cu durata) impartit la (Indice de incarcatura ponderata cu populatia)] inmultit cu Indicatorul de \"siguranta\" )",
+                       "Mediana sirului de valori privind indicele de performanta (valorile performantei mai mari decat mediana + 5% se vor colora verde, valorile mai mici decat mediana -5% se vor colora rosu, iar valorile dintre mediana +/-5% se vor colora galben)",
+                       "Sa nu uitam in viitor de ponderarea in functie de nr de firme"]
+  initial_headers
   end
 end
