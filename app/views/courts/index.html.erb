@@ -8,7 +8,10 @@
   </thead>
 
   <tbody>
-    <%= render :collection => @courts, :partial => "court"%>
+    <% @courts.each do |court| %>
+      <%= render court %>
+    <% end %>
+
     <%= paginate @courts.all %>
   </tbody>
 </table>
