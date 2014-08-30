@@ -9,40 +9,47 @@ module CsvParserHelper
         headers_checked = true
       else
         court_computer_name = row[1]
-        binding.pry
         court = Court.where(computer_name: court_computer_name).first
         fill_court_from_row(court, row)
-        binding.pry
+        court.save
+        puts court.name
       end
     end
   end
 
   def self.fill_court_from_row(court, row)
-    binding.pry
     court.name = row[0]
     court.computer_name = row[1]
-    court.population = row[2]
-    court.number_of_judges = row[3]
-    court.budget = row[4]
-    court.total_activity_volume = row[5]
-    court.resolved_trial_fields = row[6]
-    court.operativity = row[7]
-    court.operativity_median = row[8]
-    court.load_per_scheme = row[9]
-    court.load_per_judge = row[10]
-    court.load_indicator = row[11]
-    court.share_per_population = row[12]
-    court.median_load_indicator = row[13]
-    court.atacability_indicator = row[14]
-    court.casation_indicator = row[15]
-    court.safety_indicator = row[16]
-    court.safety_indicator_median = row[17]
-    court.duration_in_days = row[18]
-    court.duration_in_months = row[19]
-    court.share_by_duration = row[20]
-    court.duration_median = row[21]
-    court.performance_indicator = row[22]
-    court.performance_median = row[23]
+    court.population = strip(row[2])
+    court.number_of_judges = strip(row[3])
+    court.budget = strip(row[4])
+    court.total_activity_volume = strip(row[5])
+    court.resolved_trial_fields = strip(row[6])
+    court.operativity = strip(row[7])
+    court.operativity_median = strip(row[8])
+    court.load_per_scheme = strip(row[9])
+    court.load_per_judge = strip(row[10])
+    court.load_indicator = strip(row[11])
+    court.share_per_population = strip(row[12])
+    court.median_load_indicator = strip(row[13])
+    court.atacability_indicator = strip(row[14])
+    court.casation_indicator = strip(row[15])
+    court.safety_indicator = strip(row[16])
+    court.safety_indicator_median = strip(row[17])
+    court.duration_in_days = strip(row[18])
+    court.duration_in_months = strip(row[19])
+    court.share_by_duration = strip(row[20])
+    court.duration_median = strip(row[21])
+    court.performance_indicator = strip(row[22])
+    court.performance_median = strip(row[23])
+  end
+  
+  def self.strip(string)
+    if !string.nil? then
+      return Float(string.tr('%', '').tr(' ', '').tr(',', '.'))
+    else
+      return nil
+    end
   end
 
   def self.check_headers(possible_headers)
