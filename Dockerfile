@@ -19,7 +19,11 @@ RUN bundle install
 RUN gem install rails
 
 RUN echo "127.0.0.1       onoratainstanta.ro"| tee -a /etc/hosts
+RUN echo "127.0.0.1       www.onoratainstanta.ro"| tee -a /etc/hosts
 RUN apt-get install elinks nmap lsof -y
+
+RUN touch log/production.log
+RUN chmod 0666 log/production.log
 
 EXPOSE 80
 EXPOSE 27017
