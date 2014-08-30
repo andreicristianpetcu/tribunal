@@ -27,6 +27,8 @@ RUN echo "127.0.0.1       www.onoratainstanta.ro"| tee -a /etc/hosts
 RUN touch log/production.log
 RUN chmod 0666 log/production.log
 
+ADD docker_files/mongo /build/runit/mongo
+
 EXPOSE 80
 EXPOSE 27017
 ENTRYPOINT ["/sbin/my_init"]
