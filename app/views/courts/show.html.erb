@@ -1,7 +1,7 @@
 <% content_for :head do %>
   <script type="text/javascript">
     $(function() {
-      var vis = d3.select("#svg_donut");
+      var vis = d3.select("#operativity_donut");
       var arc = d3.svg.arc()
       .innerRadius(50)
       .outerRadius(100)
@@ -17,94 +17,110 @@
 <% end %>
 
 <div class="row">
-<div class="col-lg-12">
-  <div class="bs-component">
-    <div class="jumbotron">
-      <h1><%= @court.name %></h1>
-      <p>
+  <div class="col-lg-12">
+    <div class="bs-component">
+      <div class="jumbotron">
+        <h1><%= @court.name %></h1>
+        <p>
         <%= link_to 'Înapoi', courts_path, :class => 'btn btn-primary btn-lg' %>
-      </p>
+        </p>
 
-    </div>
-    <div style="display: none;" id="source-button" class="btn btn-primary btn-xs">&lt; &gt;</div></div>
-</div>
+      </div>
+      <div style="display: none;" id="source-button" class="btn btn-primary btn-xs">&lt; &gt;</div></div>
+  </div>
 </div>
         
 <div class="row">
-<div class="col-lg-6">
-  <div class="bs-component">
-    <ul class="list-group">
-      <li class="list-group-item">
-        <span class="badge">
-          <%= @court.population.to_i %>
-        </span>
-        Populație deservită
-      </li>
-      <li class="list-group-item">
-        <span class="badge">
-          <%= @court.budget.to_i %>
-        </span>
-        Buget (mii lei)
-      </li>
-      <li class="list-group-item">
-        <span class="badge">
-          <%= @court.number_of_judges.to_i %>
-        </span>
-        Nr. judecători
-      </li>
-      <li class="list-group-item">
-        <span class="badge">
-          <%= @court.resolved_trial_fields.to_i %>
-        </span>
-        Nr. dosare soluționate
-      </li>
-    </ul>
-  </div>
-</div> 
-<div class="col-lg-6">
-  <div class="bs-component">
-    <ul class="list-group">
-      <li class="list-group-item">
-        <span class="badge">
-          <%= @court.total_activity_volume.to_i %>
-        </span>
-        Stoc
-      </li>
-      <li class="list-group-item">
-        <span class="badge">
-          <%= @court.load_per_scheme.to_i %>
-        </span>
-        Încărcătură pe schemă
-      </li>
-      <li class="list-group-item">
-        <span class="badge">
-          <%= @court.load_per_judge.to_i %>
-        </span>
-        Încărcătură pe judecător
-      </li>
-      <li class="list-group-item">
-        <span class="badge">
-          <%= @court.duration_in_days.to_i %>
-        </span>
-        Durata in zile
-      </li>
-      <li class="list-group-item">
-        <span class="badge">
-          <%= @court.duration_in_months.to_f %>
-        </span>
-        Durata in luni
-      </li>
-    </ul>
-  </div>
-</div> 
-</div>
-<div class="row">
   <div class="col-lg-4">
-  <div class="panel panel-default">
-    <div class="panel-heading">Operativitate <%= @court.operativity.to_i %>%</div>
-    <div class="panel-body">
-      <svg id="svg_donut" width="200" height="200"></svg>
+    <div class="panel panel-default">
+      <div class="panel-heading">Operativitate <%= @court.operativity.to_i %>%</div>
+      <div class="panel-body">
+        <svg id="operativity_donut" width="200" height="200"></svg>
+      </div>
     </div>
   </div>
+  <div class="col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Operativitate <%= @court.operativity.to_i %>%</div>
+      <div class="panel-body">
+        <svg id="operativity_donut" width="200" height="200"></svg>
+      </div>
+    </div>
   </div>
+  <div class="col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Operativitate <%= @court.operativity.to_i %>%</div>
+      <div class="panel-body">
+        <svg id="operativity_donut" width="200" height="200"></svg>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="bs-component">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge">
+            <%= @court.population.to_i %>
+          </span>
+          Populație deservită
+        </li>
+        <li class="list-group-item">
+          <span class="badge">
+            <%= @court.budget.to_i %>
+          </span>
+          Buget (mii lei)
+        </li>
+        <li class="list-group-item">
+          <span class="badge">
+            <%= @court.number_of_judges.to_i %>
+          </span>
+          Nr. judecători
+        </li>
+        <li class="list-group-item">
+          <span class="badge">
+            <%= @court.resolved_trial_fields.to_i %>
+          </span>
+          Nr. dosare soluționate
+        </li>
+      </ul>
+    </div>
+  </div> 
+  <div class="col-lg-6">
+    <div class="bs-component">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge">
+            <%= @court.total_activity_volume.to_i %>
+          </span>
+          Stoc
+        </li>
+        <li class="list-group-item">
+          <span class="badge">
+            <%= @court.load_per_scheme.to_i %>
+          </span>
+          Încărcătură pe schemă
+        </li>
+        <li class="list-group-item">
+          <span class="badge">
+            <%= @court.load_per_judge.to_i %>
+          </span>
+          Încărcătură pe judecător
+        </li>
+        <li class="list-group-item">
+          <span class="badge">
+            <%= @court.duration_in_days.to_i %>
+          </span>
+          Durata in zile
+        </li>
+        <li class="list-group-item">
+          <span class="badge">
+            <%= @court.duration_in_months.to_f %>
+          </span>
+          Durata in luni
+        </li>
+      </ul>
+    </div>
+  </div> 
 </div>
