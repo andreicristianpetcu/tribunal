@@ -1,7 +1,10 @@
 <% content_for :head do %>
   <script type="text/javascript">
     $(function() {
-      make_donut = function(component, percentage){
+      make_donut = function(component, percentage, colour){
+        if(typeof colour === 'undefined'){
+          colour = "#5BC0DE";
+         };
         var vis = d3.select("#" + component);
         var arc = d3.svg.arc()
           .innerRadius(50)
@@ -10,7 +13,7 @@
           .endAngle(0.02*Math.PI*percentage);
 
         vis.append("path")
-          .style("fill", function(d){return "#5BC0DE";})
+          .style("fill", function(d){return colour;})
           .attr("d", arc)
           .attr("transform", "translate(100,100)");
       };
@@ -18,7 +21,7 @@
       make_donut("atacability_donut", <%= @court.atacability_indicator.to_i %>);
       make_donut("casation_donut", <%= @court.casation_indicator.to_i %>);
       make_donut("load_indicator_donut", <%= @court.load_indicator.to_i %>);
-      make_donut("performance_indicator_donut", <%= @court.performance_indicator.to_i %>);
+      make_donut("performance_indicator_donut", <%= @court.performance_indicator.to_i %>, "#F0AD4E");
     });
   </script>
 <% end %>
