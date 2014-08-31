@@ -17,25 +17,25 @@
     <ul class="list-group">
       <li class="list-group-item">
         <span class="badge">
-          <%= @court.population %>
+          <%= @court.population.to_i %>
         </span>
         Populație deservită
       </li>
       <li class="list-group-item">
         <span class="badge">
-          <%= @court.budget %>
+          <%= @court.budget.to_i %>
         </span>
-        Buget
+        Buget (mii lei)
       </li>
       <li class="list-group-item">
         <span class="badge">
-          <%= @court.number_of_judges %>
+          <%= @court.number_of_judges.to_i %>
         </span>
         Nr. judecători
       </li>
       <li class="list-group-item">
         <span class="badge">
-          <%= @court.resolved_trial_fields %>
+          <%= @court.resolved_trial_fields.to_i %>
         </span>
         Nr. dosare soluționate
       </li>
