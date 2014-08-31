@@ -42,3 +42,40 @@
     </ul>
     <div style="display: none;" id="source-button" class="btn btn-primary btn-xs">&lt; &gt;</div></div>
 </div> 
+<div class="col-lg-4">
+  <div class="bs-component">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <span class="badge">
+          <%= @court.total_activity_volume.to_i %>
+        </span>
+        Stoc
+      </li>
+      <li class="list-group-item">
+        <span class="badge">
+          <%= @court.load_per_scheme.to_i %>
+        </span>
+        Încărcătură pe schemă
+      </li>
+      <li class="list-group-item">
+        <span class="badge">
+          <%= @court.load_per_judge.to_i %>
+        </span>
+        Încărcătură pe judecător
+      </li>
+      <li class="list-group-item">
+        <span class="badge">
+          <%= @court.duration_in_days.to_i %>
+        </span>
+        Durata in zile
+      </li>
+      <li class="list-group-item">
+        <span class="badge">
+          <%= @court.duration_in_months.to_f %>
+        </span>
+        Durata in luni
+      </li>
+    </ul>
+    <div style="display: none;" id="source-button" class="btn btn-primary btn-xs">&lt; &gt;</div></div>
+</div> 
+
