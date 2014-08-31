@@ -1,4 +1,19 @@
-<p id="notice"><%= notice %></p>
+<% content_for :head do %>
+  <script type="text/javascript">
+    $(function() {
+      var vis = d3.select("#svg_donut");
+      var arc = d3.svg.arc()
+        .innerRadius(50)
+        .outerRadius(100)
+        .startAngle(0)
+        .endAngle(1*Math.PI);
+
+      vis.append("path")
+        .attr("d", arc)
+        .attr("transform", "translate(300,200)");
+    });
+  </script>
+<% end %>
 
 <div class="col-lg-12">
   <div class="bs-component">
@@ -78,4 +93,14 @@
     </ul>
   </div>
 </div> 
+<div class="col-lg-4">
+  <div class="bs-component">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <svg id="svg_donut" width="600" height="400"></svg>
+      </li>
+    </ul>
+  </div>
+</div> 
+
 
