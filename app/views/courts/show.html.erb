@@ -4,12 +4,41 @@
   <div class="bs-component">
     <div class="jumbotron">
       <h1><%= @court.name %></h1>
-      <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
       <p>
-      <%= link_to 'Înapoi', courts_path, :class => 'btn btn-primary btn-lg' %>
+        <%= link_to 'Înapoi', courts_path, :class => 'btn btn-primary btn-lg' %>
       </p>
 
     </div>
     <div style="display: none;" id="source-button" class="btn btn-primary btn-xs">&lt; &gt;</div></div>
 </div>
         
+<div class="col-lg-4">
+  <div class="bs-component">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <span class="badge">
+          <%= @court.population %>
+        </span>
+        Populație deservită
+      </li>
+      <li class="list-group-item">
+        <span class="badge">
+          <%= @court.budget %>
+        </span>
+        Buget
+      </li>
+      <li class="list-group-item">
+        <span class="badge">
+          <%= @court.number_of_judges %>
+        </span>
+        Nr. judecători
+      </li>
+      <li class="list-group-item">
+        <span class="badge">
+          <%= @court.resolved_trial_fields %>
+        </span>
+        Nr. dosare soluționate
+      </li>
+    </ul>
+    <div style="display: none;" id="source-button" class="btn btn-primary btn-xs">&lt; &gt;</div></div>
+</div> 
