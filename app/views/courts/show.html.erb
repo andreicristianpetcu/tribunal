@@ -3,14 +3,25 @@
     $(function() {
       var vis = d3.select("#svg_donut");
       var arc = d3.svg.arc()
-        .innerRadius(50)
-        .outerRadius(100)
-        .startAngle(0)
-        .endAngle(1*Math.PI);
+      .innerRadius(50)
+      .outerRadius(100)
+      .startAngle(0)
+      .endAngle(2*Math.PI);
 
       vis.append("path")
-        .attr("d", arc)
-        .attr("transform", "translate(300,200)");
+      .style("fill", function(d){return "#AA8888";})
+      .attr("d", arc);
+      // var vis = d3.select("#svg_donut");
+      // var arc = d3.svg.arc()
+      //   .innerRadius(50)
+      //   .outerRadius(100)
+      //   .startAngle(0)
+      //   // .endAngle(0.02*Math.PI*<%= @court.operativity.to_i %>);
+      //   .endAngle(2*Math.PI);
+      //
+      // vis.append("path")
+      //   .attr("d", arc)
+      //   .attr("transform", "translate(300,200)");
     });
   </script>
 <% end %>
