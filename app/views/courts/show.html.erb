@@ -1,17 +1,22 @@
 <% content_for :head do %>
   <script type="text/javascript">
     $(function() {
-      var vis = d3.select("#operativity_donut");
-      var arc = d3.svg.arc()
-      .innerRadius(50)
-      .outerRadius(100)
-      .startAngle(0)
-      .endAngle(0.02*Math.PI*<%= @court.operativity.to_i %>);
+      make_donut = function(component, percentage){
+        var vis = d3.select("#" + component);
+        var arc = d3.svg.arc()
+          .innerRadius(50)
+          .outerRadius(100)
+          .startAngle(0)
+          .endAngle(0.02*Math.PI*percentage);
 
-      vis.append("path")
-      .style("fill", function(d){return "#AA8888";})
-      .attr("d", arc)
-      .attr("transform", "translate(100,100)");
+        vis.append("path")
+          .style("fill", function(d){return "#AA8888";})
+          .attr("d", arc)
+          .attr("transform", "translate(100,100)");
+      };
+      make_donut("operativity_donut", <%= @court.operativity.to_i %>);
+      make_donut("atacability_donut", <%= @court.atacability_indicator.to_i %>);
+      make_donut("casation_donut", <%= @court.casation_indicator.to_i %>);
     });
   </script>
 <% end %>
@@ -41,17 +46,17 @@
   </div>
   <div class="col-lg-4">
     <div class="panel panel-default">
-      <div class="panel-heading">Operativitate <%= @court.operativity.to_i %>%</div>
+      <div class="panel-heading">Indice de atacabilitate <%= @court.atacability_indicator.to_i %>%</div>
       <div class="panel-body">
-        <svg id="operativity_donut" width="200" height="200"></svg>
+        <svg id="atacability_donut" width="200" height="200"></svg>
       </div>
     </div>
   </div>
   <div class="col-lg-4">
     <div class="panel panel-default">
-      <div class="panel-heading">Operativitate <%= @court.operativity.to_i %>%</div>
+      <div class="panel-heading">Casație <%= @court.casation_indicator.to_i %>%</div>
       <div class="panel-body">
-        <svg id="operativity_donut" width="200" height="200"></svg>
+        <svg id="casation_donut" width="200" height="200"></svg>
       </div>
     </div>
   </div>
