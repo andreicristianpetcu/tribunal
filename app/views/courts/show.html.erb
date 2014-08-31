@@ -18,6 +18,7 @@
       make_donut("atacability_donut", <%= @court.atacability_indicator.to_i %>);
       make_donut("casation_donut", <%= @court.casation_indicator.to_i %>);
       make_donut("load_indicator_donut", <%= @court.load_indicator.to_i %>);
+      make_donut("performance_indicator_donut", <%= @court.performance_indicator.to_i %>);
     });
   </script>
 <% end %>
@@ -27,8 +28,9 @@
     <div class="bs-component">
       <div class="jumbotron">
         <h1><%= @court.name %></h1>
+
         <p>
-        <%= link_to 'Înapoi', courts_path, :class => 'btn btn-primary btn-lg' %>
+          <%= link_to 'Înapoi', courts_path, :class => 'btn btn-primary btn-lg' %>
         </p>
 
       </div>
@@ -55,7 +57,7 @@
   </div>
   <div class="col-lg-3">
     <div class="panel panel-default">
-      <div class="panel-heading">Indice de Casație <%= @court.casation_indicator.to_i %>%</div>
+      <div class="panel-heading">Indice de casare <%= @court.casation_indicator.to_i %>%</div>
       <div class="panel-body">
         <svg id="casation_donut" width="200" height="200"></svg>
       </div>
@@ -71,7 +73,15 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-lg-6">
+  <div class="col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Performanță <%= @court.performance_indicator.to_i %>%</div>
+      <div class="panel-body">
+        <svg id="performance_indicator_donut" width="200" height="200"></svg>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
     <div class="bs-component">
       <ul class="list-group">
         <li class="list-group-item">
@@ -101,7 +111,7 @@
       </ul>
     </div>
   </div> 
-  <div class="col-lg-6">
+  <div class="col-lg-4">
     <div class="bs-component">
       <ul class="list-group">
         <li class="list-group-item">
