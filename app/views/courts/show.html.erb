@@ -2,6 +2,7 @@
   <script type="text/javascript">
     $(function() {
       make_donut = function(component, percentage, colour){
+        var start_arch = -Math.PI*0.75;
         if(typeof colour === 'undefined'){
           colour = "#5BC0DE";
          };
@@ -9,8 +10,8 @@
         var arc = d3.svg.arc()
           .innerRadius(50)
           .outerRadius(100)
-          .startAngle(0)
-          .endAngle(0.02*Math.PI*percentage);
+          .startAngle(start_arch)
+          .endAngle(start_arch + 0.02*Math.PI*percentage);
 
         vis.append("path")
           .style("fill", function(d){return colour;})
