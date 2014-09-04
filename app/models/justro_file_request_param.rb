@@ -7,6 +7,7 @@ class JustroFileRequestParam
   field :status, type: String
   field :backtrace, type: String
   field :response_code, type: String
+  field :error_message, type: String
 
 
   def get_meeting_date_formated
