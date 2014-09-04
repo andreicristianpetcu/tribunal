@@ -1,7 +1,7 @@
 class JustroFile
   include Mongoid::Document
 
-  field :respnse, type: Hash
+  field :result, type: Hash
 
   belongs_to :justro_file_request_param
 

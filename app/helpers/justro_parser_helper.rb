@@ -101,8 +101,8 @@ module JustroParserHelper
   def self.is_parsing_time_over
     parsing_hours = (0..5).to_a
     parsing_hours << 23
-    # return !parsing_hours.include?(Time.now.hour)
-    return false
+    return !parsing_hours.include?(Time.now.hour)
+    # return false
   end
 
   def self.show_stats
@@ -124,7 +124,6 @@ module JustroParserHelper
       break if is_parsing_time_over
       puts "Request files for #{request_params.inspect}"
       begin
-        binding.pry
         court_name = request_params.court_name 
         start_date = request_params.start_date
         end_date = request_params.end_date
@@ -132,7 +131,7 @@ module JustroParserHelper
         cautare_dosare_response = response.body[:cautare_dosare_response]
         result = cautare_dosare_response[:cautare_dosare_result]
         file = JustroFile.new
-        file.response = result
+        file.result = result
         file.justro_file_request_param = request_params
         file.save
       rescue => e
@@ -151,7 +150,5 @@ module JustroParserHelper
       end
     end
   end
-
-
 
 end
