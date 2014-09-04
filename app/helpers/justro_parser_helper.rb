@@ -112,4 +112,52 @@ module JustroParserHelper
     processed = (finished.to_f/total)*100
     puts "processed=#{processed}, finished=#{finished}, error=#{error}, started=#{started}, notstarted=#{notstarted}, empty=#{empty}" 
   end
+
+
+  def self.get_justro_files
+    JustroFileRequestParam.get_notstarted.each do |request_params|
+      request_params.status = "started"
+      request_params.save
+      break if is_parsing_time_over
+      puts "Request files for #{request_params.inspect}"
+      begin
+        court_name = request_params.court_name 
+        meeting_date = request_params.meeting_date
+        response = find_meeting(court_name, meeting_date)
+        cautare_sedinte_response = response.body[:cautare_sedinte_response]
+        result = cautare_sedinte_response[:cautare_sedinte_result]
+        if result && result[:sedinta] then
+          meeting_results = result[:sedinta]
+          court = Court.where(computer_name: court_name).first
+
+          # binding.pry
+          meeting_results.each do |meeting_result|
+            create_meeting(meeting_result, court)
+            # court.trial_meetings << meeting
+            # court.save
+          end
+
+        elsif
+          request_params.status = "empty"
+          request_params.save
+        end
+      rescue => e
+        request_params.status = "error"
+        request_params.backtrace = e.backtrace.to_s
+        request_params.error_message = e.message
+        if e.is_a? Wasabi::Resolver::HTTPError then
+          request_params.response_code = e.response.code
+        end
+        request_params.save
+      end
+
+      if request_params.status != "error" then
+        request_params.status = "finished"
+        request_params.save
+      end
+    end
+  end
+
+
+
 end
