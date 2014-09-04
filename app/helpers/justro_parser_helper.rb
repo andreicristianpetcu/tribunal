@@ -30,7 +30,6 @@ module JustroParserHelper
           meeting_results = result[:sedinta]
           court = Court.where(computer_name: court_name).first
 
-          # binding.pry
           meeting_results.each do |meeting_result|
             create_meeting(meeting_result, court)
             # court.trial_meetings << meeting
@@ -119,9 +118,7 @@ module JustroParserHelper
 
 
   def self.get_justro_files
-    binding.pry
     JustroFileRequestParam.get_notstarted.each do |request_params|
-      binding.pry
       request_params.status = "started"
       request_params.save
       break if is_parsing_time_over
