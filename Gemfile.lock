@@ -74,6 +74,7 @@ GEM
       builder (>= 2.1.2)
     haml (4.0.5)
       tilt
+    high_voltage (2.2.1)
     hike (1.2.3)
     httpi (2.2.5)
       rack
@@ -223,6 +224,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   d3js-plugins-rails
   d3js-rails
+  high_voltage
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
