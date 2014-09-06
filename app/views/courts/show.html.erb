@@ -79,22 +79,16 @@
             </span>
             Nr. dosare soluționate
           </li>
-        </ul>
-      </div>
-      <div class="col-lg-6">
-        <ul class="list-group">
           <li class="list-group-item">
             <span class="badge">
               <%= @court.total_activity_volume.to_i %>
             </span>
             Stoc
           </li>
-          <li class="list-group-item">
-            <span class="badge">
-              <%= @court.load_per_scheme.to_i %>
-            </span>
-            Încărcătură pe schemă
-          </li>
+        </ul>
+      </div>
+      <div class="col-lg-6">
+        <ul class="list-group">
           <li class="list-group-item">
             <span class="badge">
               <%= @court.load_per_judge.to_i %>
@@ -113,6 +107,12 @@
             </span>
             Durata in luni
           </li>
+          <li class="list-group-item">
+            <span class="badge">
+              <%= @court.atacability_indicator.to_i %>%
+            </span>
+            Indice de atacabilitate
+          </li>
         </ul>
       </div>
     </div>
@@ -125,14 +125,6 @@
       <div class="panel-heading">Operativitate <%= @court.operativity.to_i %>%</div>
       <div class="panel-body">
         <svg id="operativity_donut" width="200" height="200"></svg>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-3">
-    <div class="panel panel-default">
-      <div class="panel-heading">Indice de atacabilitate <%= @court.atacability_indicator.to_i %>%</div>
-      <div class="panel-body">
-        <svg id="atacability_donut" width="200" height="200"></svg>
       </div>
     </div>
   </div>
