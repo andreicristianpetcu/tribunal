@@ -78,46 +78,10 @@
       <div class="row">
         <div class="col-lg-6">
           <ul class="list-group">
-            <li class="list-group-item">
-              <span class="badge">
-                <h4>
-                  <%= @court.population.to_i %>
-                </h4>
-              </span>
-              <h4>
-                Populație deservită
-              </h4>
-            </li>
-            <li class="list-group-item">
-              <span class="badge">
-                <h4>
-                  <%= @court.budget.to_i %>
-                </h4>
-              </span>
-              <h4>
-                Buget (mii lei)
-              </h4>
-            </li>
-            <li class="list-group-item">
-              <span class="badge">
-                <h4>
-                  <%= @court.number_of_judges.to_i %>
-                </h4>
-              </span>
-              <h4>
-                Nr. judecători
-              </h4>
-            </li>
-            <li class="list-group-item">
-              <span class="badge">
-                <h4>
-                  <%= @court.resolved_trial_fields.to_i %>
-                </h4>
-              </span>
-              <h4>
-                Nr. dosare soluționate
-              </h4>
-            </li>
+            <%= render 'court_indicator_item', :locals => {label: "Populație deservită", indicator: @court.population.to_i}%>
+            <%= render 'court_indicator_item', :locals => {label: "Buget (mii lei)", indicator: @court.budget.to_i}%>
+            <%= render 'court_indicator_item', :locals => {label: "Nr. judecători", indicator: @court.number_of_judges.to_i}%>
+            <%= render 'court_indicator_item', :locals => {label: "Nr. dosare soluționate", indicator: @court.resolved_trial_fields.to_i}%>
           </ul>
         </div>
         <div class="col-lg-6">
