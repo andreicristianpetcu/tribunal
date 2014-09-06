@@ -62,46 +62,13 @@
           <div class="panel">
             <div class="bs-component">
               <div>
-                <div class="col-lg-12">
-                  <div class="progress-basic">
-                    <h4>
-                      Predictibilitate <%= @court.safety_indicator.to_i %>%
-                  </h4>
-                  </div>
-                  <div class="bs-component">
-                    <div class="progress">
-                      <div style="width: <%= @court.safety_indicator.to_i %>%" class="progress-bar progress-bar-info"></div>
-                    </div>
-                  </div>
-                </div>
+                <%= render 'court_progressbar', :locals => {label: "Predictibilitate", percentage: @court.safety_indicator} %>
               </div>
               <div>
-                <div class="col-lg-12">
-                  <div class="progress-basic">
-                    <h4>
-                      Operativitate <%= @court.operativity.to_i %>%
-                  </h4>
-                  </div>
-                  <div class="bs-component">
-                    <div class="progress">
-                      <div style="width: <%= @court.operativity.to_i %>%" class="progress-bar progress-bar-info"></div>
-                    </div>
-                  </div>
-                </div>
+                <%= render 'court_progressbar', :locals => {label: "Operativitate", percentage: @court.operativity} %>
               </div>
               <div>
-                <div class="col-lg-12">
-                  <div class="progress-basic">
-                    <h4>
-                      Încărcare <%= @court.safety_indicator.to_i %>%
-                  </h4>
-                  </div>
-                  <div class="bs-component">
-                    <div class="progress">
-                      <div style="width: <%= @court.safety_indicator.to_i %>%" class="progress-bar progress-bar-info"></div>
-                    </div>
-                  </div>
-                </div>
+                <%= render 'court_progressbar', :locals => {label: "Încărcare", percentage: @court.load_indicator} %>
               </div>
             </div>
           </div>

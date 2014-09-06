@@ -1,0 +1,12 @@
+<div class="col-lg-12">
+<div class="progress-basic">
+  <h4>
+    <%= locals[:label] %> <%= locals[:percentage].to_i %>%
+  </h4>
+</div>
+<div class="bs-component">
+  <div class="progress">
+    <div style="width: <%= @court.operativity.to_i %>%" class="progress-bar progress-bar-info"></div>
+  </div>
+</div>
+</div>
