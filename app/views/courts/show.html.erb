@@ -43,57 +43,8 @@
       </li>
     </ul>
   </div>  
-  <div id="myTabContent" class="tab-content">
-    <div class="tab-pane fade active in" id="indicators">
-      <div class="row">
-        <div class="col-lg-3">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4>Performanță
-                <%= @court.performance_indicator.to_i %>%
-              </h4>
-            </div>
-            <div class="panel-body">
-              <svg id="performance_indicator_donut" width="200" height="200"></svg>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-9">
-          <div class="panel">
-            <div class="bs-component">
-              <div>
-                <%= render 'court_progressbar', :locals => {label: "Predictibilitate", percentage: @court.safety_indicator} %>
-              </div>
-              <div>
-                <%= render 'court_progressbar', :locals => {label: "Operativitate", percentage: @court.operativity} %>
-              </div>
-              <div>
-                <%= render 'court_progressbar', :locals => {label: "Încărcare", percentage: @court.load_indicator} %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-6">
-          <ul class="list-group">
-            <%= render 'court_indicator_item', :locals => {label: "Populație deservită", indicator: @court.population.to_i}%>
-            <%= render 'court_indicator_item', :locals => {label: "Buget (mii lei)", indicator: @court.budget.to_i}%>
-            <%= render 'court_indicator_item', :locals => {label: "Nr. judecători", indicator: @court.number_of_judges.to_i}%>
-            <%= render 'court_indicator_item', :locals => {label: "Nr. dosare soluționate", indicator: @court.resolved_trial_fields.to_i}%>
-          </ul>
-        </div>
-        <div class="col-lg-6">
-          <ul class="list-group">
-            <%= render 'court_indicator_item', :locals => {label: "Încărcătură pe judecător", indicator: @court.load_per_judge.to_i}%>
-            <%= render 'court_indicator_item', :locals => {label: "Durata in luni", indicator: @court.duration_in_months.to_f}%>
-            <%= render 'court_indicator_item', :locals => {label: "Indice de atacabilitate", indicator: @court.atacability_indicator.to_i, percentage: true}%>
-            <%= render 'court_indicator_item', :locals => {label: "Indice de casare", indicator: @court.casation_indicator.to_i, percentage: true}%>
-          </ul>
-        </div>
-      </div>
-    </div>
+  <div class="tab-content">
+    <%= render 'court_tab_indicators' %>
     <div class="tab-pane fade" id="hearings">
       <p>Work in progress</p>
     </div>
