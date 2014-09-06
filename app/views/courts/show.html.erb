@@ -31,16 +31,8 @@
 <div class="bs-component">
   <div class="bs-example">
     <ul class="nav nav-tabs">
-      <li class="active">
-        <a href="#indicators" data-toggle="tab">
-          Indicatori
-        </a>
-      </li>
-      <li>
-        <a href="#hearings" data-toggle="tab">
-          Ședințe
-        </a>
-      </li>
+      <%= render 'court_tab', :locals => {id: "indicators", label: "Indicatori", active: true} %>
+      <%= render 'court_tab', :locals => {id: "hearings", label: "Ședințe"} %>
     </ul>
   </div>  
   <div class="tab-content">
