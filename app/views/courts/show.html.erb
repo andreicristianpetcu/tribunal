@@ -33,12 +33,16 @@
     <ul class="nav nav-tabs">
       <%= render 'court_tab', :locals => {id: "indicators", label: "Indicatori", active: true} %>
       <%= render 'court_tab', :locals => {id: "hearings", label: "Ședințe"} %>
+      <%= render 'court_tab', :locals => {id: "decisions", label: "Decizii"} %>
+      <%= render 'court_tab', :locals => {id: "files", label: "Dosare"} %>
+      <%= render 'court_tab', :locals => {id: "contact", label: "Contact"} %>
     </ul>
   </div>  
   <div class="tab-content">
     <%= render 'court_tab_indicators' %>
-    <div class="tab-pane fade" id="hearings">
-      <p>Work in progress</p>
-    </div>
+    <div class="tab-pane fade" id="hearings">Ședințe Work in progress</div>
+    <div class="tab-pane fade" id="decisions">Decizii Work in progress</div>
+    <div class="tab-pane fade" id="files">Dosare Work in progress</div>
+    <div class="tab-pane fade" id="contact">Contact Work in progress</div>
   </div>
 </div> 
