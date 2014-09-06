@@ -45,7 +45,11 @@
 <div class="row">
   <div class="col-lg-3">
     <div class="panel panel-default">
-      <div class="panel-heading">Performanță <%= @court.performance_indicator.to_i %>%</div>
+      <div class="panel-heading">
+        <h4>Performanță
+          <%= @court.performance_indicator.to_i %>%
+        </h4>
+      </div>
       <div class="panel-body">
         <svg id="performance_indicator_donut" width="200" height="200"></svg>
       </div>
@@ -57,33 +61,53 @@
         <ul class="list-group">
           <li class="list-group-item">
             <span class="badge">
-              <%= @court.population.to_i %>
+              <h4>
+                <%= @court.population.to_i %>
+              </h4>
             </span>
-            Populație deservită
+            <h4>
+              Populație deservită
+            </h4>
           </li>
           <li class="list-group-item">
             <span class="badge">
-              <%= @court.budget.to_i %>
+              <h4>
+                <%= @court.budget.to_i %>
+              </h4>
             </span>
-            Buget (mii lei)
+            <h4>
+              Buget (mii lei)
+            </h4>
           </li>
           <li class="list-group-item">
             <span class="badge">
-              <%= @court.number_of_judges.to_i %>
+              <h4>
+                <%= @court.number_of_judges.to_i %>
+              </h4>
             </span>
-            Nr. judecători
+            <h4>
+              Nr. judecători
+            </h4>
           </li>
           <li class="list-group-item">
             <span class="badge">
-              <%= @court.resolved_trial_fields.to_i %>
+              <h4>
+                <%= @court.resolved_trial_fields.to_i %>
+              </h4>
             </span>
-            Nr. dosare soluționate
+            <h4>
+              Nr. dosare soluționate
+            </h4>
           </li>
           <li class="list-group-item">
             <span class="badge">
-              <%= @court.total_activity_volume.to_i %>
+              <h4>
+                <%= @court.total_activity_volume.to_i %>
+              </h4>
             </span>
-            Stoc
+            <h4>
+              Stoc
+            </h4>
           </li>
         </ul>
       </div>
@@ -91,33 +115,53 @@
         <ul class="list-group">
           <li class="list-group-item">
             <span class="badge">
-              <%= @court.load_per_judge.to_i %>
+              <h4>
+                <%= @court.load_per_judge.to_i %>
+              </h4>
             </span>
-            Încărcătură pe judecător
+            <h4>
+              Încărcătură pe judecător
+            </h4>
           </li>
           <li class="list-group-item">
             <span class="badge">
-              <%= @court.duration_in_days.to_i %>
+              <h4>
+                <%= @court.duration_in_days.to_i %>
+              </h4>
             </span>
-            Durata in zile
+            <h4>
+              Durata in zile
+            </h4>
           </li>
           <li class="list-group-item">
             <span class="badge">
-              <%= @court.duration_in_months.to_f %>
+              <h4>
+                <%= @court.duration_in_months.to_f %>
+              </h4>
             </span>
-            Durata in luni
+            <h4>
+              Durata in luni
+            </h4>
           </li>
           <li class="list-group-item">
             <span class="badge">
-              <%= @court.atacability_indicator.to_i %>%
+              <h4>
+                <%= @court.atacability_indicator.to_i %>%
+              </h4>
             </span>
-            Indice de atacabilitate
+            <h4>
+              Indice de atacabilitate
+            </h4>
           </li>
           <li class="list-group-item">
             <span class="badge">
-              <%= @court.casation_indicator.to_i %>%
+              <h4>
+                <%= @court.casation_indicator.to_i %>%
+              </h4>
             </span>
-            Indice de casare
+            <h4>
+              Indice de casare
+            </h4>
           </li>
         </ul>
       </div>
@@ -128,7 +172,11 @@
 <div class="row">
   <div class="col-lg-4">
     <div class="panel panel-default">
-      <div class="panel-heading">Indice de predictibilitate <%= @court.safety_indicator.to_i %>%</div>
+      <div class="panel-heading">
+        <h4>
+          Indice de predictibilitate <%= @court.safety_indicator.to_i %>%
+        </h4>
+      </div>
       <div class="panel-body">
         <svg id="predictibility_indicator_donut" width="200" height="200"></svg>
       </div>
@@ -136,7 +184,11 @@
   </div>
   <div class="col-lg-4">
     <div class="panel panel-default">
-      <div class="panel-heading">Operativitate <%= @court.operativity.to_i %>%</div>
+      <div class="panel-heading">
+        <h4>
+          Operativitate <%= @court.operativity.to_i %>%
+        </h4>
+      </div>
       <div class="panel-body">
         <svg id="operativity_donut" width="200" height="200"></svg>
       </div>
@@ -144,7 +196,11 @@
   </div>
   <div class="col-lg-4">
     <div class="panel panel-default">
-      <div class="panel-heading">Indice de incarcatura <%= @court.load_indicator.to_i %>%</div>
+      <div class="panel-heading">
+        <h4>
+          Indice de incarcatura <%= @court.load_indicator.to_i %>%
+        </h4>
+      </div>
       <div class="panel-body">
         <svg id="load_indicator_donut" width="200" height="200"></svg>
       </div>
