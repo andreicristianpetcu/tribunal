@@ -122,46 +122,10 @@
         </div>
         <div class="col-lg-6">
           <ul class="list-group">
-            <li class="list-group-item">
-              <span class="badge">
-                <h4>
-                  <%= @court.load_per_judge.to_i %>
-                </h4>
-              </span>
-              <h4>
-                Încărcătură pe judecător
-              </h4>
-            </li>
-            <li class="list-group-item">
-              <span class="badge">
-                <h4>
-                  <%= @court.duration_in_months.to_f %>
-                </h4>
-              </span>
-              <h4>
-                Durata in luni
-              </h4>
-            </li>
-            <li class="list-group-item">
-              <span class="badge">
-                <h4>
-                  <%= @court.atacability_indicator.to_i %>%
-                </h4>
-              </span>
-              <h4>
-                Indice de atacabilitate
-              </h4>
-            </li>
-            <li class="list-group-item">
-              <span class="badge">
-                <h4>
-                  <%= @court.casation_indicator.to_i %>%
-                </h4>
-              </span>
-              <h4>
-                Indice de casare
-              </h4>
-            </li>
+            <%= render 'court_indicator_item', :locals => {label: "Încărcătură pe judecător", indicator: @court.load_per_judge.to_i}%>
+            <%= render 'court_indicator_item', :locals => {label: "Durata in luni", indicator: @court.duration_in_months.to_f}%>
+            <%= render 'court_indicator_item', :locals => {label: "Indice de atacabilitate", indicator: @court.atacability_indicator.to_i, percentage: true}%>
+            <%= render 'court_indicator_item', :locals => {label: "Indice de casare", indicator: @court.casation_indicator.to_i, percentage: true}%>
           </ul>
         </div>
       </div>
