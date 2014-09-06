@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  root 'courts#index'
+  root 'high_voltage/pages#show', id: 'working_on_it'
 
   resources :trial_files
 
