@@ -3,11 +3,7 @@
 
 @font-face {
   font-family: 'open_sansregular';
-  src: font-url('/assets/font/OpenSans-Regular.eot');
-  src: font-url('/assets/font/OpenSans-Regular.eot?#iefix') format('embedded-opentype'),
-  font-url('/assets/font/OpenSans-Regular.woff') format('woff'),
-  font-url('/assets/font/OpenSans-Regular.ttf') format('truetype'),
-  font-url('/assets/font/OpenSans-Regular.svg#open_sansregular') format('svg');
+  src: font-url('/assets/font/OpenSans-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
