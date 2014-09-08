@@ -101,8 +101,8 @@ module JustroParserHelper
   def self.is_parsing_time_over
     parsing_hours = (0..5).to_a
     parsing_hours << 23
-    return !parsing_hours.include?(Time.now.hour)
-    # return false
+    # return !parsing_hours.include?(Time.now.hour)
+    return false
   end
 
   def self.show_stats
@@ -130,11 +130,16 @@ module JustroParserHelper
         response = find_file(court_name, start_date, end_date)
         cautare_dosare_response = response.body[:cautare_dosare_response]
         result = cautare_dosare_response[:cautare_dosare_result]
+        binding.pry
+        if result[:dosar].size == 1000 then
+          raise "there are only 1000 items"
+        end
         file = JustroFile.new
         file.result = result
         file.justro_file_request_param = request_params
         file.save
       rescue => e
+        binding.pry
         request_params.status = "error"
         request_params.backtrace = e.backtrace.to_s
         request_params.error_message = e.message
