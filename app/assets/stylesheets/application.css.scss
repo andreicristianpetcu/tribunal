@@ -1,5 +1,17 @@
 // Example using 'superhero' bootswatch
 //
+
+@font-face {
+  font-family: 'open_sansregular';
+  src: font-url('/assets/font/OpenSans-Regular.eot');
+  src: font-url('/assets/font/OpenSans-Regular.eot?#iefix') format('embedded-opentype'),
+  font-url('/assets/font/OpenSans-Regular.woff') format('woff'),
+  font-url('/assets/font/OpenSans-Regular.ttf') format('truetype'),
+  font-url('/assets/font/OpenSans-Regular.svg#open_sansregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 // First import superhero variables
 @import "bootswatch/superhero/variables";
 
@@ -11,3 +23,7 @@ body { padding-top: 60px; }
 
 // And finally bootswatch style itself
 @import "bootswatch/superhero/bootswatch";
+
+body {
+  font-family: 'open_sansregular';
+}
