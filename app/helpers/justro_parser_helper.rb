@@ -124,11 +124,11 @@ module JustroParserHelper
 
   def self.get_justro_files
 
+    last_court_name = nil
     JustroFileRequestParam.get_notstarted.each do |request_params|
       request_params.status = "started"
       request_params.save
       break if is_parsing_time_over
-      puts "Request files for #{request_params.inspect}"
       begin
         court_name = request_params.court_name 
         start_date = request_params.start_date
@@ -136,7 +136,6 @@ module JustroParserHelper
         response = find_file(court_name, start_date, end_date)
         cautare_dosare_response = response.body[:cautare_dosare_response]
         result = cautare_dosare_response[:cautare_dosare_result]
-        binding.pry
         if result && result[:dosar].size == 1000 then
           raise "there are only 1000 items"
         end
@@ -144,8 +143,11 @@ module JustroParserHelper
         file.result = result
         file.justro_file_request_param = request_params
         file.save
+        if last_court_name != court_name then
+          last_court_name = court_name
+          puts "Request files for #{request_params.inspect}"
+        end
       rescue => e
-        binding.pry
         request_params.status = "error"
         request_params.backtrace = e.backtrace.to_s
         request_params.error_message = e.message
