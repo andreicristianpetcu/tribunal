@@ -28,6 +28,7 @@ class JustroFileRequestParam
           request.court_name = court_name
           request.start_date = date
           request.end_date = date
+          request.status = "notstarted"
           # puts "Saving file request #{request.inspect}"
           request.save
         end

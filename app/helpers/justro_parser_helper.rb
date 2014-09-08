@@ -101,8 +101,8 @@ module JustroParserHelper
   def self.is_parsing_time_over
     parsing_hours = (0..5).to_a
     parsing_hours << 23
-    # return !parsing_hours.include?(Time.now.hour)
-    return false
+    return !parsing_hours.include?(Time.now.hour)
+    # return false
   end
 
   def self.show_stats
@@ -116,8 +116,14 @@ module JustroParserHelper
     puts "processed=#{processed}, finished=#{finished}, error=#{error}, started=#{started}, notstarted=#{notstarted}, empty=#{empty}" 
   end
 
+  def self.purge_all_and_get_justro_files
+    JustroFileRequestParam.delete_all
+    JustroFile.delete_all
+    JustroFileRequestParam.generate_all
+  end
 
   def self.get_justro_files
+
     JustroFileRequestParam.get_notstarted.each do |request_params|
       request_params.status = "started"
       request_params.save
@@ -131,7 +137,7 @@ module JustroParserHelper
         cautare_dosare_response = response.body[:cautare_dosare_response]
         result = cautare_dosare_response[:cautare_dosare_result]
         binding.pry
-        if result[:dosar].size == 1000 then
+        if result && result[:dosar].size == 1000 then
           raise "there are only 1000 items"
         end
         file = JustroFile.new
