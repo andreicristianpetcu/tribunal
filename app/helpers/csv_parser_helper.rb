@@ -1,7 +1,7 @@
 module CsvParserHelper
 
   def self.parse_indicators_csv
-    csv_file_path = File.join(File.dirname(__FILE__), "../../data/Capete_de_tabel_indicatori_2012.csv")
+    csv_file_path = File.join(File.dirname(__FILE__), "../../data/Capete_de_tabel_indicatori_2013.csv")
     headers_checked = false
     CSV.foreach(csv_file_path) do |row|
       if !headers_checked then
@@ -66,7 +66,7 @@ module CsvParserHelper
     initial_headers = ["Denumirea instantei in clar (cu diactritice)",
                        "Codul informatic al instantei (din portal)",
                        "Populația",
-                       "numar de judecatori ocupati",
+                       "Numar de judecatori",
                        "Buget (mii lei)",
                        "Stoc (total volum de activitate al instantei)",
                        "Dosare solutionate",
@@ -74,15 +74,15 @@ module CsvParserHelper
                        "Mediana sirului de valori privind operativitatea (valorile operativitatii mai mari decat mediana + 5% se vor colora verde, valorile mai mici decat mediana -5% se vor colora rosu, iar valorile dintre mediana +/-5% se vor colora galben)",
                        "Incarcatura pe schema",
                        "Incarcatura pe judecator",
-                       "Indice de incarcatura (procent schema/judecator)",
+                       "Incarcare (procent schema/judecator)",
                        "ponderare de populatie (procentaj de numar de judecatori ocupati la populatia deservita de acea instanta vs. numar de judecatori nationali la populatia nationala, la fiecare instanta in clasa ei)",
-                       "Mediana sirului de valori privind indicele de incarcatura(valorile incarcaturii mai mari decat mediana + 5% se vor colora verde, valorile mai mici decat mediana -5% se vor colora rosu, iar valorile dintre mediana +/-5% se vor colora galben)",
+                       "Mediana sirului de valori privind indicele de încărcare(valorile incarcaturii mai mari decat mediana + 5% se vor colora verde, valorile mai mici decat mediana -5% se vor colora rosu, iar valorile dintre mediana +/-5% se vor colora galben)",
                        "Indice de atacabilitate (procent atacate din solutionate)",
                        "Indice de casare/desfiintare",
                        "Indicator de \"siguranta\" (100%-Desfiintare*Atacare) [ne mai gandim la denumire - certitudine/ stabilitate/ predictibilitate]",
                        "Mediana sirului de valori privind indicele de \"siguranta\" (valorile sigurantei mai mari decat mediana + 5% se vor colora verde, valorile mai mici decat mediana -5% se vor colora rosu, iar valorile dintre mediana +/-5% se vor colora galben)",
                        "Durata in zile (extras din portal, ca diferenta dintre data inregistrarii dosarului si data solutionarii)",
-                       "durata in luni",
+                       "Durata (in luni)",
                        "Ponderare dupa durata (procentul de durata de la aceasta instanta fata de durata mediana din clasa ei la nivel national--adica judecatorie, tribunal, curte de apel, curte suprema=4 clase)",
                        "Mediana duratei (valorile duratei mai mari decat mediana nationala + 5% se vor colora rosu, valorile mai mici decat mediana -5% se vor colora verde, iar valorile dintre mediana +/-5% se vor colora galben)",
                        "Indicele de performanta al instantei este [(Operativitate ponderata cu durata) impartit la (Indice de incarcatura ponderata cu populatia)] inmultit cu Indicatorul de \"siguranta\" )",
