@@ -21,7 +21,7 @@ class JustroFileRequestParam
 
     request = JustroFileRequestParam.new
 
-    CourtDataProviderHelper.get_courts_names.each do |court_name|
+    CourtDataProviderHelper.get_courts_names.no_timeout.each do |court_name|
       (start_date..end_date).each do |date|
         if(!date.saturday? && !date.sunday?) then
           request = JustroFileRequestParam.new
@@ -30,7 +30,7 @@ class JustroFileRequestParam
           request.end_date = date
           request.status = "notstarted"
           # puts "Saving file request #{request.inspect}"
-          request.save
+          request.safely.save
         end
       end
       puts "Saving file request #{request.inspect}"

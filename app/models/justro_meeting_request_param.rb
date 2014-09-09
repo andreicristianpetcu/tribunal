@@ -13,7 +13,7 @@ class JustroMeetingRequestParam
   end
 
   def self.generate_all
-    CourtDataProviderHelper.get_courts_names.each do |court_name|
+    CourtDataProviderHelper.get_courts_names.no_timeout.each do |court_name|
       # court_name = 'CurteadeApelBUCURESTI'
       start_date = Date.new(2010, 1, 1)
       end_date = Date.today - 1
@@ -24,7 +24,7 @@ class JustroMeetingRequestParam
           request.court_name = court_name
           request.meeting_date = date
           puts "Saving meeting request #{request.inspect}"
-          request.save
+          request.safely.save
         end
       end
     end

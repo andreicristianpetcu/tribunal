@@ -11,7 +11,7 @@ module CsvParserHelper
         court_computer_name = row[1]
         court = Court.where(computer_name: court_computer_name).first
         fill_court_from_row(court, row)
-        court.save
+        court.safely.save
         puts court.name
       end
     end
