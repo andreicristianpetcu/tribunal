@@ -113,7 +113,15 @@ module JustroParserHelper
     empty = JustroMeetingRequestParam.where(status: "empty").count
     total = JustroMeetingRequestParam.count
     processed = (finished.to_f/total)*100
-    puts "processed=#{processed}, finished=#{finished}, error=#{error}, started=#{started}, notstarted=#{notstarted}, empty=#{empty}" 
+    puts "Meetings processed=#{processed}, finished=#{finished}, error=#{error}, started=#{started}, notstarted=#{notstarted}, empty=#{empty}" 
+    notstarted = JustroFileRequestParam.where(status: "notstarted").count
+    started = JustroFileRequestParam.where(status: "started").count
+    finished = JustroFileRequestParam.where(status: "finished").count
+    error = JustroFileRequestParam.where(status: "error").count
+    empty = JustroFileRequestParam.where(status: "empty").count
+    total = JustroFileRequestParam.count
+    processed = (finished.to_f/total)*100
+    puts "Files processed=#{processed}, finished=#{finished}, error=#{error}, started=#{started}, notstarted=#{notstarted}, empty=#{empty}" 
   end
 
   def self.purge_all_and_get_justro_files
