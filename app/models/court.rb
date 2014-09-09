@@ -10,22 +10,22 @@ class Court
   field :total_activity_volume, type: Float
   field :resolved_trial_fields, type: Float
   field :operativity, type: Float
-  field :operativity_median, type: Float
+  # field :operativity_median, type: Float
   field :load_per_scheme, type: Float
   field :load_per_judge, type: Float
   field :load_indicator, type: Float
   field :share_per_population, type: Float
-  field :median_load_indicator, type: Float
+  # field :median_load_indicator, type: Float
   field :atacability_indicator, type: Float
   field :casation_indicator, type: Float
   field :safety_indicator, type: Float
-  field :safety_indicator_median, type: Float
+  # field :safety_indicator_median, type: Float
   field :duration_in_days, type: Float
   field :duration_in_months, type: Float
   field :share_by_duration, type: Float
-  field :duration_median, type: Float
+  # field :duration_median, type: Float
   field :performance_indicator, type: Float
-  field :performance_median, type: Float
+  # field :performance_median, type: Float
 
   has_many :trial_meetings
 
