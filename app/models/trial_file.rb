@@ -10,5 +10,6 @@ class TrialFile
   field :trial_status, type: String
 
   belongs_to :trial_meeting
+  belongs_to :court
 
 end

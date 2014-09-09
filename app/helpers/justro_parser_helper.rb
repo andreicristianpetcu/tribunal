@@ -172,4 +172,11 @@ module JustroParserHelper
     end
   end
 
+  def self.link_justro_file_to_court
+    TrialFile.where(:court.exists => false).no_timeout.each do |trial_file|
+      trial_file.court = trial_file.trial_meeting.court
+      trial_file.save
+    end
+  end
+
 end
