@@ -17,7 +17,7 @@ module JustroParserHelper
   def self.get_justro_meetings
     JustroMeetingRequestParam.get_notstarted.no_timeout.each do |request_params|
       request_params.status = "started"
-      request_params.safely.save
+      request_params.save
       break if is_parsing_time_over
       puts "Request meeting for #{request_params.inspect}"
       begin
@@ -38,7 +38,7 @@ module JustroParserHelper
 
         elsif
           request_params.status = "empty"
-          request_params.safely.save
+          request_params.save
         end
       rescue => e
         request_params.status = "error"
@@ -47,12 +47,12 @@ module JustroParserHelper
         if e.is_a? Wasabi::Resolver::HTTPError then
           request_params.response_code = e.response.code
         end
-        request_params.safely.save
+        request_params.save
       end
 
       if request_params.status != "error" then
         request_params.status = "finished"
-        request_params.safely.save
+        request_params.save
       end
     end
   end
@@ -75,9 +75,9 @@ module JustroParserHelper
         create_trial_file(file_params, meeting)
       end
     end
-    meeting.safely.save
+    meeting.save
     court.trial_meetings << meeting
-    court.safely.save
+    court.save
   end
 
   def self.create_trial_file(file_params, meeting)
@@ -90,7 +90,7 @@ module JustroParserHelper
       file.case_type = file_params[:categorie_caz]
       file.trial_status = file_params[:stadiu_procesual]
       file.trial_meeting = meeting
-      file.safely.save
+      file.save
       meeting.trial_files << file   
     rescue => e
       puts e
@@ -135,7 +135,7 @@ module JustroParserHelper
     last_court_name = nil
     JustroFileRequestParam.get_notstarted.no_timeout.each do |request_params|
       request_params.status = "started"
-      request_params.safely.save
+      request_params.save
       break if is_parsing_time_over
       begin
         court_name = request_params.court_name 
@@ -150,7 +150,7 @@ module JustroParserHelper
         file = JustroFile.new
         file.result = result
         file.justro_file_request_param = request_params
-        file.safely.save
+        file.save
         if last_court_name != court_name then
           last_court_name = court_name
           puts "Request files for #{request_params.inspect}"
@@ -162,20 +162,25 @@ module JustroParserHelper
         if e.is_a? Wasabi::Resolver::HTTPError then
           request_params.response_code = e.response.code
         end
-        request_params.safely.save
+        request_params.save
       end
 
       if request_params.status != "error" then
         request_params.status = "finished"
-        request_params.safely.save
+        request_params.save
       end
     end
   end
 
   def self.link_justro_file_to_court
-    TrialFile.where(:court.exists => false).no_timeout.each do |trial_file|
-      trial_file.court = trial_file.trial_meeting.court
-      trial_file.save
+    TrialMeeting.each do |trial_meeting|
+      court = trial_meeting.court
+      trial_meeting.trial_files.each do |trial_file|
+        if trial_file.court.nil?
+          trial_file.court = court
+          trial_file.save
+        end
+      end
     end
   end
 
