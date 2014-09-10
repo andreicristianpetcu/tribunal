@@ -1,4 +1,5 @@
 require 'savon'
+require 'thread/pool'
 
 module JustroParserHelper
 
@@ -122,6 +123,8 @@ module JustroParserHelper
     total = JustroFileRequestParam.count
     processed = (finished.to_f/total)*100
     puts "Files processed=#{processed}, finished=#{finished}, error=#{error}, started=#{started}, notstarted=#{notstarted}, empty=#{empty}" 
+    files_withCourts = TrialFile.where(:court.exists => true).size.to_f/TrialFile.count
+    puts "Files with courts #{files_withCourts}"
   end
 
   def self.purge_all_and_get_justro_files
@@ -173,13 +176,18 @@ module JustroParserHelper
   end
 
   def self.link_justro_file_to_court
+
+    pool = Thread.pool(4)
+
     TrialMeeting.each do |trial_meeting|
       court = trial_meeting.court
       trial_meeting.trial_files.each do |trial_file|
-        if trial_file.court.nil?
-          trial_file.court = court
-          trial_file.save
-        end
+        pool.process {
+          if trial_file.court.nil?
+            trial_file.court = court
+            trial_file.save
+          end
+        }
       end
     end
   end
