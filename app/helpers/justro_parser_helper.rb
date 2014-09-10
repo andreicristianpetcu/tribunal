@@ -1,5 +1,4 @@
 require 'savon'
-require 'thread/pool'
 
 module JustroParserHelper
 
@@ -177,17 +176,16 @@ module JustroParserHelper
 
   def self.link_justro_file_to_court
 
-    pool = Thread.pool(4)
-
-    TrialMeeting.each do |trial_meeting|
+    # pool = Thread.pool(4)
+    TrialMeeting.where(:court.exists => false).each do |trial_meeting|
       court = trial_meeting.court
       trial_meeting.trial_files.each do |trial_file|
-        pool.process {
+        # pool.process {
           if trial_file.court.nil?
             trial_file.court = court
             trial_file.save
           end
-        }
+        # }
       end
     end
   end
