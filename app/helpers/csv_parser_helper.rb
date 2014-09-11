@@ -3,19 +3,33 @@ module CsvParserHelper
   def self.parse_circumscriptions_csv
     csv_file_path = File.join(File.dirname(__FILE__), "../../data/Circumscriptii_instante.csv")
     headers_checked = false
+    population_hash = Hash.new
     CSV.foreach(csv_file_path) do |row|
       if !headers_checked then
-        binding.pry
         check_headers(row, get_circumscription_headers)
         headers_checked = true
       else
-        court_computer_name = row[1]
-        court = Court.where(computer_name: court_computer_name).first
-        fill_court_from_row(court, row)
-        court.save
-        puts court.name
+        append_population_to(population_hash, row[5], row[8])
+        append_population_to(population_hash, row[6], row[8])
+        append_population_to(population_hash, row[7], row[8])
       end
     end
+    population_hash.each do |key, value|
+      if !key.nil?
+        court = Court.where(computer_name: key).first
+        if !court.nil?
+          court.population = value
+          court.save
+        end
+      end
+    end
+  end
+
+  def self.append_population_to(hash, key, population)
+    if hash[key].nil?
+      hash[key] = 0
+    end
+    hash[key] += strip(population)
   end
 
   def self.parse_indicators_csv
