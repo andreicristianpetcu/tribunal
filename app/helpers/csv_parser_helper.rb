@@ -1,11 +1,29 @@
 module CsvParserHelper
 
+  def self.parse_circumscriptions_csv
+    csv_file_path = File.join(File.dirname(__FILE__), "../../data/Circumscriptii_instante.csv")
+    headers_checked = false
+    CSV.foreach(csv_file_path) do |row|
+      if !headers_checked then
+        binding.pry
+        check_headers(row, get_circumscription_headers)
+        headers_checked = true
+      else
+        court_computer_name = row[1]
+        court = Court.where(computer_name: court_computer_name).first
+        fill_court_from_row(court, row)
+        court.save
+        puts court.name
+      end
+    end
+  end
+
   def self.parse_indicators_csv
     csv_file_path = File.join(File.dirname(__FILE__), "../../data/Capete_de_tabel_indicatori_2013.csv")
     headers_checked = false
     CSV.foreach(csv_file_path) do |row|
       if !headers_checked then
-        check_headers(row)
+        check_headers(row, get_indicator_headers)
         headers_checked = true
       else
         court_computer_name = row[1]
@@ -52,8 +70,8 @@ module CsvParserHelper
     end
   end
 
-  def self.check_headers(possible_headers)
-    get_headers.each_with_index do |item, index|
+  def self.check_headers(possible_headers, actual_headers)
+    actual_headers.each_with_index do |item, index|
       current_column_header = possible_headers[index]
       if(current_column_header != item) then
         error_message =  "Headers have changed for index #{index} \n expecting \"#{item}\" \n but found \"#{current_column_header}\""
@@ -62,7 +80,11 @@ module CsvParserHelper
     end
   end 
 
-  def self.get_headers
+  def self.get_circumscription_headers
+    return ["Cod judet", "Codul SIRUTA", "judet", "localitatea", "rang", "judecatorie", "tribunal", "CA", "Populatie"]
+  end
+
+  def self.get_indicator_headers
     initial_headers = ["Denumirea instantei in clar (cu diactritice)",
                        "Codul informatic al instantei (din portal)",
                        "Populația",
