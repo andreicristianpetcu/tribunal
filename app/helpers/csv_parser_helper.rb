@@ -20,7 +20,7 @@ module CsvParserHelper
   def self.fill_court_from_row(court, row)
     court.name = row[0]
     court.computer_name = row[1]
-    court.population = strip(row[2])
+    # court.population = strip(row[2])
     court.number_of_judges = strip(row[3])
     court.budget = strip(row[4])
     court.total_activity_volume = strip(row[5])
