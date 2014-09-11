@@ -1,4 +1,4 @@
-<h1>Listing trial_meetings</h1>
+<h1>Ședințe</h1>
 
 <table>
   <thead>
@@ -10,13 +10,15 @@
   <tbody>
     <% @trial_meetings.each do |trial_meeting| %>
       <tr>
-        <td><%= link_to 'Show', trial_meeting %></td>
-        <td><%= link_to 'Edit', edit_trial_meeting_path(trial_meeting) %></td>
-        <td><%= link_to 'Destroy', trial_meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td> <%= trial_meeting.departament %> </td>
+        <td> <%= trial_meeting.date %> </td>
+        <td> <%= trial_meeting.hour %> </td>
+        <td> <%= trial_meeting.court.name %> </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= paginate @trial_meetings.all %>
 
 <br>
 
