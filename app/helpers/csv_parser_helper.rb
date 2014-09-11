@@ -11,7 +11,7 @@ module CsvParserHelper
         court_computer_name = row[1]
         court = Court.where(computer_name: court_computer_name).first
         fill_court_from_row(court, row)
-        court.safely.save
+        court.save
         puts court.name
       end
     end
@@ -26,22 +26,22 @@ module CsvParserHelper
     court.total_activity_volume = strip(row[5])
     court.resolved_trial_fields = strip(row[6])
     court.operativity = strip(row[7])
-    court.operativity_median = strip(row[8])
+    # court.operativity_median = strip(row[8])
     court.load_per_scheme = strip(row[9])
     court.load_per_judge = strip(row[10])
     court.load_indicator = strip(row[11])
     court.share_per_population = strip(row[12])
-    court.median_load_indicator = strip(row[13])
+    # court.median_load_indicator = strip(row[13])
     court.atacability_indicator = strip(row[14])
     court.casation_indicator = strip(row[15])
     court.safety_indicator = strip(row[16])
-    court.safety_indicator_median = strip(row[17])
+    # court.safety_indicator_median = strip(row[17])
     court.duration_in_days = strip(row[18])
     court.duration_in_months = strip(row[19])
     court.share_by_duration = strip(row[20])
-    court.duration_median = strip(row[21])
+    # court.duration_median = strip(row[21])
     court.performance_indicator = strip(row[22])
-    court.performance_median = strip(row[23])
+    # court.performance_median = strip(row[23])
   end
   
   def self.strip(string)
