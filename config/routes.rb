@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :trial_proceedings
+
   resources :proceedings
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

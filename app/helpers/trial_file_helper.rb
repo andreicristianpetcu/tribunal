@@ -14,9 +14,9 @@ module TrialFileHelper
     TrialFile.where(:minified.exists => false, :court => court).distinct(:number).each do |file_number|
       TrialFile.where(:number => file_number).each do |file|
         binding.pry
-        proceeding = Proceeding.where(number: file_number).first
+        proceeding = TrialProceeding.where(number: file_number).first
         if proceeding.nil?
-          proceeding = Proceeding.new
+          proceeding = TrialProceeding.new
           proceeding.number = file_number
           proceeding.trial_files = []
         end

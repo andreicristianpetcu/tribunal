@@ -1,4 +1,4 @@
-class Proceeding
+class TrialProceeding
   include Mongoid::Document
 
   field :number, type: String
