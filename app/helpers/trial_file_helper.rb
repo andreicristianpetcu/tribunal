@@ -5,11 +5,11 @@ module TrialFileHelper
     court_number = Court.all.size
     Court.each_with_index do |court, index|
       puts "------------#{get_percentage(index, court_number)} Computing court procedding for court name #{court.name}" 
-      minify_files_inc_court(court)
+      minify_files_in_court(court)
     end
   end
 
-  def self.minify_files_inc_court(court)
+  def self.minify_files_in_court(court)
     #trial_file number ends with /2013
     distinct_file_numbers = TrialFile.where(minified: false, court: court, number: /\/2013$/).distinct(:number)
     process_trial_proceedings_from_files(distinct_file_numbers)
@@ -20,7 +20,7 @@ module TrialFileHelper
     process_trial_proceedings_from_files(distinct_file_numbers)
   end
 
-  def process_trial_proceedings_from_files(distinct_file_numbers)
+  def self.process_trial_proceedings_from_files(distinct_file_numbers)
     distinct_file_numbers.each_with_index do |file_number, index|
       TrialFile.where(:number => file_number).each do |trial_file|
         trial_proceeding = TrialProceeding.where(number: file_number).first
@@ -37,7 +37,6 @@ module TrialFileHelper
         trial_file.save
       end
     end
-    return trial_file, trial_proceeding
   end
 
   def self.get_percentage(index, total)

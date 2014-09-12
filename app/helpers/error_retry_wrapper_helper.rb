@@ -9,11 +9,11 @@ module ErrorRetryWrapperHelper
         stop_loop = true
       rescue Exception => e
         retry_time = retry_time + 1
-        puts "Retry time #{retry_time}"
+        puts "Retry time #{retry_time} " + e.message
         puts e.backtrace
         stop_loop = false
       end
-      break if stop_loop or retry_time >1000
+      break if stop_loop or retry_time >30
     end
   end
 end
