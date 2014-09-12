@@ -10,8 +10,15 @@ class TrialFile
   field :trial_status, type: String
   field :minified, type: Boolean
 
-  belongs_to :trial_meeting
-  belongs_to :trial_proceeding
-  belongs_to :court
+  belongs_to :trial_meeting, index: true
+  belongs_to :trial_proceeding, index: true
+  belongs_to :court, index: true
+
+  index({ number: 1 }, { background: true })
+  index({ old_number: 1 }, { background: true })
+  index({ date: 1 }, { background: true })
+  index({ case_type: 1 }, { background: true })
+  index({ trial_status: 1 }, { background: true })
+  index({ minified: 1 }, { background: true })
 
 end
