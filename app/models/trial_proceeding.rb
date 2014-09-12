@@ -19,12 +19,17 @@ class TrialProceeding
 
 
   def self.main
-    trial_proceeding = TrialProceeding.find("5412f3106c6f63385a27bc00")
+    trial_proceeding = TrialProceeding.where(number: "2713/113/2013").first
     trial_proceeding.compute_fond_duration
   end
 
   def compute_fond_duration
-    TrialFile.where(trial_proceeding: trial_proceeding, trial_status: "Fond").size
+    binding.pry
+    criteria = TrialFile.where(trial_proceeding: self, trial_status: "Fond")
+    if criteria.size > 1
+      max_date = criteria.max(:date)
+      min_date = criteria.min(:date)
+    end
   end
 
 end

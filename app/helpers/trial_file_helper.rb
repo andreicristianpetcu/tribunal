@@ -1,11 +1,17 @@
 module TrialFileHelper
 
   def self.compact_trial_files
-    TrialFile.reset_minified_for_all
+    # TrialFile.reset_minified_for_all
     court_number = Court.all.size
-    Court.each_with_index do |court, index|
-      puts "------------#{get_percentage(index, court_number)} Computing court procedding for court name #{court.name}" 
-      minify_files_in_court(court)
+
+    per_batch = 2
+    index = 0
+    0.step(Court.count, per_batch) do |offset|
+      Court.limit(per_batch).skip(offset).each do |court|
+        puts "------------#{get_percentage(index, court_number)} Computing court procedding for court name #{court.name}" 
+        index += 1
+        minify_files_in_court(court)
+      end
     end
   end
 
