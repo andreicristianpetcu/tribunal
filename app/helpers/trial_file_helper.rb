@@ -12,21 +12,22 @@ module TrialFileHelper
   def self.minify_files_in_court(court)
     #trial_file number ends with /2013
     distinct_file_numbers = TrialFile.where(minified: false, court: court, number: /\/2013$/).distinct(:number)
-    process_trial_proceedings_from_files(distinct_file_numbers)
+    process_trial_proceedings_from_files(distinct_file_numbers, court)
 
     start_date = Date.new(2013, 1, 1)
     end_date = Date.new(2014, 1, 1) - 1
     distinct_file_numbers = TrialFile.where(minified: false, court: court).gt(date: start_date).lt(date: end_date).where(number: /\/2013\//).distinct(:number)
-    process_trial_proceedings_from_files(distinct_file_numbers)
+    process_trial_proceedings_from_files(distinct_file_numbers, court)
   end
 
-  def self.process_trial_proceedings_from_files(distinct_file_numbers)
+  def self.process_trial_proceedings_from_files(distinct_file_numbers, court)
     distinct_file_numbers.each_with_index do |file_number, index|
-      TrialFile.where(:number => file_number).each do |trial_file|
+      TrialFile.where(:number => file_number, court: court).each do |trial_file|
         trial_proceeding = TrialProceeding.where(number: file_number).first
         if trial_proceeding.nil?
           trial_proceeding = TrialProceeding.new
           trial_proceeding.number = file_number
+          trial_proceeding.court = court
         end
         trial_proceeding.case_type = trial_file.case_type
         trial_proceeding.trial_status = trial_file.trial_status
