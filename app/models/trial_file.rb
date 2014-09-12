@@ -11,6 +11,7 @@ class TrialFile
   field :minified, type: Boolean
 
   belongs_to :trial_meeting
+  belongs_to :trial_proceeding
   belongs_to :court
 
 end

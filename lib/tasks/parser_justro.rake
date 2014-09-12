@@ -21,4 +21,11 @@ namespace :parser_justro do
     end
   end
 
+  desc "generate proceedings"
+  task generate_proceedings: :environment do
+    ErrorRetryWrapperHelper.run_until_no_error do
+      TrialFileHelper.compact_trial_files
+    end
+  end
+
 end
