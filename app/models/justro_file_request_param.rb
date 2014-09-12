@@ -30,7 +30,7 @@ class JustroFileRequestParam
           request.end_date = date
           request.status = "notstarted"
           # puts "Saving file request #{request.inspect}"
-          request.safely.save
+          request.save
         end
       end
       puts "Saving file request #{request.inspect}"

@@ -24,7 +24,7 @@ class JustroMeetingRequestParam
           request.court_name = court_name
           request.meeting_date = date
           puts "Saving meeting request #{request.inspect}"
-          request.safely.save
+          request.save
         end
       end
     end
