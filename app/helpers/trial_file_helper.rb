@@ -18,18 +18,19 @@ module TrialFileHelper
     # file_count = distinct_file_numbers.size
     distinct_file_numbers.each_with_index do |file_number, index|
       # puts "#{get_percentage(index, file_count)} Computing proceeding for file number #{file_number}" 
-      TrialFile.where(:number => file_number).each do |file|
-        proceeding = TrialProceeding.where(number: file_number).first
-        if proceeding.nil?
-          proceeding = TrialProceeding.new
-          proceeding.number = file_number
+      TrialFile.where(:number => file_number).each do |trial_file|
+        trial_proceeding = TrialProceeding.where(number: file_number).first
+        if trial_proceeding.nil?
+          trial_proceeding = TrialProceeding.new
+          trial_proceeding.number = file_number
         end
-        proceeding.case_type = file.case_type
-        proceeding.trial_status = file.trial_status
-        proceeding.trial_files << file
-        proceeding.save
-        file.minified = true
-        file.save
+        trial_proceeding.case_type = trial_file.case_type
+        trial_proceeding.trial_status = trial_file.trial_status
+        trial_proceeding.trial_files << trial_file
+        trial_proceeding.save
+        trial_file.trial_proceeding = trial_proceeding
+        trial_file.minified = true
+        trial_file.save
       end
     end
   end
