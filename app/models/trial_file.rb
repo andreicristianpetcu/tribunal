@@ -21,4 +21,8 @@ class TrialFile
   index({ trial_status: 1 }, { background: true })
   index({ minified: 1 }, { background: true })
 
+  def self.reset_minified_for_all
+    TrialFile.where(minified: true).update_all(minified: false)
+    TrialFile.where(:minified.exists => false).update_all(minified: false)
+  end
 end

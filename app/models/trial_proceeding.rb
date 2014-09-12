@@ -17,4 +17,14 @@ class TrialProceeding
   index({ case_type: 1 }, { background: true })
   index({ trial_status: 1 }, { background: true })
 
+
+  def self.main
+    trial_proceeding = TrialProceeding.find("5412f3106c6f63385a27bc00")
+    trial_proceeding.compute_fond_duration
+  end
+
+  def compute_fond_duration
+    TrialFile.where(trial_proceeding: trial_proceeding, trial_status: "Fond").size
+  end
+
 end
