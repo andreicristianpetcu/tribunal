@@ -5,6 +5,9 @@ class TrialProceeding
   field :old_number, type: String
   field :case_type, type: String
   field :trial_status, type: String
+  field :fnod_duration, type: Float
+  field :apel_duration, type: Float
+  field :recurs_duration, type: Float
 
   belongs_to :court, index: true
   has_many :trial_files

@@ -14,7 +14,7 @@ module TrialFileHelper
     # end
     
     # distinct_file_numbers = TrialFile.where(:minified.exists => false, :court => court, :number => /2013/).distinct(:number)
-    distinct_file_numbers = TrialFile.where(:minified => false, :court => court, :number => /2013/).distinct(:number)
+    distinct_file_numbers = TrialFile.where(:court => court, :number => /2013/).distinct(:number)
     # file_count = distinct_file_numbers.size
     distinct_file_numbers.each_with_index do |file_number, index|
       # puts "#{get_percentage(index, file_count)} Computing proceeding for file number #{file_number}" 
