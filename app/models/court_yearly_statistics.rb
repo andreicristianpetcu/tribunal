@@ -8,7 +8,9 @@ class CourtYearlyStatistics
   field :performance_median, type: Float
   field :year, type: Integer
 
-  belongs_to :court
+  belongs_to :court, index: true
+
+  index({ year: 1 }, { background: true })
 
   def self.insert_for_year(year)
     Court.each do |court|
