@@ -53,3 +53,4 @@ gem 'pry', :group => :development
 gem 'pry-rails', :group => :development
 gem 'pry-nav', :group => :development
 gem 'pry-stack_explorer', :group => :development
+gem 'pry-coolline', :group => :development
