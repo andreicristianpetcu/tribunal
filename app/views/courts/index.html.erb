@@ -12,6 +12,6 @@
       <%= render court %>
     <% end %>
 
-    <%= paginate @courts.all %>
+    <%= paginate @courts.all, :param_name => :courts_page %>>
   </tbody>
 </table>

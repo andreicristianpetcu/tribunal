@@ -1,4 +1,4 @@
-<h1>Listing trial_proceedings</h1>
+<h1>Dosare</h1>
 
 <table>
   <thead>
@@ -10,14 +10,9 @@
   <tbody>
     <% @trial_proceedings.each do |trial_proceeding| %>
       <tr>
-        <td><%= link_to 'Show', trial_proceeding %></td>
-        <td><%= link_to 'Edit', edit_trial_proceeding_path(trial_proceeding) %></td>
-        <td><%= link_to 'Destroy', trial_proceeding, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%= render trial_proceeding %>
       </tr>
     <% end %>
+    <%= paginate @trial_proceedings.all, :param_name => :trial_proceedings_page %>>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Trial proceeding', new_trial_proceeding_path %>
