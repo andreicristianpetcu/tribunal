@@ -4,7 +4,6 @@ class CourtsController < ApplicationController
   # GET /courts
   # GET /courts.json
   def index
-    binding.pry
     @courts = Court.page(params[:page])
   end
 
