@@ -12,7 +12,7 @@
           <%= render proceeding %>
         <% end %>
 
-        <%= paginate @proceedings.all %>
+        <%= paginate @proceedings.all, :param_name => :court_proceedings_page %>
       </tbody>
     </table>
     Work in progress
