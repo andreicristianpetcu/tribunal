@@ -1,25 +1,12 @@
 <% content_for :head do %>
   <script type="text/javascript">
-    $(function() {
-      make_donut = function(component, percentage, colour){
-        var start_arch = -Math.PI*0.75;
-        if(typeof colour === 'undefined'){
-          colour = "#5BC0DE";
-         };
-        var vis = d3.select("#" + component);
-        var arc = d3.svg.arc()
-          .innerRadius(50)
-          .outerRadius(100)
-          .startAngle(start_arch)
-          .endAngle(start_arch + 0.02*Math.PI*percentage);
-
-        vis.append("path")
-          .style("fill", function(d){return colour;})
-          .attr("d", arc)
-          .attr("transform", "translate(100,100)");
-      };
+    var ready;
+    ready = function() {
       make_donut("performance_indicator_donut", <%= @court.performance_indicator.to_i %>, "#F0AD4E");
-    });
+    };
+
+    $(document).ready(ready);
+    $(document).on('page:load', ready);
   </script>
 <% end %>
 
