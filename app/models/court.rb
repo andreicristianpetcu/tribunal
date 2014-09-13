@@ -30,4 +30,8 @@ class Court
   index({ name: 1 }, { background: true })
   index({ computer_name: 1 }, { background: true })
 
+  def proceedings
+    TrialProceeding.where(court: self)
+  end
+
 end

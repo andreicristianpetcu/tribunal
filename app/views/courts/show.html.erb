@@ -39,7 +39,7 @@
       <%= render 'court_tab', :locals => {id: "indicators", label: "Indicatori", active: true} %>
       <%= render 'court_tab', :locals => {id: "hearings", label: "Ședințe"} %>
       <%= render 'court_tab', :locals => {id: "decisions", label: "Decizii"} %>
-      <%= render 'court_tab', :locals => {id: "files", label: "Dosare"} %>
+      <%= render 'court_tab', :locals => {id: "proceedings", label: "Dosare"} %>
       <%= render 'court_tab', :locals => {id: "contact", label: "Contact"} %>
     </ul>
   </div>  
@@ -47,7 +47,7 @@
     <%= render 'court_tab_indicators' %>
     <div class="tab-pane fade" id="hearings">Ședințe Work in progress</div>
     <div class="tab-pane fade" id="decisions">Decizii Work in progress</div>
-    <div class="tab-pane fade" id="files">Dosare Work in progress</div>
+    <%= render 'court_tab_proceedings' %>
     <div class="tab-pane fade" id="contact">Contact Work in progress</div>
   </div>
 </div> 
