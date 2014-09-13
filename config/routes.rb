@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   root 'high_voltage/pages#show', id: 'working_on_it'
-
+  
   resources :trial_files
 
   resources :trial_meetings
@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resources :courts
 
   get 'pages/working_on_it' => 'high_voltage/pages#show', id: 'working_on_it'
+  get 'pages/despre' => 'high_voltage/pages#show', id: 'despre'
 
   # Example resource route with options:
   #   resources :products do
