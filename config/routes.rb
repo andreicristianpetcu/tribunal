@@ -30,6 +30,8 @@ Rails.application.routes.draw do
 
   get 'pages/working_on_it' => 'high_voltage/pages#show', id: 'working_on_it'
   get 'pages/despre' => 'high_voltage/pages#show', id: 'despre'
+  get 'pages/educatie' => 'high_voltage/pages#show', id: 'educatie'
+  get 'pages/indicele-de-performanta' => 'high_voltage/pages#show', id: 'indicele-de-performanta'
 
   # Example resource route with options:
   #   resources :products do
