@@ -7,7 +7,7 @@
             <%= @court.performance_indicator.to_i %>%
           </h4>
         </div>
-        <div class="panel-body">
+        <div id="performance_indicator" data-value="<%= @court.performance_indicator.to_i %>" class="panel-body">
           <svg id="performance_indicator_donut" width="200" height="200"></svg>
         </div>
       </div>
