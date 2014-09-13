@@ -31,7 +31,6 @@ class TrialProceeding
   end
 
   def compute_duration(status)
-    binding.pry
     criteria = TrialFile.where(trial_proceeding: self, trial_status: status)
     if criteria.size > 1
       max_date = criteria.max(:date)

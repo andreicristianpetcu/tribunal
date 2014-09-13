@@ -28,4 +28,11 @@ namespace :parser_justro do
     end
   end
 
+  desc "process durations"
+  task generate_durations: :environment do
+    ErrorRetryWrapperHelper.run_until_no_error do
+      TrialProceedingHelper.compute_trial_proceeding_duration
+    end
+  end
+
 end
