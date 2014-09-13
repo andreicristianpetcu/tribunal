@@ -26,9 +26,13 @@
       $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
         return location.hash = $(e.target).attr('href').substr(1);
       });
-      $('span.page a').click(function(e) {
-        e.preventDefaults();
-        return e.target.href + '#' + $('li.active a[data-toggle="tab"]').attr('href').substr(1);
+      $('span.page a').each(function() {
+        var href = $(this).attr('href');
+
+        if(href) {
+          href += (href.match(/\?/) ? '&' : '?') + $('li.active a[data-toggle="tab"]').attr('href');
+          $(this).attr('href', href);
+        }
       });
     };
 
