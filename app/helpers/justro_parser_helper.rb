@@ -126,14 +126,13 @@ module JustroParserHelper
     puts "Files with courts #{files_withCourts}"
   end
 
-  def self.purge_all_and_get_justro_files
-    JustroFileRequestParam.delete_all
-    JustroFile.delete_all
-    JustroFileRequestParam.generate_all
-  end
+  # def self.purge_all_and_get_justro_files
+  #   JustroFileRequestParam.delete_all
+  #   JustroFile.delete_all
+  #   JustroFileRequestParam.generate_all
+  # end
 
   def self.get_justro_files
-
     last_court_name = nil
     JustroFileRequestParam.get_notstarted.no_timeout.each do |request_params|
       request_params.status = "started"
