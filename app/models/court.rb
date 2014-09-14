@@ -26,6 +26,13 @@ class Court
   field :performance_indicator, type: Float
   # field :performance_median, type: Float
 
+  field :web_site, type: String 
+  field :email, type: String 
+  field :telephone, type: String 
+  field :fax, type: String 
+  field :program, type: String 
+  field :address, type: String 
+
   has_many :trial_meetings
   # index({ name: 1 }, { background: true })
   # index({ computer_name: 1 }, { background: true })

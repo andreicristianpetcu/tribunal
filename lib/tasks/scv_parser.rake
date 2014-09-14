@@ -8,4 +8,9 @@ namespace :scv_parser do
   task parse_circumscriptions_csv: :environment do
     CsvParserHelper.parse_circumscriptions_csv
   end
+
+  desc "Parse data/court_contacts.csv"
+  task parse_court_contacts_csv: :environment do
+    CsvParserHelper.parse_court_contacts_csv
+  end
 end

@@ -32,6 +32,29 @@ module CsvParserHelper
     hash[key] += strip(population)
   end
 
+  def self.parse_court_contacts_csv
+    csv_file_path = File.join(File.dirname(__FILE__), "../../data/court_contacts.csv")
+    headers_checked = false
+    CSV.foreach(csv_file_path) do |row|
+      if !headers_checked then
+        check_headers(row, get_court_contacts_headers)
+        headers_checked = true
+      else
+        court_computer_name = row[1]
+        court = Court.where(computer_name: court_computer_name).first
+        court.web_site = row[2]
+        court.email = row[3]
+        court.telephone = row[4]
+        court.fax = row[5]
+        court.program = row[6]
+        court.address = row[7]
+
+        court.save
+        puts court.name
+      end
+    end
+  end
+
   def self.parse_indicators_csv
     csv_file_path = File.join(File.dirname(__FILE__), "../../data/Capete_de_tabel_indicatori_2013.csv")
     headers_checked = false
@@ -93,6 +116,10 @@ module CsvParserHelper
       end
     end
   end 
+
+  def self.get_court_contacts_headers
+    return ["Instanța", "Cod portal", "Site", "Email", "Telefon", "Fax", "Program de lucru", "Adresa"]
+  end
 
   def self.get_circumscription_headers
     return ["Cod judet", "Codul SIRUTA", "judet", "localitatea", "rang", "judecatorie", "tribunal", "CA", "Populatie"]
