@@ -52,7 +52,7 @@
   <div class="bs-example">
     <ul class="nav nav-tabs">
       <%= render 'court_tab', :locals => {id: "indicators", label: "Indicatori", active: true} %>
-      <%= render 'court_tab', :locals => {id: "hearings", label: "Ședințe"} %>
+      <%= render 'court_tab', :locals => {id: "meetings", label: "Ședințe"} %>
       <%= render 'court_tab', :locals => {id: "proceedings", label: "Dosare"} %>
       <%= render 'court_tab', :locals => {id: "judges", label: "Judecători"} %>
       <%= render 'court_tab', :locals => {id: "contact", label: "Contact"} %>
@@ -60,8 +60,8 @@
   </div>  
   <div class="tab-content">
     <%= render 'court_tab_indicators' %>
-    <div class="tab-pane fade" id="hearings">Ședințe Work in progress</div>
-    <div class="tab-pane fade" id="decisions">Decizii Work in progress</div>
+    <%= render 'court_tab_meetings' %>
+    <%= render 'court_tab_judges' %>
     <%= render 'court_tab_proceedings' %>
     <div class="tab-pane fade" id="contact">Contact Work in progress</div>
   </div>

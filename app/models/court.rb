@@ -34,4 +34,8 @@ class Court
     TrialProceeding.where(court: self)
   end
 
+  def meetings
+    TrialMeeting.where(court: self)
+  end
+
 end

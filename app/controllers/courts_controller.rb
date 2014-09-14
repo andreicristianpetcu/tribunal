@@ -17,6 +17,7 @@ class CourtsController < ApplicationController
     def set_court
       @court = Court.find(params[:id])
       @proceedings = @court.proceedings.page(params[:court_proceedings_page])
+      @trial_meetings = @court.meetings.page(params[:court_meetings_page])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
