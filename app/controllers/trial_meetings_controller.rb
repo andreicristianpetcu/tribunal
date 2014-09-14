@@ -3,6 +3,7 @@ class TrialMeetingsController < ApplicationController
 
   def index
     @trial_meetings = TrialMeeting.page(params[:page])
+    # @trial_meetings = TrialMeeting.order_by(:date.desc).page(params[:page])
   end
 
   private

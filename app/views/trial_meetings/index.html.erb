@@ -1,9 +1,20 @@
 <h1>Ședințe</h1>
 
-<table>
+<table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>
+        Departament
+      </th>
+      <th>
+        Data
+      </th>
+      <th>
+        Ora
+      </th>
+      <th>
+        Numele instanței
+      </th>
     </tr>
   </thead>
 
@@ -13,13 +24,9 @@
         <td> <%= trial_meeting.departament %> </td>
         <td> <%= trial_meeting.date %> </td>
         <td> <%= trial_meeting.hour %> </td>
-        <td> <%= trial_meeting.court.name %> </td>
+        <td> <%= link_to trial_meeting.court.name, court_path(trial_meeting.court) %>  </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <%= paginate @trial_meetings.all %>
-
-<br>
-
-<%= link_to 'New Trial meeting', new_trial_meeting_path %>
