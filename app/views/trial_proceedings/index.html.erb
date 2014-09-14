@@ -1,18 +1,37 @@
 <h1>Dosare</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @trial_proceedings.each do |trial_proceeding| %>
+<div class="bs-component">
+  <table class="table table-striped table-hover">
+    <thead>
       <tr>
-        <%= render trial_proceeding %>
+        <td>
+          Număr dosar
+        </td>
+        <td>
+          Categorie caz
+        </td>
+        <td>
+          Stadiu Procesual
+        </td>
       </tr>
-    <% end %>
-    <%= paginate @trial_proceedings.all, :param_name => :trial_proceedings_page %>>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @trial_proceedings.each do |proceeding| %>
+        <tr>
+          <td>
+            <%= proceeding.number %>
+          </td>
+          <td>
+            <%= proceeding.case_type %>
+          </td>
+          <td>
+            <%= proceeding.trial_status %>
+          </td>
+        </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+  <%= paginate @trial_proceedings.all, :param_name => :trial_proceedings_page %>
+</div>
