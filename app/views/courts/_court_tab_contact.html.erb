@@ -1,6 +1,66 @@
 <div class="tab-pane fade in" id="contact">
 <div class="bs-component">
-  <p>Contact</p>
-</div>
+  <div class="bs-component">
+    <div class="list-group">
+
+      <% if !@court.web_site.nil? %>
+        <div class="list-group-item">
+          <h4 class="list-group-item-heading">Web site</h4>
+          <p class="list-group-item-text">
+          <a href="<%= @court.web_site %>"><%= @court.web_site %></a>
+          </p>
+        </div>
+      <% end %>
+
+      <% if !@court.email.nil? %>
+        <div class="list-group-item">
+          <h4 class="list-group-item-heading">Adresă Email</h4>
+          <p class="list-group-item-text">
+          <a href="mailto:<%= @court.email %>">
+            <%= @court.email %>
+          </a>
+          </p>
+        </div>
+      <% end %>
+
+      <% if !@court.telephone.nil? %>
+        <div class="list-group-item">
+          <h4 class="list-group-item-heading">Telefon</h4>
+          <p class="list-group-item-text">
+          <%= @court.telephone %>
+          </p>
+        </div>
+      <% end %>
+
+      <% if !@court.fax.nil? %>
+        <div class="list-group-item">
+          <h4 class="list-group-item-heading">Fax</h4>
+          <p class="list-group-item-text">
+          <%= @court.fax %>
+          </p>
+        </div>
+      <% end %>
+
+      <% if !@court.program.nil? %>
+        <div class="list-group-item">
+          <h4 class="list-group-item-heading">Program</h4>
+          <p class="list-group-item-text">
+          <%= @court.program %>
+          </p>
+        </div>
+      <% end %>
+
+      <% if !@court.address.nil? %>
+        <div class="list-group-item">
+          <h4 class="list-group-item-heading">Adresă</h4>
+          <p class="list-group-item-text">
+          <%= @court.address %>
+          </p>
+        </div>
+      <% end %>
+
+    </div>
+
+  </div>
 
 </div>
