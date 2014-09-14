@@ -10,8 +10,8 @@ class TrialMeeting
   has_many :trial_files
   belongs_to :court, index: true
 
-  index({ departament: 1 }, { background: true })
-  index({ complet: 1 }, { background: true })
-  index({ date: 1 }, { background: true })
+  # index({ departament: 1 }, { background: true })
+  # index({ complet: 1 }, { background: true })
+  # index({ date: 1 }, { background: true })
 
 end

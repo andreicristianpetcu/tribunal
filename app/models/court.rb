@@ -27,8 +27,8 @@ class Court
   # field :performance_median, type: Float
 
   has_many :trial_meetings
-  index({ name: 1 }, { background: true })
-  index({ computer_name: 1 }, { background: true })
+  # index({ name: 1 }, { background: true })
+  # index({ computer_name: 1 }, { background: true })
 
   def proceedings
     TrialProceeding.where(court: self)

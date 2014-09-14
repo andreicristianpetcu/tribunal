@@ -14,11 +14,11 @@ class TrialFile
   belongs_to :trial_proceeding, index: true
   belongs_to :court, index: true
 
-  index({ number: 1 }, { background: true })
-  index({ date: 1 }, { background: true })
-  index({ case_type: 1 }, { background: true })
-  index({ trial_status: 1 }, { background: true })
-  index({ minified: 1 }, { background: true })
+  # index({ number: 1 }, { background: true })
+  # index({ date: 1 }, { background: true })
+  # index({ case_type: 1 }, { background: true })
+  # index({ trial_status: 1 }, { background: true })
+  # index({ minified: 1 }, { background: true })
 
   def self.reset_minified_for_all
     TrialFile.where(minified: true).update_all(minified: false)

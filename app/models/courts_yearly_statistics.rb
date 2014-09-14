@@ -8,6 +8,6 @@ class CourtsYearlyStatistics
   field :performance_median, type: Float
   field :year, type: Integer
 
-  index({ year: 1 }, { background: true })
+  # index({ year: 1 }, { background: true })
 
 end

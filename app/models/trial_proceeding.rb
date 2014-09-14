@@ -12,9 +12,9 @@ class TrialProceeding
   belongs_to :court, index: true
   has_many :trial_files
 
-  index({ number: 1 }, { background: true })
-  index({ case_type: 1 }, { background: true })
-  index({ trial_status: 1 }, { background: true })
+  # index({ number: 1 }, { background: true })
+  # index({ case_type: 1 }, { background: true })
+  # index({ trial_status: 1 }, { background: true })
 
 
   def self.main

@@ -10,7 +10,7 @@ class CourtYearlyStatistics
 
   belongs_to :court, index: true
 
-  index({ year: 1 }, { background: true })
+  # index({ year: 1 }, { background: true })
 
   def self.insert_for_year(year)
     Court.each do |court|
