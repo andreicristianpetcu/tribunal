@@ -27,3 +27,145 @@ body {
 .menu_spacing {
   height: 50px;
 }
+
+
+/*======================================
+      Typography 
+====================================== */
+
+h2 {
+  color: #FECF87;
+  font-size: 2em;
+  font-weight: 700;
+}
+
+
+/*======================================
+      Layout 
+====================================== */
+
+.body-wrapper {
+  background-color: #2b3e50;
+  width: 100%;
+  min-height: 700px;
+}
+body {
+  font-family: 'Open Sans', Sans;
+  font-size: 14px;
+}
+.mainContainer {
+  margin: 50px 0;
+  min-height: 350px;
+}
+.footer {
+  background-color: #FECF87;
+  background-image: url('../img/menu-border.jpg'), url('../img/menu-border.jpg') ;
+  background-repeat: repeat-x, repeat-x;
+  background-position: left 5px, left 52px;
+  min-height: 60px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+
+
+/*======================================
+      Top links 
+====================================== */
+
+ul.top-links {
+  list-style: none;
+  float: right;
+  margin-top: -10px;
+}
+ul.top-links li {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+ul.top-links li a{
+  color: #fecf87;
+  font-size: 12px;
+}
+ul.top-links li a:hover {
+  color: #727172;
+  text-decoration: none;
+}
+ul.top-links input {
+  border: 1px solid #000;
+  box-shadow: none;
+  padding: 2px 5px;
+}
+
+ul.find-more {
+  list-style: none;
+}
+ul.find-more li {
+  font-size: 1.25em;
+  color: #FECF87;
+  font-weight: 400;
+}
+/*======================================
+      Navigation 
+====================================== */
+.navbar {
+  margin-bottom: 0px;
+}
+
+.navbar-default {
+  background-color: transparent;
+  border: none;
+  margin-top: 10px;
+}
+.menu-right {
+
+}
+#bs-example-navbar-collapse {
+  background-color: #FECF87;
+  height: 60px !important;
+  margin: 20px 0px 0px 60px;
+  padding: 5px 0;
+  background-image: url('../img/menu-border.jpg'), url('../img/menu-border.jpg') ;
+  background-repeat: repeat-x, repeat-x;
+  background-position: left 5px, left 52px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #D24541;
+  font-size: 1.15em;
+  font-weight: 700;
+  padding-bottom: 17px;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  color: #D24541;
+  border-bottom: 4px solid #D24541;
+}
+
+/*======================================
+      Mobile  
+====================================== */
+
+
+@media only screen and ( max-width: 769px) {
+  #bs-example-navbar-collapse {
+    background-color: #FECF87;
+    height: auto !important;
+    margin: 0px;
+    padding: 5px 0;
+  }
+  .navbar-default .navbar-nav > li > a {
+    color: #D24541;
+    font-size: 1.15em;
+    font-weight: 700;
+    padding: 10px 30px;
+    border-bottom: 2px solid #D24541;
+  }
+  .navbar-default .navbar-nav > li > a:hover {
+    color: #D24541;
+    border-bottom: 2px solid #D24541;
+  }
+  .navbar-default .navbar-nav > li:last-child > a {
+    color: #D24541;
+    border-bottom: none;
+  }
+}
