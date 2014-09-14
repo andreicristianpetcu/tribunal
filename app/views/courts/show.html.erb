@@ -25,13 +25,17 @@
     $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
       return location.hash = $(e.target).attr('href').substr(1);
     });
-    $('nav.pagination span a').each(function() {
-      var href = $(this).attr('href');
+    $('a[data-toggle="tab"]').each(function(){
+      this.click(function(){
+        $('nav.pagination span a').each(function() {
+          var href = $(this).attr('href').split('#')[0];
 
-      if(href) {
-        href += (href.match(/\?/) ? '&' : '?') + $('li.active a[data-toggle="tab"]').attr('href');
-        $(this).attr('href', href);
-      }
+          if(href) {
+            href += $('li.active a[data-toggle="tab"]').attr('href');
+            $(this).attr('href', href);
+          }
+        });
+      });
     });
   };
 
