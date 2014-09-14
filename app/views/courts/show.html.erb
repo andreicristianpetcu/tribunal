@@ -26,7 +26,7 @@
       $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
         return location.hash = $(e.target).attr('href').substr(1);
       });
-      $('span.page a').each(function() {
+      $('nav.pagination span a').each(function() {
         var href = $(this).attr('href');
 
         if(href) {
