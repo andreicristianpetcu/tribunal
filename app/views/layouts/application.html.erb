@@ -8,101 +8,106 @@
   <%= yield :head %>
 </head>
 <body>
+  <div class="body-wrapper">
+    <div class="container">
 
-<header>
+      <header>
 
-      <div class="row">
-        <div class="col-md-12">
-          <nav role="navigation" class="navbar navbar-default">
-            <div class="navbar-header">
-               <button data-target="#bs-example-navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="index.html"><img alt="Logo of the site" src="/assets/loog.png" class="logo" height="100" width="100"></a>
-            </div>
-            <div class="menu-right">
-              <div id="bs-example-navbar-collapse" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                  <li class="active-menu"><a href="">Despre</a></li>
-                  <li><a href="">Educatie</a></li>
-                  <li><a href="">Instante</a></li>
-                  <li><a href="">Indicele de performanta</a></li>
-                </ul>
+        <div class="row">
+          <div class="col-md-12">
+            <nav role="navigation" class="navbar navbar-default">
+              <div class="navbar-header">
+                <button data-target="#bs-example-navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="index.html"><img alt="Logo of the site" src="/assets/loog.png" class="logo" height="100" width="100"></a>
               </div>
+              <div class="menu-right">
+                <div id="bs-example-navbar-collapse" class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav">
+                    <li class="active-menu"><a href="">Despre</a></li>
+                    <li><a href="">Educatie</a></li>
+                    <li><a href="">Instante</a></li>
+                    <li><a href="">Indicele de performanta</a></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="top-links">
+              <li><a href="">Jurisprudenta</a></li>
+              <li><a href="">Dosare</a></li>
+              <li><a href="">Sedinte</a></li>
+              <li><a href="">Judecatori</a></li>
+              <!-- <li><input placeholder="cauta" type="search"></li> -->
+            </ul>
+          </div>
+        </div>
+      </header>
+      <!-- <div class="navbar navbar&#45;default navbar&#45;fixed&#45;top"> -->
+      <!--   <div class="container"> -->
+      <!--     <div class="navbar&#45;header"> -->
+      <!--       <a href="../" class="navbar&#45;brand">Onorată Instanță</a> -->
+      <!--     </div> -->
+      <!--     <div class="navbar&#45;collapse collapse" id="navbar&#45;main"> -->
+      <!--       <ul class="nav navbar&#45;nav"> -->
+      <!--         <li> -->
+      <%# <%= link_to 'Despre', page_path('despre') %>
+      <!--         </li> -->
+      <!--         <li> -->
+      <%# <%= link_to 'Educație', page_path('educatie') %>
+      <!--         </li> -->
+      <!--         <li> -->
+      <!--           <a href="/courts">Instanțe</a> -->
+      <!--         </li> -->
+      <!--         <li> -->
+      <%# <%= link_to 'Indicele de performanță', page_path('indicele-de-performanta') %>
+      <!--         </li> -->
+      <!--         <li> -->
+      <!--           <a href="/trial_meetings">Ședințe</a> -->
+      <!--         </li> -->
+      <!--         <li> -->
+      <!--           <a href="/trial_proceedings">Dosare</a> -->
+      <!--         </li> -->
+      <!--         <li> -->
+      <!--           <a href="/trial_proceedings">Judecători</a> -->
+      <!--         </li> -->
+      <!--         <!&#45;&#45; <li> &#45;&#45;> -->
+      <!--         <!&#45;&#45;   <form class="navbar&#38;#45;form navbar&#38;#45;left"> &#45;&#45;> -->
+      <!--         <!&#45;&#45;     <input class="form&#38;#45;control col&#38;#45;lg&#38;#45;8" placeholder="Caută" type="text"> &#45;&#45;> -->
+      <!--         <!&#45;&#45;   </form> &#45;&#45;> -->
+      <!--         <!&#45;&#45; </li> &#45;&#45;> -->
+      <!--       </ul> -->
+      <!--     </div> -->
+      <!--   </div> -->
+      <!-- </div> -->
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <%= yield %>
+          </div>
+        </div>
+
+
+        <footer>
+          <div class="row">
+            <div class="col-lg-12">
+
+              <ul class="list-inline">
+                <li>
+                  <a href="http://www.kas.de/rspsoe/ro/" >
+                    <img src="/assets/kas_logo.png" alt="Konrad Adenauer Stiftung">
+                  </a>
+                </li>
+              </ul>
             </div>
-          </nav>
-        </div>
-      </div>
-            <div class="row">
-        <div class="col-md-12">
-          <ul class="top-links">
-            <li><a href="">Jurisprudenta</a></li>
-            <li><a href="">Dosare</a></li>
-            <li><a href="">Sedinte</a></li>
-            <li><a href="">Judecatori</a></li>
-            <li><input placeholder="cauta" type="search"></li>
-          </ul>
-        </div>
-      </div>
-    </header>
-  <!-- <div class="navbar navbar&#45;default navbar&#45;fixed&#45;top"> -->
-  <!--   <div class="container"> -->
-  <!--     <div class="navbar&#45;header"> -->
-  <!--       <a href="../" class="navbar&#45;brand">Onorată Instanță</a> -->
-  <!--     </div> -->
-  <!--     <div class="navbar&#45;collapse collapse" id="navbar&#45;main"> -->
-  <!--       <ul class="nav navbar&#45;nav"> -->
-  <!--         <li> -->
-            <%# <%= link_to 'Despre', page_path('despre') %>
-  <!--         </li> -->
-  <!--         <li> -->
-            <%# <%= link_to 'Educație', page_path('educatie') %>
-  <!--         </li> -->
-  <!--         <li> -->
-  <!--           <a href="/courts">Instanțe</a> -->
-  <!--         </li> -->
-  <!--         <li> -->
-            <%# <%= link_to 'Indicele de performanță', page_path('indicele-de-performanta') %>
-  <!--         </li> -->
-  <!--         <li> -->
-  <!--           <a href="/trial_meetings">Ședințe</a> -->
-  <!--         </li> -->
-  <!--         <li> -->
-  <!--           <a href="/trial_proceedings">Dosare</a> -->
-  <!--         </li> -->
-  <!--         <li> -->
-  <!--           <a href="/trial_proceedings">Judecători</a> -->
-  <!--         </li> -->
-  <!--         <!&#45;&#45; <li> &#45;&#45;> -->
-  <!--         <!&#45;&#45;   <form class="navbar&#38;#45;form navbar&#38;#45;left"> &#45;&#45;> -->
-  <!--         <!&#45;&#45;     <input class="form&#38;#45;control col&#38;#45;lg&#38;#45;8" placeholder="Caută" type="text"> &#45;&#45;> -->
-  <!--         <!&#45;&#45;   </form> &#45;&#45;> -->
-  <!--         <!&#45;&#45; </li> &#45;&#45;> -->
-  <!--       </ul> -->
-  <!--     </div> -->
-  <!--   </div> -->
-  <!-- </div> -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <%= yield %>
-      </div>
-    </div>
+          </div>
 
+        </footer>
+      </div>
 
-<footer>
-  <div class="row">
-    <div class="col-lg-12">
-
-      <ul class="list-inline">
-        <li>
-          <a href="http://www.kas.de/rspsoe/ro/" >
-            <img src="/assets/kas_logo.png" alt="Konrad Adenauer Stiftung">
-          </a>
-        </li>
-      </ul>
     </div>
   </div>
-
-</footer>
-</div>
 </body>
 
 </html>
