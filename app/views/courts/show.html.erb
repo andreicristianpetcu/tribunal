@@ -21,6 +21,7 @@
   ready = function() {
     var value = $('#performance_indicator').attr("data-value");
     make_donut("performance_indicator_donut", value, "#F0AD4E");
+
     if (location.hash !== '') $('a[href="' + location.hash + '"]').tab('show');
     $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
       return location.hash = $(e.target).attr('href').substr(1);
