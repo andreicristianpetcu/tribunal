@@ -27,7 +27,7 @@
       return location.hash = $(e.target).attr('href').substr(1);
     });
     $('a[data-toggle="tab"]').each(function(){
-      this.click(function(){
+      this.on('click', function(){
         $('nav.pagination span a').each(function() {
           var href = $(this).attr('href').split('#')[0];
 
