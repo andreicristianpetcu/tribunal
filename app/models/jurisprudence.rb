@@ -1,6 +1,7 @@
 class Jurisprudence
   include Mongoid::Document
   field :titlu, type: String
+  field :number, type: String
   field :tip, type: String
   field :domeniu, type: String
   field :decizie_sau_sentinta, type: Mongoid::Boolean
