@@ -1,5 +1,9 @@
 <h2>Dicționar</h2>
 
+<% @letters.each do |key, value| %>
+  <a href="#<%= value %>"><%= key %></a>
+<% end %>
+
 <div class="page-header">
   <div class="row">
     <div class="col-lg-3">
@@ -18,10 +22,6 @@
     </div>
   </div>
 </div>
-
-<% @letters.each do |key, value| %>
-  <a href="#<%= value %>"><%= key %></a>
-<% end %>
 
 <% @dictionary_terms.each do |dictionary_term| %>
 

@@ -1,17 +1,21 @@
 class DictionaryTermsController < ApplicationController
   before_action :set_dictionary_term, only: [:show, :edit, :update, :destroy]
 
+  @@letters = {}
+
   # GET /dictionary_terms
   # GET /dictionary_terms.json
   def index
     @dictionary_terms = DictionaryTerm.all
-    @letters = Hash.new
-    @dictionary_terms.each do |term|
-      letter = term.termen[0].upcase
-      if @letters[letter].nil?
-        @letters[letter] = term.id
+    if @@letters.size == 0
+      @dictionary_terms.each do |term|
+        letter = term.termen[0].upcase
+        if @@letters[letter].nil?
+          @@letters[letter] = term.id
+        end
       end
     end
+    @letters = @@letters
   end
 
   private
