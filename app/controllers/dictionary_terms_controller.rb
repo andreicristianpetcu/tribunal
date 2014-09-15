@@ -5,6 +5,13 @@ class DictionaryTermsController < ApplicationController
   # GET /dictionary_terms.json
   def index
     @dictionary_terms = DictionaryTerm.all
+    @letters = Hash.new
+    @dictionary_terms.each do |term|
+      letter = term.termen[0].upcase
+      if @letters[letter].nil?
+        @letters[letter] = term.id
+      end
+    end
   end
 
   private

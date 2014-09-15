@@ -19,6 +19,10 @@
   </div>
 </div>
 
+<% @letters.each do |key, value| %>
+  <a href="#<%= value %>"><%= key %></a>
+<% end %>
+
 <% @dictionary_terms.each do |dictionary_term| %>
 
   <div class="row">
