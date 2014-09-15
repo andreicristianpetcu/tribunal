@@ -11,6 +11,7 @@
       .outerRadius(100)
       .startAngle(start_arch)
       .endAngle(start_arch + 0.02*Math.PI*percentage);
+
     vis.append("path")
       .style("fill", function(d){return colour;})
       .attr("d", arc)
