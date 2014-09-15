@@ -1,8 +1,23 @@
-<h2>Dicționar</h2>
-
-<% @letters.each do |key, value| %>
-  <a href="#<%= value %>"><%= key %></a>
-<% end %>
+<div class="row">
+  <div class="col-lg-3">
+    <!-- <div class="bs&#45;component"> -->
+      <h2>Dicționar</h2>
+    <!-- </div> -->
+  </div>
+  <div class="col-lg-9">
+    <!-- <div class="bs&#45;component"> -->
+      <ul class="list-inline">
+        <% @letters.each do |key, value| %>
+          <li>
+            <h3>
+              <a href="#<%= value %>"><%= key %></a>
+            </h3>
+          </li>
+        <% end %>
+      </ul>
+    <!-- </div> -->
+  </div>
+</div>
 
 <div class="page-header">
   <div class="row">
