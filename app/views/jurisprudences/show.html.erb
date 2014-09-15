@@ -1,6 +1,76 @@
-
 <div class="row">
   <h2>
     <%= @jurisprudence.titlu %>
   </h2>
+
+  <div class="bs-component">
+    <div class="list-group">
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">
+          Număr
+        </h4>
+        <p class="list-group-item-text">
+        <%= @jurisprudence.number %> 
+        </p>
+      </div>
+
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">
+          Tip
+        </h4>
+        <p class="list-group-item-text">
+        <%= @jurisprudence.tip %> 
+        </p>
+      </div>
+
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">
+          Domeniu
+        </h4>
+        <p class="list-group-item-text">
+        <%= @jurisprudence.domeniu %> 
+        </p>
+      </div>
+
+
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">
+          Hotărâre
+        </h4>
+        <p class="list-group-item-text">
+        <%= @jurisprudence.hotarare %> 
+        </p>
+      </div>
+
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">
+          Anul
+        </h4>
+        <p class="list-group-item-text">
+        <%= @jurisprudence.anul %> 
+        </p>
+      </div>
+
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">
+          Secția
+        </h4>
+        <p class="list-group-item-text">
+        <%= @jurisprudence.sectia %> 
+        </p>
+      </div>
+
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">
+          Instanță
+        </h4>
+        <p class="list-group-item-text">
+        <%= link_to @jurisprudence.court.name, court_path(@jurisprudence.court) %>  
+        </p>
+      </div>
+    </div>
+  </div>
+  <h3>
+    <%= @jurisprudence.descriere_completa %>
+  </h3>
 </div>
