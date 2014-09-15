@@ -1,23 +1,31 @@
-<h1>Listing dictionary_terms</h1>
+<h2>Dicționar</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @dictionary_terms.each do |dictionary_term| %>
 
-  <tbody>
-    <% @dictionary_terms.each do |dictionary_term| %>
-      <tr>
-        <td><%= link_to 'Show', dictionary_term %></td>
-        <td><%= link_to 'Edit', edit_dictionary_term_path(dictionary_term) %></td>
-        <td><%= link_to 'Destroy', dictionary_term, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="bs-component">
+        <h3>
+          <%= dictionary_term.termen %>
+        </h3>
+      </div>
+    </div>
 
-<br>
+    <div class="col-lg-6">
+      <div class="bs-component">
+        <h5>
+          <%= dictionary_term.legaleza %>
+        </h5>
+      </div>
+    </div>
 
-<%= link_to 'New Dictionary term', new_dictionary_term_path %>
+    <div class="col-lg-3">
+      <div class="bs-component">
+        <h5>
+          <%= dictionary_term.romana %>
+        </h5>
+      </div>
+
+    </div>
+  </div>
+<% end %>
