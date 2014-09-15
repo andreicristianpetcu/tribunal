@@ -45,4 +45,8 @@ class Court
     TrialMeeting.where(court: self)
   end
 
+  def judges
+    TrialJudge.where(court: self)
+  end
+
 end
