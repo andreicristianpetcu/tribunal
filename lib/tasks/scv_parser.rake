@@ -13,4 +13,9 @@ namespace :scv_parser do
   task parse_court_contacts_csv: :environment do
     CsvParserHelper.parse_court_contacts_csv
   end
+
+  desc "Parse data/judges.csv"
+  task parse_court_judges_csv: :environment do
+    CsvParserHelper.parse_court_judges_csv
+  end
 end

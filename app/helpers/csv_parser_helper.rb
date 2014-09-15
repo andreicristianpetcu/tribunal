@@ -32,6 +32,41 @@ module CsvParserHelper
     hash[key] += strip(population)
   end
 
+  def self.parse_dictionary_term_csv
+    csv_file_path = File.join(File.dirname(__FILE__), "../../data/dictionary_term.csv")
+    CSV.foreach(csv_file_path) do |row|
+      dictionary_term = DictionaryTerm.new  
+      dictionary_term.termen = row[0]
+      dictionary_term.legaleza = row[1]
+      dictionary_term.romana = row[2]
+      dictionary_term.save
+    end
+  end
+
+  def self.parse_court_judges_csv
+    csv_file_path = File.join(File.dirname(__FILE__), "../../data/judges.csv")
+    headers_checked = false
+    CSV.foreach(csv_file_path) do |row|
+      if !headers_checked then
+        check_headers(row, get_court_judges_headers)
+        headers_checked = true
+      else
+        court_computer_name = row[2]
+        court = Court.where(computer_name: court_computer_name).first
+        if !court.nil?
+          trial_judge = TrialJudge.new
+          trial_judge.surname = row[0]
+          trial_judge.name = row[1]
+          trial_judge.court = court
+
+          trial_judge.save
+        else
+          raise "Court not found for #{row}"
+        end
+      end
+    end
+  end
+
   def self.parse_court_contacts_csv
     csv_file_path = File.join(File.dirname(__FILE__), "../../data/court_contacts.csv")
     headers_checked = false
@@ -41,7 +76,7 @@ module CsvParserHelper
         headers_checked = true
       else
         court_computer_name = row[1]
-        court = Court.where(computer_name: court_computer_name).first
+        court = court.where(computer_name: court_computer_name).first
         court.web_site = row[2]
         court.email = row[3]
         court.telephone = row[4]
@@ -116,6 +151,10 @@ module CsvParserHelper
       end
     end
   end 
+
+  def self.get_court_judges_headers
+    return ["Nume", "Prenume", "Instanta"]
+  end
 
   def self.get_court_contacts_headers
     return ["Instanța", "Cod portal", "Site", "Email", "Telefon", "Fax", "Program de lucru", "Adresa"]
