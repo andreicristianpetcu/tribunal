@@ -1,0 +1,23 @@
+<h1>Listing dictionary_terms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dictionary_terms.each do |dictionary_term| %>
+      <tr>
+        <td><%= link_to 'Show', dictionary_term %></td>
+        <td><%= link_to 'Edit', edit_dictionary_term_path(dictionary_term) %></td>
+        <td><%= link_to 'Destroy', dictionary_term, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dictionary term', new_dictionary_term_path %>
