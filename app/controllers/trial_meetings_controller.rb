@@ -2,7 +2,7 @@ class TrialMeetingsController < ApplicationController
   before_action :set_trial_meeting, only: [:show, :edit, :update, :destroy]
 
   def index
-    @trial_meetings = TrialMeeting.page(params[:page])
+    @trial_meetings = TrialMeeting.page(params[:trial_meeting_page])
     # @trial_meetings = TrialMeeting.order_by(:date.desc).page(params[:page])
   end
 

@@ -4,7 +4,7 @@ class JurisprudencesController < ApplicationController
   # GET /jurisprudences
   # GET /jurisprudences.json
   def index
-    @jurisprudences = Jurisprudence.all
+    @jurisprudences = Jurisprudence.page(params[:jurisprudence_page])
   end
 
   # GET /jurisprudences/1

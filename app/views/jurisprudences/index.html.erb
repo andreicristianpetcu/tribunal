@@ -16,7 +16,7 @@
         Domeniu
       </th>
       <th>
-        Decizie sau sentință
+        Hotărâre
       </th>
       <th>
         Anul
@@ -39,7 +39,7 @@
         <td> <%= jurisprudence.number %> </td>
         <td> <%= jurisprudence.tip %> </td>
         <td> <%= jurisprudence.domeniu %> </td>
-        <td> <%= jurisprudence.decizie_sau_sentinta %> </td>
+        <td> <%= jurisprudence.hotarare %> </td>
         <td> <%= jurisprudence.anul %> </td>
         <td> <%= jurisprudence.sectia %> </td>
         <td> <%= link_to jurisprudence.court.name, court_path(jurisprudence.court) %>  </td>
@@ -47,5 +47,6 @@
     <% end %>
   </tbody>
 </table>
-<%# <%= paginate @jurisprudences.all %>
+
+<%= paginate @jurisprudences.all, :param_name => :jurisprudence_page %>
 

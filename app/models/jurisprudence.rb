@@ -11,4 +11,12 @@ class Jurisprudence
   field :descriere_completa, type: String
 
   belongs_to :court
+
+  def hotarare
+    if decizie_sau_sentinta
+      return 'Decizie'
+    else
+      return 'Senință'
+    end
+  end
 end
