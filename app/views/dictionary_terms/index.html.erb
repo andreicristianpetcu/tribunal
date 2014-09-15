@@ -1,12 +1,33 @@
 <h2>Dicționar</h2>
 
+<div class="page-header">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="bs-component">
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="bs-component">
+      <h1>Legaleză</h1>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="bs-component">
+      <h1>Română</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
 <% @dictionary_terms.each do |dictionary_term| %>
 
   <div class="row">
     <div class="col-lg-3">
       <div class="bs-component">
         <h3>
-          <%= dictionary_term.termen %>
+          <a id="<%= dictionary_term.id %>" href="#<%= dictionary_term.id %>">
+            <%= dictionary_term.termen %>
+          </a>
         </h3>
       </div>
     </div>
@@ -28,4 +49,5 @@
 
     </div>
   </div>
+  <div class="row"></div>
 <% end %>
