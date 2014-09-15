@@ -236,3 +236,17 @@ ul.find-more li {
 	}
 
 }
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  background-color: transparent;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+  background-color: transparent;
+  color: #D24541;
+}
+body {
+  padding-top: 0px;
+}
+.navbar-default .navbar-nav > li > a {
+  line-height: 25px;
+}
