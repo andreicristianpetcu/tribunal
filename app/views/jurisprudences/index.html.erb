@@ -1,0 +1,51 @@
+<h2>Jurispurdență</h2>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>
+        Titlu
+      </th>
+      <th>
+        Numar
+      </th>
+      <th>
+        Tip
+      </th>
+      <th>
+        Domeniu
+      </th>
+      <th>
+        Decizie sau sentință
+      </th>
+      <th>
+        Anul
+      </th>
+      <th>
+        Secția
+      </th>
+      <th>
+        Instanța
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jurisprudences.each do |jurisprudence| %>
+      <tr>
+        <td> 
+          <%= link_to jurisprudence.titlu, jurisprudence_path(jurisprudence) %> 
+        </td>
+        <td> <%= jurisprudence.number %> </td>
+        <td> <%= jurisprudence.tip %> </td>
+        <td> <%= jurisprudence.domeniu %> </td>
+        <td> <%= jurisprudence.decizie_sau_sentinta %> </td>
+        <td> <%= jurisprudence.anul %> </td>
+        <td> <%= jurisprudence.sectia %> </td>
+        <td> <%= link_to jurisprudence.court.name, court_path(jurisprudence.court) %>  </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%# <%= paginate @jurisprudences.all %>
+

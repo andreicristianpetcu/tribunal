@@ -1,0 +1,2 @@
+module JurisprudencesHelper
+end

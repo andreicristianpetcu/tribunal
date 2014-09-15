@@ -1,0 +1,17 @@
+<%= form_for(@jurisprudence) do |f| %>
+  <% if @jurisprudence.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@jurisprudence.errors.count, "error") %> prohibited this jurisprudence from being saved:</h2>
+
+      <ul>
+      <% @jurisprudence.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

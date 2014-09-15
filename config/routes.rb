@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :jurisprudences
+
   resources :dictionary_terms
 
   resources :trial_proceedings
