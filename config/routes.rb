@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  root 'high_voltage/pages#show', id: 'working_on_it'
+  root 'contact_emails#new'
   
   resources :trial_files
 

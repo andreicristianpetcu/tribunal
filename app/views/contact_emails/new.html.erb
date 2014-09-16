@@ -33,7 +33,7 @@
 
   <form class="form-horizontal">
     <fieldset>
-      <legend>Legend</legend>
+      <p>Pentru mai multe informații abonează-te! (maximum un mail pe lună)</p>
       <div class="row">
         <div class="col-lg-5">
           <%= f.text_field(:name, :class => "form-control", :placeholder => "Nume") %>
@@ -42,7 +42,7 @@
           <%= f.text_field(:email, :class => "form-control", :placeholder => "Adresă de email") %>
         </div>
         <div class="col-lg-2">
-          <%= f.submit('Abonează-mă!', :class => "btn btn-primary") %>
+          <%= f.submit('Abonează-mă!', :class => "btn btn-primary subscribe_button") %>
         </div>
       </div>
     </fieldset>

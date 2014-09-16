@@ -17,10 +17,6 @@ class ContactEmailsController < ApplicationController
     @contact_email = ContactEmail.new
   end
 
-  # GET /contact_emails/1/edit
-  def edit
-  end
-
   # POST /contact_emails
   # POST /contact_emails.json
   def create
@@ -34,30 +30,6 @@ class ContactEmailsController < ApplicationController
         format.html { render :new }
         format.json { render json: @contact_email.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /contact_emails/1
-  # PATCH/PUT /contact_emails/1.json
-  def update
-    respond_to do |format|
-      if @contact_email.update(contact_email_params)
-        format.html { redirect_to @contact_email, notice: 'Contact email was successfully updated.' }
-        format.json { render :show, status: :ok, location: @contact_email }
-      else
-        format.html { render :edit }
-        format.json { render json: @contact_email.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /contact_emails/1
-  # DELETE /contact_emails/1.json
-  def destroy
-    @contact_email.destroy
-    respond_to do |format|
-      format.html { redirect_to contact_emails_url, notice: 'Contact email was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
