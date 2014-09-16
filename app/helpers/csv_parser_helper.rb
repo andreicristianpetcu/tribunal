@@ -33,6 +33,7 @@ module CsvParserHelper
   end
 
   def self.parse_dictionary_term_csv
+    DictionaryTerm.delete_all
     csv_file_path = File.join(File.dirname(__FILE__), "../../data/dictionary_term.csv")
     CSV.foreach(csv_file_path) do |row|
       dictionary_term = DictionaryTerm.new  

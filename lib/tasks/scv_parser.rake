@@ -18,4 +18,9 @@ namespace :scv_parser do
   task parse_court_judges_csv: :environment do
     CsvParserHelper.parse_court_judges_csv
   end
+
+  desc "Drop and parse data/dictionary_term.csv"
+  task parse_dictionary_term_csv: :environment do
+    CsvParserHelper.parse_dictionary_term_csv
+  end
 end
