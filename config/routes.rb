@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :contact_emails
+
   resources :jurisprudences
 
   resources :dictionary_terms
