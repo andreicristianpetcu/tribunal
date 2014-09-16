@@ -43,7 +43,7 @@
         <%= render 'court_indicator_item', :locals => {label: "Încărcătură pe judecător", indicator: @court.load_per_judge.to_i}%>
         <%= render 'court_indicator_item', :locals => {label: "Indice de atacabilitate", indicator: @court.atacability_indicator.to_i, percentage: true}%>
         <%= render 'court_indicator_item', :locals => {label: "Indice de casare", indicator: @court.casation_indicator.to_i, percentage: true}%>
-        <%= render 'court_indicator_item', :locals => {label: "Durata in luni", indicator: @court.duration_in_days.to_i}%>
+        <%= render 'court_indicator_item', :locals => {label: "Durată în zile", indicator: @court.duration_in_days.to_i}%>
       </ul>
     </div>
   </div>
