@@ -11,7 +11,5 @@
     <% @courts.each do |court| %>
       <%= render court %>
     <% end %>
-
-    <%= paginate @courts.all, :param_name => :courts_page %>>
   </tbody>
 </table>
