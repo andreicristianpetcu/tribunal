@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require d3
+//= require leaflet
 //= require_tree .

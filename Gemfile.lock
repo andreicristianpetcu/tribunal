@@ -92,6 +92,7 @@ GEM
     kaminari (0.16.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    leaflet-rails (0.7.3)
     macaddr (1.7.1)
       systemu (~> 2.6.2)
     mail (2.5.4)
@@ -232,6 +233,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  leaflet-rails
   mongoid (~> 4)!
   pry
   pry-coolline

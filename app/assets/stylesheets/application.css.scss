@@ -20,6 +20,8 @@ body { padding-top: 60px; }
 // And finally bootswatch style itself
 @import "bootswatch/superhero/bootswatch";
 
+//= require leaflet
+
 body {
   font-family: 'open_sansregular';
 }
