@@ -1,5 +1,8 @@
 // Example using 'superhero' bootswatch
 //
+//= depend_on_asset "layers.png"
+//= depend_on_asset "layers-2x.png"
+//= require leaflet
 
 @font-face {
   font-family: 'open_sansregular';
@@ -26,9 +29,12 @@ body {
   font-family: 'open_sansregular';
 }
 
-
-
-
+//andrei start
+#map { 
+  height: 600px;
+  width: 800px
+}
+//andrei end
 
 /*======================================
 			Typography 
