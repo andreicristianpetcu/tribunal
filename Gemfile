@@ -48,9 +48,11 @@ gem 'high_voltage'
 gem 'thread'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
-gem 'pry', :group => :development
-gem 'pry-rails', :group => :development
-gem 'pry-nav', :group => :development
-gem 'pry-stack_explorer', :group => :development
-gem 'pry-coolline', :group => :development
+group :development do
+  gem 'spring'
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-nav'
+  gem 'pry-stack_explorer'
+  gem 'pry-coolline'
+end
