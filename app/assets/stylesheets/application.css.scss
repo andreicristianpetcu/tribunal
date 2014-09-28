@@ -36,6 +36,16 @@ body {
     margin: 0px;
     padding: 0px;
 }
+.leaflet-container a.leaflet-popup-close-button {
+  color: #D54545;
+}
+.leaflet-popup-tip {
+  background-color: #FECF87;
+}
+.leaflet-popup-content-wrapper {
+  color: #D54545;
+  background-color: #FECF87;
+}
 //andrei end
 
 /*======================================
