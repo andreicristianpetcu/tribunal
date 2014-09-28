@@ -7,7 +7,7 @@ var show_court_performances_onmap = function(){
       fillColor: '#f03',
       fillOpacity: 5
     }).addTo(map);
-    circle.bindPopup(court.localitate);
+    circle.bindPopup(court.localitate + "</br> Indice " + court.indice);
   });
 };
 show_court_performances_onmap();
