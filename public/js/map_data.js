@@ -1,4 +1,4 @@
-var maps = {
+var mmapsaps = {
 	courts : [{"localitate":"Judecătoria BREZOI","latitudine":45.343835,"longitudine":24.243618,"indice":-2.221613681},
 		{"localitate":"Judecătoria PUCIOASA","latitudine":45.075926,"longitudine":25.433788,"indice":-1.40172146},
 		{"localitate":"Judecătoria BAIA DE ARAMĂ","latitudine":44.998013,"longitudine":22.811933,"indice":-1.350724492},
@@ -174,76 +174,4 @@ var maps = {
 		{"localitate":"Judecătoria SECTORUL 5 BUCUREŞTI","latitudine":44.429013,"longitudine":26.098285,"indice":1.005024234},
 		{"localitate":"Judecătoria ODORHEIUL SECUIESC","latitudine":46.30523,"longitudine":25.298841,"indice":1.032461387},
 		{"localitate":"Judecătoria TÂRGU LAPUŞ","latitudine":47.454792,"longitudine":23.852771,"indice":1.097934158},
-		{"localitate":"Judecătoria TÂRGU BUJOR","latitudine":45.873933,"longitudine":27.916775,"indice":1.281505077}],
-
-	mapOptions : {
-		center: { lat: 45.87532, lng: 25.05214},
-		zoom: 7
-	},
-	courtMap : [],
-	markers : [],
-	info: [],
-
-	initCourtsMap : function() {
-		var courtsLength = maps.courts.length,
-		lat, longit, index, place;
-
-		//set markers
-		for (var key in maps.courts) {
-			maps.markers.push(key);
-			lat = maps.courts[key].latitudine;
-			longit = maps.courts[key].longitudine;
-			place = maps.courts[key].localitate;
-			index = maps.courts[key].indice;
-			maps.markers[key] = [place,lat,longit,index]
-		}
-
-		// set info windows content
-		for (var key in maps.courts) {
-			maps.markers.push(key);
-			lat = maps.courts[key].latitudine;
-			longit = maps.courts[key].longitudine;
-			index = maps.courts[key].indice;
-			place = maps.courts[key].localitate;
-			maps.info[key] = ['<h3>' + place + '<h3><p><strong>Indice:</strong>' +  index + '<p>'];
-		}
-
-	},
-	drawCourtsMap : function(map) {
-		var markerColor = 'red';
-
-		// Display multiple markers on a map
-		var infoWindow = new google.maps.InfoWindow(), marker, i;
-
-		// Loop through our array of markers & place each one on the map  
-		for( i = 0; i < maps.markers.length; i++ ) {
-			var position = new google.maps.LatLng(maps.markers[i][1], maps.markers[i][2]);
-		
-		
-		if (maps.markers[i][3] > 0 && maps.markers[i][3] < 1) {
-			markerColor = 'yellow';
-		}
-		if (maps.markers[i][3] > 1) {
-			markerColor = 'green';
-		}
-
-
-		marker = new google.maps.Marker({
-			position: position,
-			map: map,
-			icon: {
-				path: google.maps.SymbolPath.CIRCLE,
-				fillColor: markerColor,
-				fillOpacity: 1,
-				scale: maps.markers[i][3] < 0 ? 6 : maps.markers[i][3]*3 + 6,
-				strokeColor: 'black',
-				strokeWeight: 2
-			},
-			title: maps.markers[i][0]
-		});
-
-
-		// Allow each marker to have an info window    
-		}
-	},
-
+		{"localitate":"Judecătoria TÂRGU BUJOR","latitudine":45.873933,"longitudine":27.916775,"indice":1.281505077}]};
