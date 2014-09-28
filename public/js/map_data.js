@@ -1,5 +1,4 @@
-var mapsaps = {
-	courts : [{"localitate":"Judecătoria BREZOI","latitudine":45.343835,"longitudine":24.243618,"indice":-2.221613681},
+var mapsaps = [{"localitate":"Judecătoria BREZOI","latitudine":45.343835,"longitudine":24.243618,"indice":-2.221613681},
 		{"localitate":"Judecătoria PUCIOASA","latitudine":45.075926,"longitudine":25.433788,"indice":-1.40172146},
 		{"localitate":"Judecătoria BAIA DE ARAMĂ","latitudine":44.998013,"longitudine":22.811933,"indice":-1.350724492},
 		{"localitate":"Judecătoria HAŢEG","latitudine":45.606381,"longitudine":22.948877,"indice":-1.340045021},
@@ -174,4 +173,4 @@ var mapsaps = {
 		{"localitate":"Judecătoria SECTORUL 5 BUCUREŞTI","latitudine":44.429013,"longitudine":26.098285,"indice":1.005024234},
 		{"localitate":"Judecătoria ODORHEIUL SECUIESC","latitudine":46.30523,"longitudine":25.298841,"indice":1.032461387},
 		{"localitate":"Judecătoria TÂRGU LAPUŞ","latitudine":47.454792,"longitudine":23.852771,"indice":1.097934158},
-		{"localitate":"Judecătoria TÂRGU BUJOR","latitudine":45.873933,"longitudine":27.916775,"indice":1.281505077}]};
+		{"localitate":"Judecătoria TÂRGU BUJOR","latitudine":45.873933,"longitudine":27.916775,"indice":1.281505077}];
