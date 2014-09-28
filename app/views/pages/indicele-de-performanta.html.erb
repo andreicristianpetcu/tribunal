@@ -24,25 +24,6 @@
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-        <div id="map"></div>
-
-    <script>
-// create a map in the "map" div, set the view to a given place and zoom
-var map = L.map('map').setView([45.87532, 25.05214], 7);
-
-// add an OpenStreetMap tile layer
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-// add a marker in the given location, attach some popup content to it and open the popup
-// L.marker([51.5, -0.09]).addTo(map)
-//   .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
-//   .openPopup();
-//
-    </script>
-
     <h2>Indice de performanță</h2>
     <p>Această primă evaluare apare într-un context în care sistemul de justiţie, deşi încă este aflat sub lupa Comisiei Europene în cadrul Mecanismului de Cooperare şi Verificare, a înregistrat progrese semnificative, atât din perspectiva reformei sale interne, cât şi din perspectiva încrederii cetăţenilor în acesta.</p>
     <p>Definim performanţa instanţelor din România ca pe un set de indicatori şi factori care determină nivelul de predictibilitate în administrarea actului de justiţie. Predictibilitatea, la rândul său, determină o încredere mai mare a justiţiabililor în actul de justiţie, un element fundamental în consolidarea statului de drept. Cu alte cuvinte, o instanţă care este mai performantă, are o probabilitate mai mare de a fi şi predictibilă în timp. </p>
@@ -62,6 +43,7 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     </p>
 
     <p><h2>Indice de performanță - Judecătorii</h2></p>
+    <div id="map"></div>
     <div id="map-canvas"></div>
     <p>
     <h2><a href="/pdf/Indicele_de_performanta_complet.pdf">Indicele de performanta complet</a></h2>
@@ -82,6 +64,16 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     <script src="/js/plugins.js"></script>
     <script src="/js/main.js"></script>
 
+    <script>
+      // create a map in the "map" div, set the view to a given place and zoom
+      var map = L.map('map').setView([45.87532, 25.05214], 7);
+
+      // add an OpenStreetMap tile layer
+      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          }).addTo(map);
+
+    </script>
 
 </body>
 </html>
