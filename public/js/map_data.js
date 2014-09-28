@@ -1,4 +1,4 @@
-var mapsaps = [{"localitate":"Judecătoria BREZOI","latitudine":45.343835,"longitudine":24.243618,"indice":-2.221613681},
+var court_performances = [{"localitate":"Judecătoria BREZOI","latitudine":45.343835,"longitudine":24.243618,"indice":-2.221613681},
 		{"localitate":"Judecătoria PUCIOASA","latitudine":45.075926,"longitudine":25.433788,"indice":-1.40172146},
 		{"localitate":"Judecătoria BAIA DE ARAMĂ","latitudine":44.998013,"longitudine":22.811933,"indice":-1.350724492},
 		{"localitate":"Judecătoria HAŢEG","latitudine":45.606381,"longitudine":22.948877,"indice":-1.340045021},

@@ -1,5 +1,12 @@
-var circle = L.circle([45.98532, 25.05214], 5000, {
-          color: 'red',
-          fillColor: '#f03',
-          fillOpacity: 5
-      }).addTo(map);
+var show_court_performances_onmap = function(){
+  court_performances.forEach(function(court) {
+    var lat = court.latitudine;
+    var lon = court.longitudine;
+    var circle = L.circle([lat, lon], 5000, {
+      color: 'red',
+      fillColor: '#f03',
+      fillOpacity: 5
+    }).addTo(map);
+  });
+};
+show_court_performances_onmap();
