@@ -13,16 +13,20 @@ class CourtsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_court
+  # Use callbacks to share common setup or constraints between actions.
+  def set_court
+    if !params[:name].nil?
+      @court = Court.where(name: params[:name]).first
+    else
       @court = Court.find(params[:id])
-      @proceedings = @court.proceedings.page(params[:court_proceedings_page])
-      @trial_meetings = @court.meetings.page(params[:court_meetings_page])
-      @trial_judges = @court.judges.page(params[:court_judges_page])
     end
+    @proceedings = @court.proceedings.page(params[:court_proceedings_page])
+    @trial_meetings = @court.meetings.page(params[:court_meetings_page])
+    @trial_judges = @court.judges.page(params[:court_judges_page])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def court_params
-      params[:court]
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def court_params
+    params[:court]
+  end
 end
