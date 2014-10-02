@@ -1,5 +1,6 @@
 class JustroFileRequestParam
   include Mongoid::Document
+  store_in database: "justro"
   field :court_name, type: String
   field :start_date, type: Date
   field :end_date, type: Date

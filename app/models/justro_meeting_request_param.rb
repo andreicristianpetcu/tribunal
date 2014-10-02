@@ -1,5 +1,6 @@
 class JustroMeetingRequestParam
   include Mongoid::Document
+  store_in database: "justro"
   field :court_name, type: String
   field :meeting_date, type: Date
   #notstarted, started, finished, error, empty
