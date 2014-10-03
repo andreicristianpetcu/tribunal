@@ -1,13 +1,8 @@
 class JustroMeetingRequest < JustroRequest
-  include Mongoid::Document
-  store_in database: "justro"
+
   field :trial_court_name, type: String
   field :meeting_date, type: Date
   #notstarted, started, finished, error, empty
-  field :status, type: String
-  field :backtrace, type: String
-  field :error_message, type: String
-  field :response_code, type: String
 
   def get_meeting_date_formated
     return meeting_date.strftime("%Y-%m-%d")
