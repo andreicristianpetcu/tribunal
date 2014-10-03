@@ -1,7 +1,7 @@
 class JustroMeetingRequest < JustroRequest
   include Mongoid::Document
   store_in database: "justro"
-  field :court_name, type: String
+  field :trial_court_name, type: String
   field :meeting_date, type: Date
   #notstarted, started, finished, error, empty
   field :status, type: String
@@ -14,7 +14,7 @@ class JustroMeetingRequest < JustroRequest
   end
 
   def self.generate_all
-    CourtDataProviderHelper.get_courts_names.no_timeout.each do |court_name|
+    CourtDataProviderHelper.get_trial_courts_names.each do |court_name|
       # court_name = 'CurteadeApelBUCURESTI'
       start_date = Date.new(2010, 1, 1)
       end_date = Date.today - 1

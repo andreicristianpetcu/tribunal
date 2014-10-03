@@ -10,7 +10,7 @@ class Jurisprudence
   field :scurta_descriere, type: String
   field :descriere_completa, type: String
 
-  belongs_to :court
+  belongs_to :trial_court
 
   def hotarare
     if decizie_sau_sentinta

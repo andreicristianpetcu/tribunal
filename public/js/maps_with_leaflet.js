@@ -201,7 +201,7 @@ var show_court_performances_onmap = function(){
       riseOnHover: true
     });
     circle.addTo(map);
-    circle.bindPopup("<a href='/courts/show?name=" + court.localitate + "'>" + court.localitate + "</a></br> Indice " + indicator);
+    circle.bindPopup("<a href='/trial_courts/show?name=" + court.localitate + "'>" + court.localitate + "</a></br> Indice " + indicator);
   });
 };
 show_court_performances_onmap();

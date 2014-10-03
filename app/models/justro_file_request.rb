@@ -9,7 +9,7 @@ class JustroFileRequest < JustroRequest
 
     request = JustroFileRequest.new
 
-    CourtDataProviderHelper.get_courts_names.no_timeout.each do |court_name|
+    CourtDataProviderHelper.get_trial_courts_names.no_timeout.each do |court_name|
       (start_date..end_date).each do |date|
         if(!date.saturday? && !date.sunday?) then
           request = JustroFileRequest.new

@@ -1,4 +1,4 @@
-class Court
+class TrialCourt
   include Mongoid::Document
 
   field :name, type: String 

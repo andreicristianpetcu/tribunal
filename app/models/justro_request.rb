@@ -13,7 +13,7 @@ class JustroRequest
   field :requestParams,   type: Hash
   field :responseResult,   type: Hash
 
-  belongs_to :court
+  belongs_to :trial_court
 
   def self.get_notstarted
     where(status:"notstarted")

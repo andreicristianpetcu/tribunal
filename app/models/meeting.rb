@@ -8,6 +8,6 @@ class TrialMeeting
   field :hour, type: String
 
   has_many :trial_files
-  belongs_to :court
+  belongs_to :trial_court
 
 end
