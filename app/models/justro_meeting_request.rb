@@ -1,4 +1,4 @@
-class JustroMeetingRequestParam
+class JustroMeetingRequest < JustroRequest
   include Mongoid::Document
   store_in database: "justro"
   field :court_name, type: String
@@ -21,7 +21,7 @@ class JustroMeetingRequestParam
 
       (start_date..end_date).each do |date|
         if(!date.saturday? && !date.sunday?)
-          request = JustroMeetingRequestParam.new
+          request = JustroMeetingRequest.new
           request.court_name = court_name
           request.meeting_date = date
           puts "Saving meeting request #{request.inspect}"

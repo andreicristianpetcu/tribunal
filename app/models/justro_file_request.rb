@@ -1,4 +1,4 @@
-class JustroFileRequestParam
+class JustroFileRequest
   include Mongoid::Document
   store_in database: "justro"
   field :court_name, type: String
@@ -20,12 +20,12 @@ class JustroFileRequestParam
     end_date = Date.today - 1
     # end_date = Date.today - 1
 
-    request = JustroFileRequestParam.new
+    request = JustroFileRequest.new
 
     CourtDataProviderHelper.get_courts_names.no_timeout.each do |court_name|
       (start_date..end_date).each do |date|
         if(!date.saturday? && !date.sunday?) then
-          request = JustroFileRequestParam.new
+          request = JustroFileRequest.new
           request.court_name = court_name
           request.start_date = date
           request.end_date = date
