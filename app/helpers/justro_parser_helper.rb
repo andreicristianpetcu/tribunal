@@ -122,8 +122,8 @@ module JustroParserHelper
     total = JustroFileRequest.count
     processed = (finished.to_f/total)*100
     puts "Files processed=#{processed}, finished=#{finished}, error=#{error}, started=#{started}, notstarted=#{notstarted}, empty=#{empty}" 
-    files_with_trial_trial_courts = TrialFile.where(:trial_court.exists => true).size.to_f/TrialFile.count
-    puts "Files with trial_courts #{files_with_trial_trial_courts}"
+    files_with_trial_courts = TrialFile.where(:trial_court.exists => true).size.to_f/TrialFile.count
+    puts "Files with trial_courts #{files_with_trial_courts}"
   end
 
   # def self.purge_all_and_get_justro_files

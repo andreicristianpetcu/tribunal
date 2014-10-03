@@ -3,58 +3,58 @@
   <div class="bs-component">
     <div class="list-group">
 
-      <% if !@court.web_site.nil? %>
+      <% if !@trial_court.web_site.nil? %>
         <div class="list-group-item">
           <h4 class="list-group-item-heading">Web site</h4>
           <p class="list-group-item-text">
-          <a href="<%= @court.web_site %>"><%= @court.web_site %></a>
+          <a href="<%= @trial_court.web_site %>"><%= @trial_court.web_site %></a>
           </p>
         </div>
       <% end %>
 
-      <% if !@court.email.nil? %>
+      <% if !@trial_court.email.nil? %>
         <div class="list-group-item">
           <h4 class="list-group-item-heading">Adresă Email</h4>
           <p class="list-group-item-text">
-          <a href="mailto:<%= @court.email %>">
-            <%= @court.email %>
+          <a href="mailto:<%= @trial_court.email %>">
+            <%= @trial_court.email %>
           </a>
           </p>
         </div>
       <% end %>
 
-      <% if !@court.telephone.nil? %>
+      <% if !@trial_court.telephone.nil? %>
         <div class="list-group-item">
           <h4 class="list-group-item-heading">Telefon</h4>
           <p class="list-group-item-text">
-          <%= @court.telephone %>
+          <%= @trial_court.telephone %>
           </p>
         </div>
       <% end %>
 
-      <% if !@court.fax.nil? %>
+      <% if !@trial_court.fax.nil? %>
         <div class="list-group-item">
           <h4 class="list-group-item-heading">Fax</h4>
           <p class="list-group-item-text">
-          <%= @court.fax %>
+          <%= @trial_court.fax %>
           </p>
         </div>
       <% end %>
 
-      <% if !@court.program.nil? %>
+      <% if !@trial_court.program.nil? %>
         <div class="list-group-item">
           <h4 class="list-group-item-heading">Program</h4>
           <p class="list-group-item-text">
-          <%= @court.program %>
+          <%= @trial_court.program %>
           </p>
         </div>
       <% end %>
 
-      <% if !@court.address.nil? %>
+      <% if !@trial_court.address.nil? %>
         <div class="list-group-item">
           <h4 class="list-group-item-heading">Adresă</h4>
           <p class="list-group-item-text">
-          <%= @court.address %>
+          <%= @trial_court.address %>
           </p>
         </div>
       <% end %>

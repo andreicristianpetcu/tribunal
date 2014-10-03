@@ -14,7 +14,7 @@ class TrialCourtsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_court
+    def set_trial_court
       if !params[:name].nil?
         @trial_court = TrialCourt.where(name: params[:name]).first
       else

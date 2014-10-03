@@ -1,23 +1,23 @@
 <div class="row">
   <h2>
-    <%= @court.name %>
+    <%= @trial_court.name %>
   </h2>
 </div>
 <div class="bs-component">
   <div class="bs-example">
     <ul class="nav nav-tabs">
-      <%= render 'court_tab', :locals => {id: "indicators", label: "Indicatori", active: true} %>
-      <%# <%= render 'court_tab', :locals => {id: "meetings", label: "Ședințe"} %>
-      <%= render 'court_tab', :locals => {id: "proceedings", label: "Dosare"} %>
-      <%= render 'court_tab', :locals => {id: "judges", label: "Judecători"} %>
-      <%= render 'court_tab', :locals => {id: "contact", label: "Contact"} %>
+      <%= render 'trial_court_tab', :locals => {id: "indicators", label: "Indicatori", active: true} %>
+      <%# <%= render 'trial_court_tab', :locals => {id: "meetings", label: "Ședințe"} %>
+      <%= render 'trial_court_tab', :locals => {id: "proceedings", label: "Dosare"} %>
+      <%= render 'trial_court_tab', :locals => {id: "judges", label: "Judecători"} %>
+      <%= render 'trial_court_tab', :locals => {id: "contact", label: "Contact"} %>
     </ul>
   </div>  
   <div class="tab-content">
-    <%= render 'court_tab_indicators' %>
-    <%= render 'court_tab_meetings' %>
-    <%= render 'court_tab_judges' %>
-    <%= render 'court_tab_proceedings' %>
-    <%= render 'court_tab_contact' %>
+    <%= render 'trial_court_tab_indicators' %>
+    <%= render 'trial_court_tab_meetings' %>
+    <%= render 'trial_court_tab_judges' %>
+    <%= render 'trial_court_tab_proceedings' %>
+    <%= render 'trial_court_tab_contact' %>
   </div>
 </div> 
