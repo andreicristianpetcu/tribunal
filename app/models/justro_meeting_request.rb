@@ -1,26 +1,22 @@
-class JustroMeetingRequestParam
-  include Mongoid::Document
-  field :court_name, type: String
+class JustroMeetingRequest < JustroRequest
+
+  field :trial_court_name, type: String
   field :meeting_date, type: Date
   #notstarted, started, finished, error, empty
-  field :status, type: String
-  field :backtrace, type: String
-  field :error_message, type: String
-  field :response_code, type: String
 
   def get_meeting_date_formated
     return meeting_date.strftime("%Y-%m-%d")
   end
 
   def self.generate_all
-    CourtDataProviderHelper.get_courts_names.no_timeout.each do |court_name|
+    CourtDataProviderHelper.get_trial_courts_names.each do |court_name|
       # court_name = 'CurteadeApelBUCURESTI'
       start_date = Date.new(2010, 1, 1)
       end_date = Date.today - 1
 
       (start_date..end_date).each do |date|
         if(!date.saturday? && !date.sunday?)
-          request = JustroMeetingRequestParam.new
+          request = JustroMeetingRequest.new
           request.court_name = court_name
           request.meeting_date = date
           puts "Saving meeting request #{request.inspect}"

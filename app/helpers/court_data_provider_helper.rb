@@ -1,5 +1,5 @@
 module CourtDataProviderHelper
-  def self.get_courts_names
+  def self.get_trial_courts_names
     return ['CurteadeApelBUCURESTI', 'TribunalulBUCURESTI', 'JudecatoriaSECTORUL4BUCURESTI', 'TribunalulTIMIS', 'CurteadeApelBACAU', 'CurteadeApelCLUJ', 
     'CurteadeApelORADEA', 'CurteadeApelCONSTANTA', 'CurteadeApelSUCEAVA', 'TribunalulBOTOSANI', 'CurteadeApelPLOIESTI', 'CurteadeApelTARGUMURES', 
     'CurteadeApelGALATI', 'CurteadeApelIASI', 'CurteadeApelPITESTI', 'CurteadeApelCRAIOVA', 'JudecatoriaARAD', 'CurteadeApelALBAIULIA', 
@@ -44,7 +44,7 @@ module CourtDataProviderHelper
   end
 
   # def self.populate_all
-  #   get_courts_names.each do |court_name|
+  #   get_trial_courts_names.each do |court_name|
   #     Court.create(name: court_name, computer_name: court_name)
   #   end
   # end

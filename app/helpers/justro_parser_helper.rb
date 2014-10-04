@@ -15,7 +15,7 @@ module JustroParserHelper
   end
 
   def self.get_justro_meetings
-    JustroMeetingRequestParam.get_notstarted.no_timeout.each do |request_params|
+    JustroMeetingRequest.get_notstarted.no_timeout.each do |request_params|
       request_params.status = "started"
       request_params.save
       break if is_parsing_time_over
@@ -106,35 +106,35 @@ module JustroParserHelper
   end
 
   def self.show_stats
-    notstarted = JustroMeetingRequestParam.where(status: "notstarted").count
-    started = JustroMeetingRequestParam.where(status: "started").count
-    finished = JustroMeetingRequestParam.where(status: "finished").count
-    error = JustroMeetingRequestParam.where(status: "error").count
-    empty = JustroMeetingRequestParam.where(status: "empty").count
-    total = JustroMeetingRequestParam.count
+    notstarted = JustroMeetingRequest.where(status: "notstarted").count
+    started = JustroMeetingRequest.where(status: "started").count
+    finished = JustroMeetingRequest.where(status: "finished").count
+    error = JustroMeetingRequest.where(status: "error").count
+    empty = JustroMeetingRequest.where(status: "empty").count
+    total = JustroMeetingRequest.count
     processed = (finished.to_f/total)*100
     puts "Meetings processed=#{processed}, finished=#{finished}, error=#{error}, started=#{started}, notstarted=#{notstarted}, empty=#{empty}" 
-    notstarted = JustroFileRequestParam.where(status: "notstarted").count
-    started = JustroFileRequestParam.where(status: "started").count
-    finished = JustroFileRequestParam.where(status: "finished").count
-    error = JustroFileRequestParam.where(status: "error").count
-    empty = JustroFileRequestParam.where(status: "empty").count
-    total = JustroFileRequestParam.count
+    notstarted = JustroFileRequest.where(status: "notstarted").count
+    started = JustroFileRequest.where(status: "started").count
+    finished = JustroFileRequest.where(status: "finished").count
+    error = JustroFileRequest.where(status: "error").count
+    empty = JustroFileRequest.where(status: "empty").count
+    total = JustroFileRequest.count
     processed = (finished.to_f/total)*100
     puts "Files processed=#{processed}, finished=#{finished}, error=#{error}, started=#{started}, notstarted=#{notstarted}, empty=#{empty}" 
-    files_withCourts = TrialFile.where(:court.exists => true).size.to_f/TrialFile.count
-    puts "Files with courts #{files_withCourts}"
+    files_with_trial_courts = TrialFile.where(:trial_court.exists => true).size.to_f/TrialFile.count
+    puts "Files with trial_courts #{files_with_trial_courts}"
   end
 
   # def self.purge_all_and_get_justro_files
-  #   JustroFileRequestParam.delete_all
+  #   JustroFileRequest.delete_all
   #   JustroFile.delete_all
-  #   JustroFileRequestParam.generate_all
+  #   JustroFileRequest.generate_all
   # end
 
   def self.get_justro_files
     last_court_name = nil
-    JustroFileRequestParam.get_notstarted.no_timeout.each do |request_params|
+    JustroFileRequest.get_notstarted.no_timeout.each do |request_params|
       request_params.status = "started"
       request_params.save
       break if is_parsing_time_over
@@ -174,7 +174,7 @@ module JustroParserHelper
   end
 
   def self.link_justro_file_to_court
-    TrialMeeting.where(:court.exists => false).each do |trial_meeting|
+    TrialMeeting.where(:trial_court.exists => false).each do |trial_meeting|
       court = trial_meeting.court
       trial_meeting.trial_files.each do |trial_file|
           if trial_file.court.nil?

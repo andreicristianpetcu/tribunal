@@ -9,7 +9,7 @@ class TrialProceeding
   field :apel_duration, type: Float
   field :recurs_duration, type: Float
 
-  belongs_to :court, index: true
+  belongs_to :trial_court, index: true
   has_many :trial_files
 
   # index({ number: 1 }, { background: true })

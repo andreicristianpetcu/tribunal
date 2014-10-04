@@ -3,5 +3,5 @@ class TrialJudge
   field :name, type: String
   field :surname, type: String
 
-  belongs_to :court
+  belongs_to :trial_court
 end

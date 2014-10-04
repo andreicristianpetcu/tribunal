@@ -8,7 +8,7 @@ class TrialMeeting
   field :hour, type: String
 
   has_many :trial_files
-  belongs_to :court, index: true
+  belongs_to :trial_court, index: true
 
   # index({ departament: 1 }, { background: true })
   # index({ complet: 1 }, { background: true })

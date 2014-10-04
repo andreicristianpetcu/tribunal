@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CourtsControllerTest < ActionController::TestCase
   setup do
-    @court = courts(:one)
+    @trial_court = courts(:one)
   end
 
   test "should get index" do
@@ -25,23 +25,23 @@ class CourtsControllerTest < ActionController::TestCase
   end
 
   test "should show court" do
-    get :show, id: @court
+    get :show, id: @trial_court
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @court
+    get :edit, id: @trial_court
     assert_response :success
   end
 
   test "should update court" do
-    patch :update, id: @court, court: {  }
+    patch :update, id: @trial_court, court: {  }
     assert_redirected_to court_path(assigns(:court))
   end
 
   test "should destroy court" do
     assert_difference('Court.count', -1) do
-      delete :destroy, id: @court
+      delete :destroy, id: @trial_court
     end
 
     assert_redirected_to courts_path

@@ -1,0 +1,50 @@
+<div class="tab-pane fade active in" id="indicators">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Performanță
+            <%= @trial_court.performance_indicator.to_i %>%
+          </h4>
+        </div>
+        <div id="performance_indicator" data-value="<%= @trial_court.performance_indicator.to_i %>" class="panel-body">
+          <svg id="performance_indicator_donut" width="200" height="200"></svg>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-9">
+      <div class="panel">
+        <div class="bs-component">
+          <div>
+            <%= render 'trial_court_progressbar', :locals => {label: "Siguranță", percentage: @trial_court.safety_indicator} %>
+          </div>
+          <div>
+            <%= render 'trial_court_progressbar', :locals => {label: "Operativitate", percentage: @trial_court.operativity} %>
+          </div>
+          <div>
+            <%= render 'trial_court_progressbar', :locals => {label: "Încărcare", percentage: @trial_court.load_indicator} %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <ul class="list-group">
+        <%= render 'trial_court_indicator_item', :locals => {label: "Populație deservită", indicator: @trial_court.population.to_i}%>
+        <%# <%= render 'trial_court_indicator_item', :locals => {label: "Buget (mii lei)", indicator: @trial_court.budget.to_i}%>
+        <%= render 'trial_court_indicator_item', :locals => {label: "Nr. judecători", indicator: @trial_court.number_of_judges.to_i}%>
+        <%= render 'trial_court_indicator_item', :locals => {label: "Nr. dosare soluționate", indicator: @trial_court.resolved_trial_fields.to_i}%>
+      </ul>
+    </div>
+    <div class="col-lg-6">
+      <ul class="list-group">
+        <%= render 'trial_court_indicator_item', :locals => {label: "Încărcătură pe judecător", indicator: @trial_court.load_per_judge.to_i}%>
+        <%= render 'trial_court_indicator_item', :locals => {label: "Indice de atacabilitate", indicator: @trial_court.atacability_indicator.to_i, percentage: true}%>
+        <%= render 'trial_court_indicator_item', :locals => {label: "Indice de casare", indicator: @trial_court.casation_indicator.to_i, percentage: true}%>
+        <%= render 'trial_court_indicator_item', :locals => {label: "Durată în zile", indicator: @trial_court.duration_in_days.to_i}%>
+      </ul>
+    </div>
+  </div>
+</div>

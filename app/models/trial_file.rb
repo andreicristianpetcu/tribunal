@@ -12,7 +12,7 @@ class TrialFile
 
   belongs_to :trial_meeting, index: true
   belongs_to :trial_proceeding, index: true
-  belongs_to :court, index: true
+  belongs_to :trial_court, index: true
 
   # index({ number: 1 }, { background: true })
   # index({ date: 1 }, { background: true })

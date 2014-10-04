@@ -24,7 +24,7 @@
         <td> <%= trial_meeting.departament %> </td>
         <td> <%= trial_meeting.date %> </td>
         <td> <%= trial_meeting.hour %> </td>
-        <td> <%= link_to trial_meeting.court.name, court_path(trial_meeting.court) %>  </td>
+        <td> <%= link_to trial_meeting.trial_court.name, trial_court_path(trial_meeting.trial_court) %>  </td>
       </tr>
     <% end %>
   </tbody>

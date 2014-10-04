@@ -14,7 +14,7 @@ namespace :parser_justro do
     end
   end
 
-  desc "link files to courts"
+  desc "link files to trial_courts"
   task link_justro_file_to_court: :environment do
     ErrorRetryWrapperHelper.run_until_no_error do
       JustroParserHelper.link_justro_file_to_court

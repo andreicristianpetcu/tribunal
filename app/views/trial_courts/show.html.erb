@@ -1,0 +1,23 @@
+<div class="row">
+  <h2>
+    <%= @trial_court.name %>
+  </h2>
+</div>
+<div class="bs-component">
+  <div class="bs-example">
+    <ul class="nav nav-tabs">
+      <%= render 'trial_court_tab', :locals => {id: "indicators", label: "Indicatori", active: true} %>
+      <%# <%= render 'trial_court_tab', :locals => {id: "meetings", label: "Ședințe"} %>
+      <%= render 'trial_court_tab', :locals => {id: "proceedings", label: "Dosare"} %>
+      <%= render 'trial_court_tab', :locals => {id: "judges", label: "Judecători"} %>
+      <%= render 'trial_court_tab', :locals => {id: "contact", label: "Contact"} %>
+    </ul>
+  </div>  
+  <div class="tab-content">
+    <%= render 'trial_court_tab_indicators' %>
+    <%= render 'trial_court_tab_meetings' %>
+    <%= render 'trial_court_tab_judges' %>
+    <%= render 'trial_court_tab_proceedings' %>
+    <%= render 'trial_court_tab_contact' %>
+  </div>
+</div> 

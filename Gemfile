@@ -36,6 +36,7 @@ gem 'd3js-plugins-rails'
 # gem 'debugger', group: [:development, :test]
 
 gem 'mongoid', '~> 4', github: 'mongoid/mongoid'
+gem 'mongoid_rails_migrations'
 gem 'bson_ext'
 gem 'savon'
 
