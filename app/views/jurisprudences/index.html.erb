@@ -42,7 +42,7 @@
         <td> <%= jurisprudence.hotarare %> </td>
         <td> <%= jurisprudence.anul %> </td>
         <td> <%= jurisprudence.sectia %> </td>
-        <td> <%= link_to jurisprudence.court.name, court_path(jurisprudence.court) %>  </td>
+        <td> <%= link_to jurisprudence.trial_court.name, trial_court_path(jurisprudence.trial_court) %>  </td>
       </tr>
     <% end %>
   </tbody>

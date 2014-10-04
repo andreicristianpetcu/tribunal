@@ -38,15 +38,15 @@ class TrialCourt
   index({ computer_name: 1 }, { background: true })
 
   def proceedings
-    TrialProceeding.where(court: self)
+    TrialProceeding.where(trial_court: self)
   end
 
   def meetings
-    TrialMeeting.where(court: self)
+    TrialMeeting.where(trial_court: self)
   end
 
   def judges
-    TrialJudge.where(court: self)
+    TrialJudge.where(trial_court: self)
   end
 
 end
