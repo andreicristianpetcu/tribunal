@@ -6,8 +6,8 @@ module JustroParserHelper
     @@meetings_soap_client = Savon.client(wsdl: 'http://portalquery.just.ro/query.asmx?WSDL')
   end
 
-  def self.find_file(court_name, start_date, end_date)
-    get_soap_client.call(:cautare_dosare, message: {institutie: court_name, dataStart: start_date, dataStop: end_date})
+  def self.find_file(params_hash)
+    get_soap_client.call(:cautare_dosare, message: params_hash)
   end
 
   def self.find_meeting(court_name, request_date)
@@ -15,7 +15,7 @@ module JustroParserHelper
   end
 
   def self.get_justro_meetings
-    JustroMeetingRequest.get_notstarted.no_timeout.each do |request_params|
+    JustroMeetingRequest.get_notstarted.each do |request_params|
       request_params.status = "started"
       request_params.save
       break if is_parsing_time_over
@@ -28,7 +28,7 @@ module JustroParserHelper
         result = cautare_sedinte_response[:cautare_sedinte_result]
         if result && result[:sedinta] then
           meeting_results = result[:sedinta]
-          court = Court.where(computer_name: court_name).no_timeout.first
+          court = Court.where(computer_name: court_name).first
 
           meeting_results.each do |meeting_result|
             create_meeting(meeting_result, court)
@@ -134,7 +134,7 @@ module JustroParserHelper
 
   def self.get_justro_files
     last_court_name = nil
-    JustroFileRequest.get_notstarted.no_timeout.each do |request_params|
+    JustroFileRequest.get_notstarted.each do |request_params|
       request_params.status = "started"
       request_params.save
       break if is_parsing_time_over
@@ -148,10 +148,10 @@ module JustroParserHelper
         if result && result[:dosar].size == 1000 then
           raise "there are only 1000 items"
         end
-        file = JustroFile.new
-        file.result = result
-        file.justro_file_request_param = request_params
-        file.save
+
+        request_params.responseResult = response
+        request_params.save
+
         if last_court_name != court_name then
           last_court_name = court_name
           puts "Request files for #{request_params.inspect}"
@@ -177,10 +177,10 @@ module JustroParserHelper
     TrialMeeting.where(:trial_court.exists => false).each do |trial_meeting|
       court = trial_meeting.court
       trial_meeting.trial_files.each do |trial_file|
-          if trial_file.court.nil?
-            trial_file.court = court
-            trial_file.save
-          end
+        if trial_file.court.nil?
+          trial_file.court = court
+          trial_file.save
+        end
       end
     end
   end

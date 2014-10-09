@@ -9,9 +9,9 @@ class JustroRequest
   field :response_code, type: String
   field :response,   type: Hash
 
-  field :requestDate,   type: DateTime
-  field :requestParams,   type: Hash
-  field :responseResult,   type: Hash
+  field :request_date,   type: DateTime
+  field :request_params,   type: Hash
+  field :response_result,   type: Hash
 
   belongs_to :trial_court
 
