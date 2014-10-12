@@ -1,4 +1,7 @@
 class JustroFileRequest < JustroRequest
+  include Mongoid::Document
+  store_in database: "justro"
+
   field :start_date, type: Date
   field :end_date, type: Date
 

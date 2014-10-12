@@ -134,14 +134,14 @@ module JustroParserHelper
 
   def self.get_justro_files
     last_court_name = nil
-    JustroFileRequest.get_notstarted.each do |request_params|
-      request_params.status = "started"
-      request_params.save
+    JustroFileRequest.get_notstarted.each do |justro_file_request|
+      justro_file_request.status = "started"
+      justro_file_request.save
       break if is_parsing_time_over
       begin
-        court_name = request_params.court_name 
-        start_date = request_params.start_date
-        end_date = request_params.end_date
+        court_name = justro_file_request.court_name 
+        start_date = justro_file_request.start_date
+        end_date = justro_file_request.end_date
         response = find_file(court_name, start_date, end_date)
         cautare_dosare_response = response.body[:cautare_dosare_response]
         result = cautare_dosare_response[:cautare_dosare_result]
@@ -149,26 +149,26 @@ module JustroParserHelper
           raise "there are only 1000 items"
         end
 
-        request_params.responseResult = response
-        request_params.save
+        justro_file_request.responseResult = response
+        justro_file_request.save
 
         if last_court_name != court_name then
           last_court_name = court_name
-          puts "Request files for #{request_params.inspect}"
+          puts "Request files for #{justro_file_request.inspect}"
         end
       rescue => e
-        request_params.status = "error"
-        request_params.backtrace = e.backtrace.to_s
-        request_params.error_message = e.message
+        justro_file_request.status = "error"
+        justro_file_request.backtrace = e.backtrace.to_s
+        justro_file_request.error_message = e.message
         if e.is_a? Wasabi::Resolver::HTTPError then
-          request_params.response_code = e.response.code
+          justro_file_request.response_code = e.response.code
         end
-        request_params.save
+        justro_file_request.save
       end
 
-      if request_params.status != "error" then
-        request_params.status = "finished"
-        request_params.save
+      if justro_file_request.status != "error" then
+        justro_file_request.status = "finished"
+        justro_file_request.save
       end
     end
   end
