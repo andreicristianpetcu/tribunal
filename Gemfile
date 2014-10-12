@@ -37,6 +37,7 @@ gem 'd3js-plugins-rails'
 
 gem 'mongoid', '~> 4', github: 'mongoid/mongoid'
 gem 'mongoid_rails_migrations'
+gem 'mongoid-enum'
 gem 'bson_ext'
 gem 'savon'
 
