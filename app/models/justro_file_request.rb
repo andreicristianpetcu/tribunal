@@ -1,6 +1,5 @@
 class JustroFileRequest < JustroRequest
   include Mongoid::Document
-  store_in database: "justro"
 
   field :start_date, type: Date
   field :end_date, type: Date
@@ -17,8 +16,10 @@ class JustroFileRequest < JustroRequest
         if(!date.saturday? && !date.sunday?) then
           request = JustroFileRequest.new
           request.court_name = court_name
+          request.trial_court = TrialCourt.where(computer_name: court_name).first()
           request.start_date = date
           request.end_date = date
+          request.request_type = "file"
           request.status = "notstarted"
           # puts "Saving file request #{request.inspect}"
           request.save

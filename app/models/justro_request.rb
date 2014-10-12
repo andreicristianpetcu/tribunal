@@ -1,5 +1,6 @@
 class JustroRequest
   include Mongoid::Document
+  store_in database: "justro"
 
   #notstarted, started, finished, error, empty
   field :status, type: String
@@ -8,6 +9,7 @@ class JustroRequest
   field :error_message, type: String
   field :response_code, type: String
   field :response,   type: Hash
+  field :request_type, type: String
 
   field :request_date,   type: DateTime
   field :request_params,   type: Hash
