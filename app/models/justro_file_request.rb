@@ -19,7 +19,6 @@ class JustroFileRequest < JustroRequest
           request.trial_court = TrialCourt.where(computer_name: court_name).first()
           request.start_date = date
           request.end_date = date
-          request.request_type = "file"
           request.status = "notstarted"
           # puts "Saving file request #{request.inspect}"
           request.save
