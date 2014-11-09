@@ -28,6 +28,7 @@ RUN ln -s /build/runit/mongo /etc/service/mongo/run
 RUN chown app -R .
 
 ADD docker_files/onoratainstanta.conf /etc/nginx/sites-enabled/onoratainstanta.conf
+ADD docker_files/mongodb.conf /etc/mongodb.conf
 
 EXPOSE 80
 EXPOSE 27017
