@@ -38,6 +38,7 @@ gem 'd3js-plugins-rails'
 gem 'mongoid', '~> 4', github: 'mongoid/mongoid'
 gem 'bson_ext'
 gem 'savon'
+gem 'redis_analytics'
 
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
