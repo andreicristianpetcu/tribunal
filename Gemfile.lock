@@ -73,6 +73,7 @@ GEM
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
     geoip (1.4.0)
+    google-analytics-rails (0.0.6)
     gyoku (1.1.1)
       builder (>= 2.1.2)
     haml (4.0.5)
@@ -239,6 +240,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   d3js-plugins-rails
   d3js-rails
+  google-analytics-rails
   high_voltage
   jbuilder (~> 2.0)
   jquery-rails

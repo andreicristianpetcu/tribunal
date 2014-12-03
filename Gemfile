@@ -39,6 +39,7 @@ gem 'mongoid', '~> 4', github: 'mongoid/mongoid'
 gem 'bson_ext'
 gem 'savon'
 gem 'redis_analytics'
+gem 'google-analytics-rails'
 
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
