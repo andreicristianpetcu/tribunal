@@ -8,7 +8,6 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 require "sprockets/railtie"
 require "rails/test_unit/railtie"
-require 'redis_analytics'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -28,9 +27,4 @@ module Tribunal
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
   end
-end
-# configure your redis_connection (mandatory) and redis_namespace (optional)
-RedisAnalytics.configure do |configuration|
-  configuration.redis_connection = Redis.new(:host => 'localhost', :port => '6379')
-  configuration.redis_namespace = 'ra'
 end

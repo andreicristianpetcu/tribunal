@@ -11,10 +11,6 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  Rails.application.routes.draw do
-    mount RedisAnalytics::Dashboard::Engine => "/dashboard"
-  end
-
   root 'contact_emails#new'
   
   resources :trial_files
