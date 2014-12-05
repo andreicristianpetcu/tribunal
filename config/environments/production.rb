@@ -76,5 +76,5 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-  GA.tracker = "UA-xxxxxx-x"
+  GA.tracker = "UA-57327806-1"
 end
