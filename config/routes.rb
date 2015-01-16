@@ -11,7 +11,8 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  root 'contact_emails#new'
+  root to: "contact_emails#new"
+  # root 'contact_emails#new'
   
   resources :trial_files
 
