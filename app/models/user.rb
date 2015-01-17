@@ -3,7 +3,7 @@ class User
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :rememberable, :trackable 
-    # :registerable, :recoverable, :validatable
+  # :registerable, :recoverable, :validatable
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -33,4 +33,10 @@ class User
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
+
+  #HACK FOR DEVISE 3.2.4
+  def self.serialize_into_session(record)
+    [record.id.to_s, record.authenticatable_salt]
+  end
+
 end
