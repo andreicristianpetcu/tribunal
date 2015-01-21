@@ -7,6 +7,9 @@ RailsAdmin.config do |config|
     warden.authenticate! scope: :user
   end
   config.current_user_method(&:current_user)
+  config.included_models = ['Court', 'ContactEmail', 'CourtsYearlyStatistics', 
+                            'CourtYearlyStatistics', 'Dictionary', 'DictionaryTerm',
+                            'TrialFile', 'TrialJudge', 'TrialMeeting', 'TrialProceeding']
 
   ## == Cancan ==
   # config.authorize_with :cancan
