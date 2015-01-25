@@ -1,0 +1,18 @@
+<h2>
+  Postari pe blog
+</h2>
+
+<% @blog_posts.each do |blog_post| %>
+  <div class="row">
+    <div class="col-lg-6">
+      <h3>
+        <%= link_to blog_post.title, blog_post_path(blog_post) %> 
+      </h3>
+      <div class="bs-component">
+        <h5>
+          <span><%= blog_post.body.html_safe %></span>
+        </h5>
+      </div>
+    </div>
+  </div>
+<% end %>
