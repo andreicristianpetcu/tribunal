@@ -1,18 +1,22 @@
-<h2>
-  Postari pe blog
-</h2>
 
-<% @blog_posts.each do |blog_post| %>
-  <div class="row">
-    <div class="col-lg-6">
-      <h3>
-        <%= link_to blog_post.title, blog_post_path(blog_post) %> 
-      </h3>
-      <div class="bs-component">
-        <h5>
-          <span><%= blog_post.body.html_safe %></span>
-        </h5>
+<div class="row">
+  <div class="col-sm-offset-2 col-sm-8">
+    <h2>
+      Noutăți
+    </h2>
+    <% @blog_posts.each do |blog_post| %>
+      <div class="row">
+        <h3>
+          <%= link_to blog_post.title, blog_post_path(blog_post) %> 
+        </h3>
+        <div class="bs-docs-section">
+          <div class="bs-component">
+            <div class="well">
+              <%= blog_post.body.html_safe %>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
-<% end %>
+</div>
