@@ -1,9 +1,11 @@
 
 <div class="row">
   <div class="col-sm-offset-2 col-sm-8">
-    <h2>
-      Noutăți
-    </h2>
+    <div class="row">
+      <h2>
+        Noutăți
+      </h2>
+    </div>
     <% @blog_posts.each do |blog_post| %>
       <div class="row">
         <h3>
@@ -12,7 +14,8 @@
         <div class="bs-docs-section">
           <div class="bs-component">
             <div class="well">
-              <%= blog_post.body.html_safe %>
+              <%= truncate strip_tags(blog_post.body.html_safe), length: 500 %>
+              <%= link_to 'Citește mai mult', blog_post %> 
             </div>
           </div>
         </div>
