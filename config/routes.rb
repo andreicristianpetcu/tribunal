@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :proceedings
 
+  resources :blog_posts
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   root to: "contact_emails#new"

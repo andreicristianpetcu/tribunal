@@ -49,6 +49,7 @@ gem 'high_voltage'
 gem 'thread'
 gem 'leaflet-rails'
 gem 'devise'
+gem 'ckeditor'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do
