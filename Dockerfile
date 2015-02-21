@@ -17,6 +17,7 @@ RUN apt-get install elinks -y
 WORKDIR /home/app/
 RUN git clone https://github.com/andreicristianpetcu/tribunal.git
 WORKDIR /home/app/tribunal
+RUN git checkout production
 RUN bundle install
 
 RUN touch log/production.log
@@ -29,6 +30,11 @@ RUN chown app -R .
 
 ADD docker_files/onoratainstanta.conf /etc/nginx/sites-enabled/onoratainstanta.conf
 ADD docker_files/mongodb.conf /etc/mongodb.conf
+RUN rm -rf /etc/nginx/sites-enabled/default
+
+WORKDIR /home/app/tribunal
+RUN git checkout 1cfd111ccddd229a788fbacf4ca6773b7251bd11
+RUN bundle install
 
 EXPOSE 80
 EXPOSE 27017
