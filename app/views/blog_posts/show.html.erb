@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<div class="jumbotron">
+  <h1>
+    <%= @blog_post.title %>
+  </h1>
+
+  <%= @blog_post.body.html_safe %>
+
+  <% if user_signed_in? %>
+    <%= link_to 'Edit Blog Post', rails_admin.edit_path(model_name: 'blog_post', id: @blog_post.id) %> 
+  <% end %>
+</div>

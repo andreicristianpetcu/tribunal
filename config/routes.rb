@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+
   devise_for :users
+
   resources :contact_emails
 
   resources :jurisprudences
@@ -9,6 +12,8 @@ Rails.application.routes.draw do
   resources :trial_proceedings
 
   resources :proceedings
+
+  resources :blog_posts
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
