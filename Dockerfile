@@ -33,8 +33,7 @@ ADD docker_files/mongodb.conf /etc/mongodb.conf
 RUN rm -rf /etc/nginx/sites-enabled/default
 
 WORKDIR /home/app/tribunal
-RUN git checkout 1cfd111ccddd229a788fbacf4ca6773b7251bd11
-RUN bundle install
+RUN git pull origin production && bundle install && git log --name-status HEAD^..HEAD
 
 EXPOSE 80
 EXPOSE 27017
