@@ -1,14 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @blog_page.title %>
-</p>
+  <%= @blog_page.body.html_safe %>
 
-<p>
-  <strong>Body:</strong>
-  <%= @blog_page.body %>
-</p>
-
-<%= link_to 'Edit', edit_blog_page_path(@blog_page) %> |
-<%= link_to 'Back', blog_pages_path %>
+  <% if user_signed_in? %>
+    <%= link_to 'Edit page', rails_admin.edit_path(model_name: 'blog_page', id: @blog_page.id) %> 
+  <% end %>
