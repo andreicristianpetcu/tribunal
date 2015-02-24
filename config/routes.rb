@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :blog_pages
+
   mount Ckeditor::Engine => '/ckeditor'
 
   devise_for :users

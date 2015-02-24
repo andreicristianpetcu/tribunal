@@ -9,7 +9,7 @@ RailsAdmin.config do |config|
   config.current_user_method(&:current_user)
   config.included_models = ['Court', 'ContactEmail', 'CourtsYearlyStatistics', 
                             'CourtYearlyStatistics', 'Dictionary', 'DictionaryTerm',
-                            'TrialFile', 'TrialJudge', 'TrialMeeting', 'TrialProceeding', 'BlogPost']
+                            'TrialFile', 'TrialJudge', 'TrialMeeting', 'TrialProceeding', 'BlogPost', 'BlogPage']
 
   ## == Cancan ==
   # config.authorize_with :cancan
@@ -20,6 +20,17 @@ RailsAdmin.config do |config|
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
   config.model BlogPost do
+    edit do
+      # For RailsAdmin >= 0.5.0
+      field :title
+      field :body, :ck_editor
+      # For RailsAdmin < 0.5.0
+      # field :description do
+      #   ckeditor true
+      # end
+    end
+  end
+  config.model BlogPage do
     edit do
       # For RailsAdmin >= 0.5.0
       field :title

@@ -12,30 +12,6 @@ class BlogPostsController < ApplicationController
     respond_with(@blog_post)
   end
 
-  def new
-    @blog_post = BlogPost.new
-    respond_with(@blog_post)
-  end
-
-  def edit
-  end
-
-  def create
-    @blog_post = BlogPost.new(blog_post_params)
-    @blog_post.save
-    respond_with(@blog_post)
-  end
-
-  def update
-    @blog_post.update(blog_post_params)
-    respond_with(@blog_post)
-  end
-
-  def destroy
-    @blog_post.destroy
-    respond_with(@blog_post)
-  end
-
   private
     def set_blog_post
       @blog_post = BlogPost.find(params[:id])

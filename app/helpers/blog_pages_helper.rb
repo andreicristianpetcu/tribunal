@@ -1,0 +1,2 @@
+module BlogPagesHelper
+end
